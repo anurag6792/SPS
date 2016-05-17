@@ -20,23 +20,29 @@
     <div class="row request">
         <div class="col">
                 <h3>New Request</h3>
-       
+            <form name="sendRequestform" novalidate='' ng-submit="sendRequest(reuest)"  >
             <div class="list">
           <label class="item item-input item-stacked-label">
             <span class="input-label">Subject</span>
-            <input type="text" class="input-control" placeholder="Enter the subject" ng-model="request.subject">
+            <input type="text" class="input-control" name="requestSubject" placeholder="Enter the subject" ng-model="request.subject" required>
           </label>
+          <label  class="request-errors" ng-show="sendRequestform.requestSubject.$error.required && loginform.requestSubject.$touched">
+                    <span>Please Enter the Subject</span>
+          </label>           
           <label class="item item-input item-stacked-label">
             <span class="input-label">Details</span>
-            <textarea placeholder="Please Enter the details" ng-model="request.detail" class="input-control"></textarea>
+            <textarea placeholder="Please Enter the details" name="requestDetails" ng-model="request.detail" class="input-control"></textarea>
           </label>
+          <label  class="request-errors" ng-show="sendRequestform.requestDetails.$error.required && loginform.requestDetails.$touched">
+                    <span>Please Enter the details</span>
+          </label>        
           <label class="item item-input item-stacked-label">
             <span class="input-label" ng-model="request.date">Date</span>
-            <input type="date" class="input-control">
+            <input type="date" class="input-control" name="requestDate" ng-model="request.Date">
           </label>
           <label class="item item-input item-stacked-label">
             <span class="input-label" >Time</span>
-            <input type="time" class="input-control" ng-model="request.time" >
+            <input type="time" class="input-control" name="requestName" ng-model="request.time" >
           </label>
           <button class="button button-block button-mybuttoncolor" ng-click="addImage()">Add image</button><br><br>
           <ion-scroll>
@@ -45,14 +51,10 @@
                     <img ng-src="{{urlForImage(image)}}" height="100px" />    
                 </div>
               </div>
-          </ion-scroll>        
-<!--
-          <label class="item item-input item-stacked-label">
-            <span class="input-label">Email</span>
-            <input type="text" placeholder="john@suhr.com">
-          </label>
--->
+          </ion-scroll>
+          <button class="button button-block button-mybuttoncolor" type="submit">Send Request</button>        
         </div>
+            </form>        
         </div>
        
 
