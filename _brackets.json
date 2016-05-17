@@ -1,0 +1,16 @@
+{
+    "jscodehints.detectedExclusions": [
+        "D:/anurag workshop/SPS/platforms/android/platform_www/plugins/cordova-plugin-device/www/device.js",
+        "D:/anurag workshop/SPS/platforms/android/platform_www/plugins/cordova-plugin-splashscreen/www/splashscreen.js",
+        "D:/anurag workshop/SPS/platforms/android/platform_www/plugins/cordova-plugin-statusbar/www/statusbar.js",
+        "D:/anurag workshop/SPS/platforms/android/platform_www/plugins/ionic-plugin-keyboard/www/android/keyboard.js",
+        "D:/anurag workshop/SPS/platforms/android/platform_www/cordova.js",
+        "D:/anurag workshop/SPS/platforms/android/platform_www/cordova_plugins.js",
+        "D:/anurag workshop/SPS/platforms/android/cordova/lib/builders/AntBuilder.js",
+        "D:/anurag workshop/SPS/platforms/android/cordova/lib/builders/builders.js",
+        "D:/anurag workshop/SPS/www/js/app.js",
+        "D:/anurag workshop/SPS/platforms/android/cordova/lib/builders/GradleBuilder.js",
+        "D:/anurag workshop/SPS/www/js/controllers/DashboardCtrl.js",
+        "D:/anurag workshop/SPS/platforms/android/assets/www/lib/angular/angular.js"
+    ]
+}

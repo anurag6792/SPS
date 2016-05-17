@@ -1,0 +1,56 @@
+<ion-view  title="Dasboard" ng-controller="DashboardCtrl"> 
+<ion-header-bar align-title="center" class="common-header">
+  <div class="buttons">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+  </div>
+  <h1 class="title">Dashboard</h1>
+  <div class="buttons">
+<!--    <button class="button">Right Button</button>-->
+  </div>
+</ion-header-bar>
+<ion-content>
+    <div class="row dashboard">
+        <div class="col profileInfo">
+            <img src="img/malecostume-512.png" class="profilePic">
+            <p>Welcome</p>
+            <h3>{{user.description.FirstName}} {{user.description.LastName}}</h3>
+        </div>
+    </div>
+    <div class="row request">
+        <div class="col">
+                <h3>New Request</h3>
+       
+            <div class="list">
+          <label class="item item-input item-stacked-label">
+            <span class="input-label">Subject</span>
+            <input type="text" class="input-control" placeholder="Enter the subject" ng-model="request.subject">
+          </label>
+          <label class="item item-input item-stacked-label">
+            <span class="input-label">Details</span>
+            <textarea placeholder="Please Enter the details" ng-model="request.detail" class="input-control"></textarea>
+          </label>
+          <label class="item item-input item-stacked-label">
+            <span class="input-label" ng-model="request.date">Date</span>
+            <input type="date" class="input-control">
+          </label>
+          <label class="item item-input item-stacked-label">
+            <span class="input-label" >Time</span>
+            <input type="time" class="input-control" ng-model="request.time" >
+          </label>
+          <button class="button button-block button-mybuttoncolor" ng-click="addImage()">Add image</button><br><br>
+          <ion-scroll>
+              <img ng-repeat="image in images" ng-src="{{urlForImage(image)}}" height="100px" />
+          </ion-scroll>        
+<!--
+          <label class="item item-input item-stacked-label">
+            <span class="input-label">Email</span>
+            <input type="text" placeholder="john@suhr.com">
+          </label>
+-->
+        </div>
+        </div>
+       
+
+    </div>
+</ion-content>
+</ion-view>    

@@ -1,0 +1,37 @@
+<ion-view title="login" class="login-background" ng-controller="LoginCtrl"> 
+    <ion-content>
+        
+        <form name="loginform" novalidate='' ng-submit="loginform.$valid && login(user);"  >
+        <div class="row" padding="true" style="position:relative;height: 75vh;">
+            <div class="col col-80 col-offset-10  login-container">
+                <div class="list">
+                  <label class="item item-input login-username">
+                    <i class="icon ion-person placeholder-icon"></i>
+                    <input type="text" placeholder="Username" name="username" ng-model="user.username" required>
+                  </label>
+                  <label  class="login-errors" ng-show="loginform.username.$error.required && loginform.username.$touched">
+                    <span>enter your username</span>
+                  </label>    
+                  <label class="item item-input login-password">
+                    <i class="icon ion-eye placeholder-icon"></i>
+                    <input type="password" placeholder="Password" name="password" ng-model="user.password" required>
+                  </label>
+                  <label class="login-errors" ng-show="loginform.password.$error.required && loginform.password.$touched">
+                    <span >enter your password</span>
+                  </label>    
+                </div>
+                <button class="button button-block login-button" ng-click="submitted=true" type="submit" >Login</button>
+                <label class="login-errors" ng-show="loginform.$invalid && submitted ">
+                    <span >invalid username and password</span>
+                </label>
+            </div>
+        </div>
+        </form>    
+        <div class="row row-bottom  " style="position:relative;height: 15vh;">
+            <div class="col login-register">
+                <p>Don't have an account?</p><a ui-sref="signup">Sign up</a>
+            </div>
+        </div>
+            
+    </ion-content>
+</ion-view>
