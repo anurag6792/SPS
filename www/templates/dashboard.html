@@ -44,11 +44,11 @@
             <span class="input-label" >Time</span>
             <input type="time" class="input-control" name="requestName" ng-model="request.time" >
           </label>
-          <button class="button button-block button-mybuttoncolor" ng-click="addImage()">Add image</button><br><br>
+          <button class="button button-block button-mybuttoncolor" ng-click="takePicture()">Add image</button><br><br>
           <ion-scroll>
               <div class="row">
                 <div class="col" ng-repeat="image in images" >
-                    <img ng-src="{{urlForImage(image)}}" height="100px" />    
+                    <img ng-src="{{image}}" height="100px" />    
                 </div>
               </div>
           </ion-scroll>

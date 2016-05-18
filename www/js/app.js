@@ -25,21 +25,35 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
     $stateProvider
     .state('login',{
         url: '/login',
+        cache:false,
         templateUrl:'templates/login.html'
     })
     .state('signup',{
         url: '/signup',
+        cache:false,
         templateUrl:'templates/signup.html'
     })
     .state('app',{
+        cache: false,
         url: '/app',
+        abstract : true,
         templateUrl:'templates/menu.html',
     })
     .state('app.dashboard',{
         url: '/dashboard',
+        cache:false,
         views: {
         'sidemenuContent' :{
           templateUrl: "templates/dashboard.html"
+        }
+      }
+    })
+    .state('app.profile',{
+        url: '/profile',
+        cache:false,
+        views: {
+        'sidemenuContent' :{
+          templateUrl: "templates/userprofile.html"
         }
       }
     })

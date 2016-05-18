@@ -1,9 +1,51 @@
 app.service("userAuth",['$q','$http','localStorageService',function($q,$http,localStorageService){
-     var userprofile ={};
-     var profile2 ={};
-     var loggedIn = false;
-    //Login Authentication    
-     function login(username, password) {
+    var logged = false;
+    
+    // Login API 
+    function login(username, password) {
+        console.log("In service login function");
+        var deferredObject = $q.defer();
+        $http({
+                url    : 'http://ecomdemo.cloudapp.net:8888/api/User/LoginUser',
+                method : 'POST',
+                data   : {'UserName' : username , 'Password':password},
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                transformRequest: function(obj) {
+                  var str = [];
+                  for(var p in obj)
+                  str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+                  return str.join("&");
+                }})
+               .success(function(response){
+                    console.log("Login API successfully called");
+                    localStorageService.set('userprofile',response);//setting the response from login into "userprofile"
+                    console.log(response);    
+                    deferredObject.resolve(response);
+                    localStorageService.set('logged',JSON.parse(response.success));//setting the "logged" true 
+                })
+               .error(function(error){
+                             deferredObject.reject(response);
+                });
+        
+        return deferredObject.promise;       
+        
+    };
+    
+    // Logout function to destroy user credentials 
+    function destroyUser(){
+        profile2 = {};
+        userprofile = {};
+        localStorageService.set('userprofile',null);
+        localStorageService.set('logged',false);
+        localStorageService.set('userdesc',null);
+    }
+    
+    // Function to check whether user is logged in or not
+    function isLoggedIn(){
+        return localStorageService.get('logged');
+    }
+    
+    function sendRequest(){
         console.log("enter");
         var deferredObject = $q.defer();
         $http({
@@ -31,34 +73,13 @@ app.service("userAuth",['$q','$http','localStorageService',function($q,$http,loc
         
         return deferredObject.promise;       
         
-    };
-    
-    function userInfo(user){
-        var userprofile = user;
-        console.log('userprofile');
-        console.log(userprofile.description);
         
-    };
-    
-    function getInfo(){
-        return profile2 = localStorageService.get('userprofile');
-    };
-    
-    
-    function destroyUser(){
-        localStorageService.set('userprofile',{ });
-        loggedIn = false;
-    }
-    
-    function isLoggedIn(){
-        return loggedIn;
     }
     return {
-        login: login,
-        userInfo : userInfo,
-        getInfo : getInfo,
-        destroyUser : destroyUser,
-        isLoggedIn : isLoggedIn
+        login: login,//login function where the login API is called
+        destroyUser : destroyUser,// function to destroy userdetails stored in loacal storage
+        isLoggedIn : isLoggedIn,//function to check whether the user is logged in or not
+        sendRequest : sendRequest
         
     };
     

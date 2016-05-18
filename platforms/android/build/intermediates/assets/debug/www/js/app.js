@@ -1,4 +1,4 @@
-var app = angular.module('sps', ['ionic','ngMessages','LocalStorageModule','ngCordova']);
+var app = angular.module('sps', ['ionic','ngMessages','LocalStorageModule','ngCordova','angularMoment']);
 
 app.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -65,7 +65,10 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 app.run(['$rootScope', 'userAuth', '$state',
     function ($rootScope, userAuth, $state) {
       $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
-        if (toState.name !== 'login' && !userAuth.isLoggedIn()) {
+        if(toState.name == 'signup'){
+             $state.go('signup');   
+        }  
+        else if (toState.name !== 'login' && !userAuth.isLoggedIn()) {
           event.preventDefault();
           $state.go('login');
         }

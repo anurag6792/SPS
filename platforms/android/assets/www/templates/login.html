@@ -1,8 +1,9 @@
 <ion-view title="login" class="login-background" ng-controller="LoginCtrl"> 
     <ion-content>
+        
         <form name="loginform" novalidate='' ng-submit="loginform.$valid && login(user);"  >
-        <div class="row login-container" padding="true">
-            <div class="col col-80 col-offset-10">
+        <div class="row" padding="true" style="position:relative;height: 75vh;">
+            <div class="col col-80 col-offset-10  login-container">
                 <div class="list">
                   <label class="item item-input login-username">
                     <i class="icon ion-person placeholder-icon"></i>
@@ -26,10 +27,11 @@
             </div>
         </div>
         </form>    
-        <div class="row row-bottom login-register">
-            <div class="col">
+        <div class="row row-bottom  " style="position:relative;height: 15vh;">
+            <div class="col login-register">
                 <p>Don't have an account?</p><a ui-sref="signup">Sign up</a>
             </div>
         </div>
+            
     </ion-content>
 </ion-view>

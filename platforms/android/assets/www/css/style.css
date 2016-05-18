@@ -8,7 +8,7 @@
 }
 /*SIDEMENU*/
 .sidemenu{
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: #34373C;
 }
 .sidemenu .list{
     background-color: transparent;
@@ -17,8 +17,16 @@
     background-color: transparent;
     border-color: transparent;
     color: #ffffff;
-    margin-bottom: 30px;
+/*    margin-bottom: 5px;*/
+    border-top: 1px solid #222222;
+    border-bottom: 1px solid #222222;
+    -webkit-box-shadow: 1px 1px 0px -1px #222222;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+    -moz-box-shadow:1px 1px 0px -1px #222222; /* Firefox 3.5 - 3.6 */
+    box-shadow:1px 1px 0px -1px #222222; /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
 
+}
+.sidemenu .list .item-icon-left .icon{
+    font-size: 25px;
 }
 .sidemenu .list .item h2{
     color: #ffffff;
@@ -27,11 +35,15 @@
     color: #ffffff;
 }
 .sidemenu-profile{
-    padding-bottom: 60px;
-    padding-top: 55px;
+    padding-bottom: 30px;
+    padding-top: 35px;
+    text-align: center;
+    background-color: #272C30!important;
+    border: 0;
 }
 .sidemenu-profile img{
-    margin-top:30px;
+    max-width: 100px;
+    max-height: 100px;
 }
 
 /* LOGIN*/
@@ -43,8 +55,8 @@
     background-repeat: no-repeat;
 }
 .login-container {
-    position: fixed;
-    top: 40%;
+    position: absolute;
+        top: 55%;
 }
 .login-username{
    margin: 5px 2px;
@@ -65,7 +77,7 @@
     color: #ffffff;
 }
 .login-register{
-    position: fixed;
+    position: absolute;
     bottom: 0;
     text-align: center;
 }
@@ -206,12 +218,15 @@
     display: block;
     text-align: center;
     color: #ffffff;
+    margin-bottom: 5px;
 }
 .profileInfo h3{
     font-size: 20px;
     display: block;
     text-align: center;
     color: #ffffff;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 .request h3{
     width: 100%;
