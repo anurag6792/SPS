@@ -189,7 +189,7 @@
 .common-header h1{
     color: #ffffff;
 }
-.common-header .buttons .button-icon{
+.common-header .button-icon{
     color: #ffffff;
 }
 .dashboard{
@@ -326,6 +326,9 @@
     font-size: 40px;
 }
 /*User Profile*/
+.profile{
+        background-color: #0EDAAD;
+}
 .profile-header{
     height: 190px;
 }

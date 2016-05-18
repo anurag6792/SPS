@@ -1,4 +1,4 @@
-<ion-side-menus>
+<ion-side-menus enable-menu-with-back-views="true">
     
   <ion-pane ion-side-menu-content>
       <ion-nav-view name="sidemenuContent" animation="slide-left-right"></ion-nav-view>
@@ -12,27 +12,27 @@
           <h2>{{userdetails.description.FirstName}} {{userdetails.description.LastName}}</h2>
           <p>{{userdetails.description.EmailId}}</p>
         </a>
-        <a class="item item-icon-left">
+        <a menu-close class="item item-icon-left" ui-sref='app.dashboard'>
             <i class="icon ion-email"></i>
-            Check mail
+            Dashboard
         </a>
 
-        <a class="item item-icon-left" >
+        <a menu-close class="item item-icon-left" >
             <i class="icon ion-chatbubble-working"></i>
-            Issues
+            Payment
        </a>
 
-        <a class="item item-icon-left" ui-sref='app.profile'>
+        <a menu-close class="item item-icon-left" ui-sref='app.profile'>
             <i class="icon ion-mic-a"></i>
             Profile
             
         </a>
 
-        <a class="item item-icon-left">
+        <a menu-close class="item item-icon-left">
             <i class="icon ion-person-stalker"></i>
             Settings
         </a>
-        <a class="item item-icon-left" ng-click="logout();" >
+        <a menu-close class="item item-icon-left" ng-click="logout();" >
             <i class="icon ion-person-stalker"></i>
             Logout
         </a>  
