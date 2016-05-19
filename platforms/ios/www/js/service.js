@@ -45,13 +45,26 @@ app.service("userAuth",['$q','$http','localStorageService',function($q,$http,loc
         return localStorageService.get('logged');
     }
     
-    function sendRequest(){
-        console.log("enter");
+    function sendRequest(subject,postedby,status,details,date,image,recstatus,by){
+        console.log(subject);
+        console.log(postedby);
+        console.log(status);
+        console.log(details);
+        console.log(date);
+        console.log(image);
+        console.log(recstatus);
+        console.log(by);
         var deferredObject = $q.defer();
         $http({
-                url    : 'http://ecomdemo.cloudapp.net:8888/api/User/LoginUser',
+                url    : 'http://ecomdemo.cloudapp.net:8888/api/Job/SaveJobRequest',
                 method : 'POST',
-                data   : {'UserName' : username , 'Password':password},
+                data   : {  "JobName": subject,
+                            "PostedBy": postedby,
+                            "JobStatus": status,
+                            "JobDetails": details,
+                            "CustomerExpectedDate": date,
+                            "ImageUrl": image,
+                            "RecordStatus": recstatus},
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                 transformRequest: function(obj) {
                   var str = [];
@@ -60,12 +73,8 @@ app.service("userAuth",['$q','$http','localStorageService',function($q,$http,loc
                   return str.join("&");
                 }})
                .success(function(response){
-//                    userprofile = response;
-                    localStorageService.set('userprofile',response);
                     deferredObject.resolve(response);
                     console.log(response);
-                    console.log(userprofile);
-                    loggedIn = JSON.parse(response.success);
                 })
                .error(function(error){
                              deferredObject.reject(response);

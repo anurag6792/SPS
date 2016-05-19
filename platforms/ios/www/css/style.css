@@ -77,8 +77,10 @@
     color: #ffffff;
 }
 .login-register{
+/*
     position: absolute;
     bottom: 0;
+*/
     text-align: center;
 }
 .login-register p{
@@ -189,7 +191,7 @@
 .common-header h1{
     color: #ffffff;
 }
-.common-header .buttons .button-icon{
+.common-header .button-icon{
     color: #ffffff;
 }
 .dashboard{
@@ -324,4 +326,52 @@
     text-align: center;
     color: #f0df0f;
     font-size: 40px;
+}
+/*User Profile*/
+.profile{
+        background-color: #FFFFFF;
+}
+.profile .col .list .item{
+    border:0;
+}
+.profile-header{
+    height: 190px;
+}
+.profile-header img{
+    width: 70px;
+    height: 70px;
+    display: block;
+    position: relative;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+.profile-header p{
+    font-size: 15px;
+    display: block;
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 5px;
+}
+.profile-header h3{
+    font-size: 20px;
+    display: block;
+    text-align: center;
+    color: #ffffff;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.profileDetails .list .item-divider{
+    background-color: #00c398;
+    color: #ffffff;
+}
+.profileDetails .list a.item-detail{
+    color: #00c398;
+}
+.profile .button-profileditbutton{
+    background-color: #00c398;
+    color: #ffffff;
+    font-size: 15px;
+    line-height: 30px;
+    min-height: 32px;
+    
 }

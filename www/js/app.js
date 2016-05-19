@@ -1,4 +1,5 @@
-var app = angular.module('sps', ['ionic','ngMessages','LocalStorageModule','ngCordova','angularMoment']);
+
+    var app = angular.module('sps', ['ionic','ngMessages','LocalStorageModule','ngCordova','angularMoment']);
 
 app.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -11,10 +12,14 @@ app.run(function($ionicPlatform) {
       // from snapping when text inputs are focused. Ionic handles this internally for
       // a much nicer keyboard experience.
       cordova.plugins.Keyboard.disableScroll(true);
+          
     }
     if(window.StatusBar) {
       StatusBar.styleDefault();
     }
+    window.addEventListener('native.keyboardshow', function(){
+    document.body.classList.add('keyboard-open');
+  });  
   });
 });
 app.config(function (localStorageServiceProvider) {
@@ -89,3 +94,26 @@ app.run(['$rootScope', 'userAuth', '$state',
       });
     }]
   );
+app.directive('validPasswordC', function() {
+  return {
+    require: 'ngModel',
+    scope: {
+
+      reference: '=validPasswordC'
+
+    },
+    link: function(scope, elm, attrs, ctrl) {
+      ctrl.$parsers.unshift(function(viewValue, $scope) {
+
+        var noMatch = viewValue != scope.reference
+        ctrl.$setValidity('noMatch', !noMatch);
+        return (noMatch)?noMatch:!noMatch;
+      });
+
+      scope.$watch("reference", function(value) {;
+        ctrl.$setValidity('noMatch', value === ctrl.$viewValue);
+
+      });
+    }
+  }
+});

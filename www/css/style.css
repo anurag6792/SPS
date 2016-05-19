@@ -77,8 +77,10 @@
     color: #ffffff;
 }
 .login-register{
+/*
     position: absolute;
     bottom: 0;
+*/
     text-align: center;
 }
 .login-register p{
@@ -327,7 +329,10 @@
 }
 /*User Profile*/
 .profile{
-        background-color: #0EDAAD;
+        background-color: #FFFFFF;
+}
+.profile .col .list .item{
+    border:0;
 }
 .profile-header{
     height: 190px;
@@ -354,4 +359,19 @@
     color: #ffffff;
     margin-top: 5px;
     margin-bottom: 5px;
+}
+.profileDetails .list .item-divider{
+    background-color: #00c398;
+    color: #ffffff;
+}
+.profileDetails .list a.item-detail{
+    color: #00c398;
+}
+.profile .button-profileditbutton{
+    background-color: #00c398;
+    color: #ffffff;
+    font-size: 15px;
+    line-height: 30px;
+    min-height: 32px;
+    
 }

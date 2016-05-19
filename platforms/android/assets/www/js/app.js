@@ -1,4 +1,5 @@
-var app = angular.module('sps', ['ionic','ngMessages','LocalStorageModule','ngCordova','angularMoment']);
+
+    var app = angular.module('sps', ['ionic','ngMessages','LocalStorageModule','ngCordova','angularMoment']);
 
 app.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -41,9 +42,19 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
     })
     .state('app.dashboard',{
         url: '/dashboard',
+        cache:false,
         views: {
         'sidemenuContent' :{
           templateUrl: "templates/dashboard.html"
+        }
+      }
+    })
+    .state('app.profile',{
+        url: '/profile',
+        cache:false,
+        views: {
+        'sidemenuContent' :{
+          templateUrl: "templates/userprofile.html"
         }
       }
     })

@@ -1,14 +1,9 @@
-<ion-view  title="Dasboard" ng-controller="DashboardCtrl"> 
+<ion-view  view-title="Dasboard" ng-controller="DashboardCtrl"> 
 <ion-header-bar align-title="center" class="common-header">
-  <div class="buttons">
-    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
-  </div>
-  <h1 class="title">Dashboard</h1>
-  <div class="buttons">
-<!--    <button class="button">Right Button</button>-->
-  </div>
+      <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+      <h1 class="title">Dasboard</h1>
 </ion-header-bar>
-<ion-content>
+<ion-content class="has-header">
     <div class="row dashboard">
         <div class="col profileInfo">
             <img src="img/malecostume-512.png" class="profilePic">
@@ -20,39 +15,52 @@
     <div class="row request">
         <div class="col">
                 <h3>New Request</h3>
-            <form name="sendRequestform" novalidate='' ng-submit="sendRequest(reuest)"  >
+            <form name="sendRequestform" novalidate=''   >
             <div class="list">
           <label class="item item-input item-stacked-label">
             <span class="input-label">Subject</span>
             <input type="text" class="input-control" name="requestSubject" placeholder="Enter the subject" ng-model="request.subject" required>
           </label>
-          <label  class="request-errors" ng-show="sendRequestform.requestSubject.$error.required && loginform.requestSubject.$touched">
+          <label  class="request-errors" ng-show="sendRequestform.requestSubject.$error.required && sendRequestform.requestSubject.$touched">
                     <span>Please Enter the Subject</span>
           </label>           
           <label class="item item-input item-stacked-label">
             <span class="input-label">Details</span>
             <textarea placeholder="Please Enter the details" name="requestDetails" ng-model="request.detail" class="input-control"></textarea>
           </label>
-          <label  class="request-errors" ng-show="sendRequestform.requestDetails.$error.required && loginform.requestDetails.$touched">
+          <label  class="request-errors" ng-show="sendRequestform.requestDetails.$error.required && sendRequestform.requestDetails.$touched">
                     <span>Please Enter the details</span>
           </label>        
           <label class="item item-input item-stacked-label">
             <span class="input-label" ng-model="request.date">Date</span>
-            <input type="date" class="input-control" name="requestDate" ng-model="request.Date">
+            <input type="date" class="input-control" name="requestDate" ng-model="request.Date" required>
           </label>
+          <label  class="request-errors" ng-show="sendRequestform.requestDate.$error.required && sendRequestform.requestDate.$touched">
+                    <span>Please Enter the Date</span>
+          </label>        
           <label class="item item-input item-stacked-label">
             <span class="input-label" >Time</span>
-            <input type="time" class="input-control" name="requestName" ng-model="request.time" >
+            <input type="time" class="input-control" name="requestTime" ng-model="request.time" >
           </label>
-          <button class="button button-block button-mybuttoncolor" ng-click="takePicture()">Add image</button><br><br>
-          <ion-scroll>
+          <label  class="request-errors" ng-show="sendRequestform.requestTime.$error.required && sendRequestform.requestTime.$touched">
+                    <span>Please Enter the Time</span>
+          </label>        
+          
               <div class="row">
                 <div class="col" ng-repeat="image in images" >
                     <img ng-src="{{image}}" height="100px" />    
                 </div>
               </div>
-          </ion-scroll>
-          <button class="button button-block button-mybuttoncolor" type="submit">Send Request</button>        
+          
+         <div class="row">
+            <div class="col col-50">
+            <button class="button button-block button-mybuttoncolor" ng-click="takePicture()">Add image</button>
+            
+            </div>       
+            <div class="col col-50">
+                <button class="button button-block button-mybuttoncolor" ng-click='sendRequestform.$valid &&  sendRequest(request);'>Send Request</button> 
+            </div>       
+         </div>           
         </div>
             </form>        
         </div>

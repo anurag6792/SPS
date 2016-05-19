@@ -9,10 +9,12 @@
     </ion-header-bar>
 -->
     <ion-content class="has-header">
-        <form name='registrationform' novalidate="">
-            
-               <div class="col col-100">
-         <div class="list signupForm" >
+    <form name='registrationform' novalidate="" ng-submit="registrationform.$valid && registerUser(newuser);">
+       <div class="col col-100">
+
+        <!--Sign Up form -->
+        <div class="list signupForm" >
+          <!-- First Name of user-->
           <label class="item item-input">
             <span class="input-label">First Name</span>
             <input type="text" name="firstname" ng-model="newuser.firstname" required ng-maxlength="20" ng-minlength="3">
@@ -21,7 +23,20 @@
                     <span ng-message="required">You did not enter your first name</span>
                     <span ng-message="minlength">Your field is too short</span>
                     <span ng-message="maxlength">Your field is too long</span>
-          </label>     
+          </label> 
+            
+          <!-- Middle Name of user-->
+          <label class="item item-input">
+            <span class="input-label">Middle Name</span>
+            <input type="text" name="middlename" ng-model="newuser.middlename" ng-maxlength="20" ng-minlength="0">
+          </label>
+          <label ng-messages="registrationform.middlename.$dirty && registrationform.middlename.$error" style="color:#F70000" role="alert">
+                   
+                    <span ng-message="minlength">Your field is too short</span>
+                    <span ng-message="maxlength">Your field is too long</span>
+          </label> 
+                  
+          <!-- Last Name of user-->       
           <label class="item item-input">
             <span class="input-label">LastName</span>
             <input type="text" name="lastname" ng-model="newuser.lastname" required ng-maxlength="20" ng-minlength="1">
@@ -30,7 +45,26 @@
                     <span ng-message="required">You did not enter your Last name</span>
                     <span ng-message="minlength">Your field is too short</span>
                     <span ng-message="maxlength">Your field is too long</span>
-          </label>       
+          </label>
+         
+           
+          <!-- Gender Of user-->
+          <label class="item item-input">
+            <span class="input-label">Gender</span>
+            <select ng-model="newuser.gender">
+                <option value="">Choose Gender</option>  
+                <option value="Male">Male</option>  
+                <option value="">Female</option>  
+            </select>
+          </label>
+          
+            <!-- Date of birth of user   -->
+          <label class="item item-input">
+            <span class="input-label">Date Of birth</span>
+            <input type="date" name="date" ng-model="newuser.date" required>
+          </label>
+            
+           <!-- Email Id of user-->    
           <label class="item item-input">
             <span class="input-label">Email</span>
             <input type="email" name="email" ng-model="newuser.email" required>
@@ -38,8 +72,10 @@
           <label ng-messages="registrationform.email.$dirty && registrationform.email.$error" style="color:#F70000" role="alert">
                     <span ng-message="required">You did not enter your email</span>
                     <span ng-message="email">Not a valid email</span>
-          </label>     
-             
+          </label>
+            
+            
+          <!-- Password  of user-->     
           <label class="item item-input">
             <span class="input-label">Password</span>
             <input type="password" name="password" ng-model="newuser.password"  ng-minlength="8" ng-maxlength="20" ng-pattern="/(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z])/" required>
@@ -50,15 +86,18 @@
                     <span ng-message="maxlength">Your field is too long</span>
                     <span ng-message="pattern">Must contain one lower case uppercase letter, and one non-alpha character (a number or a symbol.)</span>
           </label>     
-             
+          
+          <!-- Password Confrimation  of user-->       
           <label class="item item-input">
             <span class="input-label">Confrim Password</span>
-            <input type="password" name="confirmpassword" ng-model="newuser.confirmpassword" ng-pattern="pswrdpattern" required>
+            <input type="password" name="confirmpassword" ng-model="newuser.confirmpassword" valid-password-c='newuser.password' required>
           </label>
           <label ng-messages="registrationform.confirmpassword.$dirty && registrationform.confirmpassword.$error" style="color:#F70000" role="alert">
                     <span ng-message="required">confirm your password</span>
-                    <span ng-message="pattern">Password does not match</span>
-          </label>      
+                    <span ng-message="noMatch">Password does not match</span>
+          </label>  
+            
+           <!-- Mobile No. of user-->       
            <label class="item item-input">
             <span class="input-label">Mobile No.</span>
             <input type="text" name="mobile" ng-model="newuser.mobile" ng-pattern="/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/" required>
@@ -67,25 +106,32 @@
                     <span ng-message="required">You did not enter your mobile no.</span>
                     <span ng-message="pattern">Not a valid mobile no.</span>
           </label>
+            
+            
+          <!-- Country of user-->           
           <label class="item item-input">
             <span class="input-label">Country</span>
-            <select ng-model="new.user" ng-disabled>
+            <select ng-model="newuser.country" ng-disabled>
                   <option value="">India</option>
             </select>
-          </label>     
+          </label>
+            
+          <!-- State of user-->    
           <label class="item item-input">
             <span class="input-label">State</span>
             <select ng-model="search.category"  ng-options="category for category in categories" ng-change="getCity(search.category);">
                 <option value="">-- Choose State --</option>  
             </select>
           </label>
+            
+          <!-- City of user-->    
           <label class="item item-input">
             <span class="input-label">City</span>
             <select ng-model="newuser.city" ng-options="city for city in cities"><option value="">-- Choose City --</option></select>
           </label>     
         </div>
         <div class="padding">
-            <button class="button button-block signup-button" ng-disabled="registrationform.$invalid" type="submit">Sign Up</button>
+            <button class="button button-block signup-button" type="submit">Sign Up</button>
         </div>    
         </div>
           
