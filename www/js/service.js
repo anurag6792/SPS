@@ -33,11 +33,10 @@ app.service("userAuth",['$q','$http','localStorageService','$filter',function($q
     
     // Logout function to destroy user credentials 
     function destroyUser(){
-        profile2 = {};
-        userprofile = {};
         localStorageService.set('userprofile',null);
         localStorageService.set('logged',false);
-        localStorageService.set('userdesc',null);
+        localStorageService.set('requestDetails',null);
+        localStorageService.set('jobrequests',null);
     }
     
     // Function to check whether user is logged in or not
@@ -76,6 +75,7 @@ app.service("userAuth",['$q','$http','localStorageService','$filter',function($q
                .success(function(response){
                     deferredObject.resolve(response);
                     console.log(response);
+                    localStorageService.set('requestDetails',response);
                 })
                .error(function(error){
                              deferredObject.reject(response);
@@ -105,8 +105,8 @@ app.service("userAuth",['$q','$http','localStorageService','$filter',function($q
                             "RoleId": "3",
                             "IsVerified": "No",
                             "IsFirstTimeLogin": "Yes",
-                            "RecordStatus": "0",
-                            "CreatedBy": "3"},
+                            "RecordStatus": "0"
+                         },
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                 transformRequest: function(obj) {
                   var str = [];
@@ -126,12 +126,41 @@ app.service("userAuth",['$q','$http','localStorageService','$filter',function($q
         return deferredObject.promise;       
         
     };
+    //Function to view all the job requests
+    function viewjobrequests(userID) {
+        console.log("In service viewjobrequests function");
+        var deferredObject = $q.defer();
+        $http({
+                url    : 'http://ecomdemo.cloudapp.net:8888/api/Job/ShowCustomerAllJobRequests',
+                method : 'POST',
+                params   : {"customerId": userID},
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                transformRequest: function(obj) {
+                  var str = [];
+                  for(var p in obj)
+                  str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+                  return str.join("&");
+                }})
+               .success(function(response){
+                    console.log("View Job requests API successfully called");
+                    console.log(response); 
+                    localStorageService.set('jobrequests',response);
+                    deferredObject.resolve(response);
+                })
+               .error(function(error){
+                             deferredObject.reject(response);
+                });
+        
+        return deferredObject.promise;       
+        
+    };
     return {
         login: login,//login function where the login API is called
         destroyUser : destroyUser,// function to destroy userdetails stored in loacal storage
         isLoggedIn : isLoggedIn,//function to check whether the user is logged in or not
         sendRequest : sendRequest,
-        newuser : newuser
+        newuser : newuser,
+        viewjobrequests : viewjobrequests
         
         
     };

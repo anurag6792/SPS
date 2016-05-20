@@ -1,4 +1,11 @@
 /* Empty. Add your own CSS if you like */
+.spinner svg {
+  width: 28px;
+  height: 28px;
+  stroke: #08f274;
+  fill: #08f274;
+/*  background-color: aquamarine;    */
+}
 .content-scroll{
     overflow: auto;
 }
@@ -195,7 +202,7 @@
     color: #ffffff;
 }
 .dashboard{
-    background-image: url("../img/dashbg.jpg");
+    background-image: url("../img/dashbg.png");
     background-position: center;
     background-origin: border-box;
     background-size: cover;
@@ -374,4 +381,17 @@
     line-height: 30px;
     min-height: 32px;
     
+}
+/* Requests*/
+.requests h4{
+    text-align: center;
+    font-size: 18px;
+    color: #00c398;
+}
+/* View Request*/
+.viewrequests .card .item-divider{
+    background-color: #00c398;
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
 }

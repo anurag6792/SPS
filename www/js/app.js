@@ -62,6 +62,25 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
         }
       }
     })
+    .state('app.requests',{
+        url: '/requests',
+        cache:false,
+        views: {
+        'sidemenuContent' :{
+          templateUrl: "templates/jobrequests.html"
+        }
+      }
+    })
+    .state('app.viewrequest',{
+        url: '/viewrequest/:jobID',
+       
+        cache:false,
+        views: {
+        'sidemenuContent' :{
+          templateUrl: "templates/viewrequests.html"
+        }
+      }
+    })
     .state('app.estimates',{
         url: '/estimates',
         views: {
@@ -81,6 +100,8 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
     $urlRouterProvider.otherwise('/login');
 }]);
 
+
+//Restricting the user to login page if the user is not logged in
 app.run(['$rootScope', 'userAuth', '$state',
     function ($rootScope, userAuth, $state) {
       $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
@@ -94,6 +115,8 @@ app.run(['$rootScope', 'userAuth', '$state',
       });
     }]
   );
+
+// Directive to confirm password for the new user
 app.directive('validPasswordC', function() {
   return {
     require: 'ngModel',

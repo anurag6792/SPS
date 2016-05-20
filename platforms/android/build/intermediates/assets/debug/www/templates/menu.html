@@ -1,42 +1,50 @@
 <ion-side-menus enable-menu-with-back-views="true">
     
   <ion-pane ion-side-menu-content>
-      <ion-nav-view name="sidemenuContent" animation="slide-left-right"></ion-nav-view>
+      <ion-nav-view name="sidemenuContent" animation="slide-left-right" edge-drag-threshold="true" ></ion-nav-view>
   </ion-pane>    
     
   <!-- Left menu -->
   <ion-side-menu side="left" class="sidemenu" ng-controller="SidemenuCtrl">
-      <div class="list">
-        <a class="item sidemenu-profile">
-          <img src="img/malecostume-512.png">
-          <h2>{{userdetails.description.FirstName}} {{userdetails.description.LastName}}</h2>
-          <p>{{userdetails.description.EmailId}}</p>
-        </a>
-        <a menu-close class="item item-icon-left" ui-sref='app.dashboard'>
-            <i class="icon ion-email"></i>
-            Dashboard
-        </a>
+      <ion-scroll  direction="y">
+          <div class="list">
+            <a class="item sidemenu-profile">
+              <img src="img/malecostume-512.png">
+              <h2>{{userdetails.description.FirstName}} {{userdetails.description.LastName}}</h2>
+              <p>{{userdetails.description.EmailId}}</p>
+            </a>
+            <a menu-close class="item item-icon-left" ui-sref='app.dashboard'>
+                <i class="icon ion-ios-home"></i>
+                Dashboard
+            </a>
+            <a menu-close class="item item-icon-left" >
+                <i class="icon ion-chatbubble-working"></i>
+                Payment
+           </a>
+            <a menu-close class="item item-icon-left" ui-sref='app.requests'>
+                <i class="icon ion-navigate"></i>
+                Requests
+            </a>
+            <a menu-close class="item item-icon-left" ui-sref='app.profile'>
+                <i class="icon ion-person"></i>
+                Profile
 
-        <a menu-close class="item item-icon-left" >
-            <i class="icon ion-chatbubble-working"></i>
-            Payment
-       </a>
+            </a>
+            <a menu-close class="item item-icon-left">
+                <i class="icon ion-clipboard"></i>
+                Feedbacks
 
-        <a menu-close class="item item-icon-left" ui-sref='app.profile'>
-            <i class="icon ion-mic-a"></i>
-            Profile
-            
-        </a>
-
-        <a menu-close class="item item-icon-left">
-            <i class="icon ion-person-stalker"></i>
-            Settings
-        </a>
-        <a menu-close class="item item-icon-left" ng-click="logout();" >
-            <i class="icon ion-person-stalker"></i>
-            Logout
-        </a>  
-      </div>
+            </a>
+            <a menu-close class="item item-icon-left">
+                <i class="icon ion-gear-a"></i>
+                Settings
+            </a>
+            <a menu-close class="item item-icon-left" ng-click="logout();" >
+                <i class="icon ion-reply"></i>
+                Logout
+            </a>  
+        </div>
+      </ion-scroll>
   </ion-side-menu>
   
 </ion-side-menus>

@@ -10,7 +10,8 @@ app.controller('DashboardCtrl',[
     function( $scope, userAuth, localStorageService, $cordovaCamera, $cordovaFile,$filter,$ionicPopup,$state){
     $scope.user = {};
     $scope.user = localStorageService.get('userprofile');//adding consumer details in user in DashboardCtrl
-    console.log('Added consumer details to the DashboardCtrl in user') ;   
+    console.log('Added consumer details to the DashboardCtrl in user') ;
+    $scope.requestdetails = {};    
     $scope.images = []; //array where images taken by the consumer will be stored
     $scope.sendRequest = function(request){ // function will be called when consumer sends the details of the request
         
@@ -24,6 +25,8 @@ app.controller('DashboardCtrl',[
             if (response.success == "true") {
                 console.log('In DashboardCtrl : request sending successful');
                  $scope.successRequest();// alerting when the request has been sent successfully
+                $scope.requestdetails = localStorageService.get('requestDetails');//adding request details in requestdetails inDashboardCtrl
+                console.log('Added request details to the DashboardCtrl in requestdetails') ;
             }
              else if(response.success == "false") {
                 console.log('In DashboardCtrl : request sending unsuccessful'); 

@@ -3,7 +3,7 @@ app.controller("LoginCtrl",["$scope","userAuth",'$state','$ionicPopup','$ionicLo
     $scope.userinfo = '';
     $scope.show = function() {
                     $ionicLoading.show({
-                      template: 'loading<ion-spinner icon="spiral"></ion-spinner>'
+                      template: '<ion-spinner icon="lines"></ion-spinner>'
                     });
                   };
   
@@ -12,9 +12,9 @@ app.controller("LoginCtrl",["$scope","userAuth",'$state','$ionicPopup','$ionicLo
                   };
     $scope.login = function(user){
     var result = userAuth.login(user.username,user.password);//passing username and password to the login fnc in service
-       
+     $scope.show();    
     result.then(function (response) {
-           $scope.show(); 
+          
             if (response.success == "true") {
                 $scope.hide();
                 console.log('In LoginCtrl : successful login');

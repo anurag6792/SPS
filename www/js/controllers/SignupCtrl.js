@@ -1,4 +1,9 @@
-app.controller('SignupCtrl',['$scope','userAuth','$state','$ionicPopup',function($scope,userAuth,$state,$ionicPopup){
+app.controller('SignupCtrl',[
+    '$scope',
+    'userAuth',
+    '$state',
+    '$ionicPopup',
+    function($scope,userAuth,$state,$ionicPopup){
 
     var json = {
     "modules":
@@ -35,16 +40,17 @@ app.controller('SignupCtrl',['$scope','userAuth','$state','$ionicPopup',function
   $scope.registerUser = function(registerUser){
     console.log(registerUser);  
     console.log('signed up');  
-    var newreguser = userAuth.newuser(registerUser);
+    var newreguser = userAuth.newuser(registerUser);// passing new users details to newuser func. in service
     newreguser.then(function(response){
         if(response.success == 'true'){
-            $scope.newuserSuccess();
+            $scope.newuserSuccess();//showing alert when new user is successfully added
         }
         else{
-            $scope.newuserFailed();
+            $scope.newuserFailed();//showing alert when new user is not successfully added
         }
     });  
   };
+  //Function showing alert when when new user is successfully added  
   $scope.newuserSuccess =function() {
                    var alertPopup = $ionicPopup.alert({
                      title: 'SignUp',
@@ -63,6 +69,7 @@ app.controller('SignupCtrl',['$scope','userAuth','$state','$ionicPopup',function
                      console.log('New User has been successfully added')
                    });
                  };
+ //Function showing alert when new user is not successfully added        
  $scope.newuserFailed =function() {
                    var alertPopup = $ionicPopup.alert({
                      title: 'SignUp',
