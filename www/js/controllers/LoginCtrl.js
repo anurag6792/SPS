@@ -1,4 +1,4 @@
-app.controller("LoginCtrl",["$scope","userAuth",'$state','$ionicPopup','$ionicLoading',function($scope,userAuth,$state,$ionicPopup,$ionicLoading){
+app.controller("LoginCtrl",["$scope","userAuth",'$state','$ionicPopup','$ionicLoading','localStorageService' ,function($scope,userAuth,$state,$ionicPopup,$ionicLoading,localStorageService){
 //    $scope.show = false;
     $scope.userinfo = '';
     $scope.show = function() {
@@ -10,9 +10,13 @@ app.controller("LoginCtrl",["$scope","userAuth",'$state','$ionicPopup','$ionicLo
     $scope.hide = function(){
                      $ionicLoading.hide();
                   };
+    if(localStorageService.get('logged')){
+        $state.go('app.dashboard');
+    }
+    else {
     $scope.login = function(user){
     var result = userAuth.login(user.username,user.password);//passing username and password to the login fnc in service
-     $scope.show();    
+    $scope.show();    
     result.then(function (response) {
           
             if (response.success == "true") {
@@ -43,5 +47,6 @@ app.controller("LoginCtrl",["$scope","userAuth",'$state','$ionicPopup','$ionicLo
                    });
                  };   
     
+    }
     }
     }]);

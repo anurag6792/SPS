@@ -1,7 +1,109 @@
 <ion-view title="Edit" class="" ng-controller="EditprofileCtrl">
-    <ion-nav-bar align-title="center" class="common-header">
-    </ion-nav-bar>
+    <ion-header-bar align-title="center" class="common-header">
+        <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+        <h1 class="title">Edit Profile</h1>
+    </ion-header-bar>
     <ion-content class="has-header">
-        
+        <ion-scroll>
+            <div class="row">
+                <div class="col">
+                    <form name="edituserform" novalidate='' >    
+                    <div class="list">
+                      <label class="item item-input item-stacked-label">
+                        <span class="input-label">First Name </span>
+                        <input type="text" ng-model='edituser.firstname' name='firstname' required ng-maxlength="20" ng-minlength="3">
+                      </label>
+                      <label ng-messages="edituserform.firstname.$dirty && edituserform.firstname.$error" style="color:#F70000" role="alert">
+                                <span ng-message="required">You did not enter your first name</span>
+                                <span ng-message="minlength">Your field is too short</span>
+                                <span ng-message="maxlength">Your field is too long</span>
+                      </label>    
+                      <label class="item item-input item-stacked-label">
+                        <span class="input-label">Middle Name</span>
+                        <input type="text" ng-model='edituser.middlename' name="middlename" ng-maxlength="20" ng-minlength="0">
+                      </label>
+                      <label ng-messages="edituserform.middlename.$dirty && edituserform.middlename.$error" style="color:#F70000" role="alert">
+                                <span ng-message="minlength">Your field is too short</span>
+                                <span ng-message="maxlength">Your field is too long</span>
+                      </label>    
+                        
+                      <label class="item item-input item-stacked-label">
+                        <span class="input-label">Last Name</span>
+                        <input type="text" ng-model="edituser.lastname" name="lastname" required ng-maxlength="20" ng-minlength="1">
+                      </label>  
+                      <label ng-messages="edituserform.lastname.$dirty && edituserform.lastname.$error" style="color:#F70000" role="alert">
+                                <span ng-message="required">You did not enter your Last name</span>
+                                <span ng-message="minlength">Your field is too short</span>
+                                <span ng-message="maxlength">Your field is too long</span>
+                      </label>    
+                        
+                      <label class="item item-input item-stacked-label">
+                        <span class="input-label">Email</span>
+                        <input type="text" ng-model="edituser.email" required>
+                      </label>
+                      <label ng-messages="edituserform.email.$dirty && edituserform.email.$error" style="color:#F70000" role="alert">
+                                <span ng-message="required">You did not enter your email</span>
+                                <span ng-message="email">Not a valid email</span>
+                      </label>    
+                      <label class="item item-input item-stacked-label">
+                        <span class="input-label">Mobile No.</span>
+                        <input type="text" name="mobile" ng-model="edituser.mobile" ng-pattern="/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/" required>
+                       </label> 
+                      <label ng-messages="edituserform.mobile.$dirty && edituserform.mobile.$error" style="color:#F70000" role="alert">
+                                <span ng-message="required">You did not enter your mobile no.</span>
+                                <span ng-message="pattern">Not a valid mobile no.</span>
+                      </label>  
+                      <label class="item item-input item-stacked-label">
+                        <span class="input-label">Gender</span>
+                        <select ng-model="edituser.gender" name='gender'  required>
+                            <option value="M" ng-selected="profile.description.Gender == 'M' ">Male</option>  
+                            <option value="F" ng-selected="profile.description.Gender == 'F' ">Female</option>  
+                        </select>
+                      </label>
+                      <label ng-messages="edituserform.gender.$dirty && edituserform.gender.$error" style="color:#F70000" role="alert">
+                                <span ng-message="required">You did not enter your email</span>
+                      </label>    
+                        
+                      <label class="item item-input item-stacked-label">
+                        <span class="input-label">Date Of Birth</span>
+                        <input type="text" ng-model="edituser.dob" name="dob" onfocus="(this.type='date')" onblur="(this.type='text')" placeholder={{profile.description.DateOfBirth}} required >
+                      </label>
+                      <label ng-messages="edituserform.dob.$dirty && edituserform.dob.$error" style="color:#F70000" role="alert">
+                                <span ng-message="required">You did not enter your email</span>
+                      </label>    
+                            
+                      <label class="item item-input item-stacked-label">
+                        <span class="input-label">Old Password</span>
+                        <input type="password" name="oldpassword" ng-model="edituser.oldpassword" ng-pattern={{profile.description.Password}} required>
+                      </label>
+                      <label ng-messages="edituserform.oldpassword.$dirty && edituserform.oldpassword.$error" style="color:#F70000" role="alert">
+                                <span ng-message="required">You did not enter your old password</span>
+                                <span ng-message="pattern">Did not match your old password</span>
+                      </label>     
+                      <label class="item item-input item-stacked-label">
+                        <span class="input-label">New Password</span>
+                        <input type="password" name="newpassword" ng-model="edituser.newpassword"  ng-minlength="8" ng-maxlength="20" ng-pattern="/(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z])/" required>
+                      </label>
+                      <label ng-messages="edituserform.newpassword.$dirty && edituserform.newpassword.$error" style="color:#F70000" role="alert">
+                                <span ng-message="required">You did not enter your password</span>
+                                <span ng-message="minlength">Your field is too short</span>
+                                <span ng-message="maxlength">Your field is too long</span>
+                                <span ng-message="pattern">Must contain one lower case uppercase letter, and one non-alpha character (a number or a symbol.)</span>
+                      </label>     
+                      <label class="item item-input item-stacked-label">
+                        <span class="input-label">Confrim Password</span>
+                        <input type="password" name="confirmpassword" ng-model="edituser.confirmpassword" valid-password-c='edituser.newpassword' required>
+                      </label>
+                      <label ng-messages="edituserform.confirmpassword.$dirty && edituserform.confirmpassword.$error" style="color:#F70000" role="alert">
+                                <span ng-message="required">confirm your password</span>
+                                <span ng-message="noMatch">Password does not match</span>
+                      </label>         
+
+                    </div>
+                    <button class="button button-block button-mybuttoncolor" ng-click='edituserform.$valid &&  saveuser(edituser);'>Save </button>     
+                    </form>    
+                </div>
+            </div>
+        </ion-scroll>
     </ion-content>
 </ion-view>

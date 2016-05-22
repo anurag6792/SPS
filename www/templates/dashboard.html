@@ -32,14 +32,14 @@
                     <span>Please Enter the details</span>
           </label>        
           <label class="item item-input item-stacked-label">
-            <span class="input-label" ng-model="request.date">Date</span>
+            <span class="input-label" ng-model="request.date">Estimate Date</span>
             <input type="date" class="input-control" name="requestDate" ng-model="request.Date" required>
           </label>
           <label  class="request-errors" ng-show="sendRequestform.requestDate.$error.required && sendRequestform.requestDate.$touched">
                     <span>Please Enter the Date</span>
           </label>        
           <label class="item item-input item-stacked-label">
-            <span class="input-label" >Time</span>
+            <span class="input-label" >Estimate Time</span>
             <input type="time" class="input-control" name="requestTime" ng-model="request.time" >
           </label>
           <label  class="request-errors" ng-show="sendRequestform.requestTime.$error.required && sendRequestform.requestTime.$touched">

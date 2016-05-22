@@ -18,8 +18,7 @@ app.service("userAuth",['$q','$http','localStorageService','$filter',function($q
                 }})
                .success(function(response){
                     console.log("Login API successfully called");
-                    localStorageService.set('userprofile',response);//setting the response from login into "userprofile"
-                    console.log(response);    
+                    localStorageService.set('userID',response.description.UserId);//setting the response from login into "userID"
                     deferredObject.resolve(response);
                     localStorageService.set('logged',JSON.parse(response.success));//setting the "logged" true 
                 })
@@ -31,13 +30,74 @@ app.service("userAuth",['$q','$http','localStorageService','$filter',function($q
         
     };
     
-    // Logout function to destroy user credentials 
-    function destroyUser(){
-        localStorageService.set('userprofile',null);
-        localStorageService.set('logged',false);
-        localStorageService.set('requestDetails',null);
-        localStorageService.set('jobrequests',null);
-    }
+    //Function to get the user details
+    function userDetails(userid) {
+        console.log("In service login function");
+        var deferredObject = $q.defer();
+        $http({
+                url    : 'http://ecomdemo.cloudapp.net:8888/api/User/CustomerDetails',
+                method : 'POST',
+                params   : {'id' : userid  },
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                transformRequest: function(obj) {
+                  var str = [];
+                  for(var p in obj)
+                  str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+                  return str.join("&");
+                }})
+               .success(function(response){
+                    console.log("User details API successfully called");
+                    deferredObject.resolve(response);
+                })
+               .error(function(error){
+                             deferredObject.reject(response);
+                });
+        
+        return deferredObject.promise;       
+        
+    };
+    
+    //Function to edit user details
+    function edituserDetails(userdetails,userprofile) {
+        console.log("In service login function");
+        var deferredObject = $q.defer();
+        $http({
+                url    : 'http://ecomdemo.cloudapp.net:8888/api/user/UpdateUser',
+                method : 'POST',
+                params   : {    "UserId": userprofile.description.UserId,
+                                "FirstName": userdetails.firstname,
+                                "LastName": userdetails.lastname,
+                                "MiddleName": userdetails.middlename,
+                                "Gender": userdetails.gender,
+                                "Contact": userdetails.mobile,
+                                "UserName":userdetails.mobile,
+                                "EmailId": userdetails.email,
+                                "DateOfBirth": userdetails.dob,
+                                "Password":userdetails.newpassword,
+                                "RoleId": userprofile.description.RoleId,
+                                "IsVerified":userprofile.description.IsVerified,
+                                "RecordStatus":userprofile.description.RecordStatus,
+                                "ModifiedBy": userprofile.description.ModifiedBy,
+                                "IsFirstTimeLogin": userprofile.description.ModifiedBy
+                         },
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                transformRequest: function(obj) {
+                  var str = [];
+                  for(var p in obj)
+                  str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+                  return str.join("&");
+                }})
+               .success(function(response){
+                    console.log("Edit User details API successfully called");
+                    deferredObject.resolve(response);
+                })
+               .error(function(error){
+                             deferredObject.reject(response);
+                });
+        
+        return deferredObject.promise;       
+        
+    };
     
     // Function to check whether user is logged in or not
     function isLoggedIn(){
@@ -46,14 +106,6 @@ app.service("userAuth",['$q','$http','localStorageService','$filter',function($q
     
     // Function to send job request to the operator/admin
     function sendRequest(subject,postedby,status,details,date,image,recstatus,by){
-        console.log(subject);
-        console.log(postedby);
-        console.log(status);
-        console.log(details);
-        console.log(date);
-        console.log(image);
-        console.log(recstatus);
-        console.log(by);
         var deferredObject = $q.defer();
         $http({
                 url    : 'http://ecomdemo.cloudapp.net:8888/api/Job/SaveJobRequest',
@@ -154,8 +206,19 @@ app.service("userAuth",['$q','$http','localStorageService','$filter',function($q
         return deferredObject.promise;       
         
     };
+    
+    // Logout function to destroy user credentials 
+    function destroyUser(){
+        localStorageService.set('userID',null);
+        localStorageService.set('logged',false);
+        localStorageService.set('requestDetails',null);
+        localStorageService.set('jobrequests',null);
+    }
+    
     return {
         login: login,//login function where the login API is called
+        userDetails : userDetails, //function to get user details
+        edituserDetails : edituserDetails, //function to edit user details
         destroyUser : destroyUser,// function to destroy userdetails stored in loacal storage
         isLoggedIn : isLoggedIn,//function to check whether the user is logged in or not
         sendRequest : sendRequest,

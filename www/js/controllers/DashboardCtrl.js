@@ -8,9 +8,22 @@ app.controller('DashboardCtrl',[
     '$ionicPopup',
     '$state',
     function( $scope, userAuth, localStorageService, $cordovaCamera, $cordovaFile,$filter,$ionicPopup,$state){
-    $scope.user = {};
-    $scope.user = localStorageService.get('userprofile');//adding consumer details in user in DashboardCtrl
-    console.log('Added consumer details to the DashboardCtrl in user') ;
+    $scope.user = {};    
+    $scope.userId =  localStorageService.get('userID'); 
+        
+    var getuserdetails = userAuth.userDetails($scope.userId);    
+    getuserdetails.then(function(response){
+        if (response.success == "true") {
+            $scope.user = response;
+            console.log('Added consumer details to the DashboardCtrl in user') ;
+        }
+        else{
+            userAuth.destroyUser();
+            $state.go('login');
+        }
+    });
+    //$scope.user = localStorageService.get('userprofile');//adding consumer details in user in DashboardCtrl
+    //console.log('Added consumer details to the DashboardCtrl in user') ;
     $scope.requestdetails = {};    
     $scope.images = []; //array where images taken by the consumer will be stored
     $scope.sendRequest = function(request){ // function will be called when consumer sends the details of the request
