@@ -7,21 +7,35 @@ app.controller('DashboardCtrl',[
     '$filter',
     '$ionicPopup',
     '$state',
-    function( $scope, userAuth, localStorageService, $cordovaCamera, $cordovaFile,$filter,$ionicPopup,$state){
+    '$ionicLoading',
+    function( $scope, userAuth, localStorageService, $cordovaCamera, $cordovaFile,$filter,$ionicPopup,$state,$ionicLoading){
+    $scope.date = new Date();
     $scope.user = {};    
     $scope.userId =  localStorageService.get('userID'); 
-        
-    var getuserdetails = userAuth.userDetails($scope.userId);    
+    $scope.show = function() {
+                    $ionicLoading.show({
+                      template: '<ion-spinner icon="lines"></ion-spinner>'
+                    });
+                  };
+  
+    $scope.hide = function(){
+                     $ionicLoading.hide();
+                  };     
+    var getuserdetails = userAuth.userDetails($scope.userId);
+    $scope.show();    
     getuserdetails.then(function(response){
         if (response.success == "true") {
+            $scope.hide();
             $scope.user = response;
             console.log('Added consumer details to the DashboardCtrl in user') ;
         }
         else{
+            $scope.hide();
             userAuth.destroyUser();
             $state.go('login');
         }
     });
+          
     //$scope.user = localStorageService.get('userprofile');//adding consumer details in user in DashboardCtrl
     //console.log('Added consumer details to the DashboardCtrl in user') ;
     $scope.requestdetails = {};    

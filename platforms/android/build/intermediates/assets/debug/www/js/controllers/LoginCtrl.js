@@ -1,6 +1,6 @@
-app.controller("LoginCtrl",["$scope","userAuth",'$state','$ionicPopup','$ionicLoading',function($scope,userAuth,$state,$ionicPopup,$ionicLoading){
+app.controller("LoginCtrl",["$scope","userAuth",'$state','$ionicPopup','$ionicLoading','localStorageService' ,function($scope,userAuth,$state,$ionicPopup,$ionicLoading,localStorageService){
 //    $scope.show = false;
-    $scope.userinfo = '';
+//    $scope.userinfo = '';
     $scope.show = function() {
                     $ionicLoading.show({
                       template: '<ion-spinner icon="lines"></ion-spinner>'
@@ -10,9 +10,13 @@ app.controller("LoginCtrl",["$scope","userAuth",'$state','$ionicPopup','$ionicLo
     $scope.hide = function(){
                      $ionicLoading.hide();
                   };
+//    if(localStorageService.get('logged')){
+//        $state.go('app.dashboard');
+//    }
+//    else {
     $scope.login = function(user){
     var result = userAuth.login(user.username,user.password);//passing username and password to the login fnc in service
-     $scope.show();    
+    $scope.show();    
     result.then(function (response) {
           
             if (response.success == "true") {
@@ -26,6 +30,11 @@ app.controller("LoginCtrl",["$scope","userAuth",'$state','$ionicPopup','$ionicLo
                 $scope.hide(); 
                 $scope.showAlert();//showing the alert on unccessful login 
              }
+            else {
+                console.log('In LoginCtrl : unsuccessful login');
+                $scope.hide(); 
+                $scope.showAlert();//showing the alert on unccessful login 
+            }
             });
     $scope.showAlert = function() {
                    var alertPopup = $ionicPopup.alert({
@@ -34,6 +43,7 @@ app.controller("LoginCtrl",["$scope","userAuth",'$state','$ionicPopup','$ionicLo
                      okText:'OK',
                      okType:'button button-block login-button',
                      onTap: function(e){
+                         userAuth.destroyUser();
                          $state.go('login');
                      }   
                    });
@@ -44,4 +54,5 @@ app.controller("LoginCtrl",["$scope","userAuth",'$state','$ionicPopup','$ionicLo
                  };   
     
     }
+//    }
     }]);

@@ -33,7 +33,7 @@
           </label>        
           <label class="item item-input item-stacked-label">
             <span class="input-label" ng-model="request.date">Estimate Date</span>
-            <input type="date" class="input-control" name="requestDate" ng-model="request.Date" required>
+            <input type="date" class="input-control" name="requestDate" ng-model="request.Date" min="{{date | date:'yyyy-MM-dd'}}" required>
           </label>
           <label  class="request-errors" ng-show="sendRequestform.requestDate.$error.required && sendRequestform.requestDate.$touched">
                     <span>Please Enter the Date</span>

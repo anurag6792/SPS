@@ -1,6 +1,6 @@
 app.controller("LoginCtrl",["$scope","userAuth",'$state','$ionicPopup','$ionicLoading','localStorageService' ,function($scope,userAuth,$state,$ionicPopup,$ionicLoading,localStorageService){
 //    $scope.show = false;
-    $scope.userinfo = '';
+//    $scope.userinfo = '';
     $scope.show = function() {
                     $ionicLoading.show({
                       template: '<ion-spinner icon="lines"></ion-spinner>'
@@ -30,6 +30,11 @@ app.controller("LoginCtrl",["$scope","userAuth",'$state','$ionicPopup','$ionicLo
                 $scope.hide(); 
                 $scope.showAlert();//showing the alert on unccessful login 
              }
+            else {
+                console.log('In LoginCtrl : unsuccessful login');
+                $scope.hide(); 
+                $scope.showAlert();//showing the alert on unccessful login 
+            }
             });
     $scope.showAlert = function() {
                    var alertPopup = $ionicPopup.alert({
@@ -38,6 +43,7 @@ app.controller("LoginCtrl",["$scope","userAuth",'$state','$ionicPopup','$ionicLo
                      okText:'OK',
                      okType:'button button-block login-button',
                      onTap: function(e){
+                         userAuth.destroyUser();
                          $state.go('login');
                      }   
                    });

@@ -32,7 +32,7 @@ app.service("userAuth",['$q','$http','localStorageService','$filter',function($q
     
     //Function to get the user details
     function userDetails(userid) {
-        console.log("In service login function");
+        console.log("In service user details function");
         var deferredObject = $q.defer();
         $http({
                 url    : 'http://ecomdemo.cloudapp.net:8888/api/User/CustomerDetails',
@@ -50,7 +50,8 @@ app.service("userAuth",['$q','$http','localStorageService','$filter',function($q
                     deferredObject.resolve(response);
                 })
                .error(function(error){
-                             deferredObject.reject(response);
+                    console.log("User details API was unsuccessful");
+                    deferredObject.reject(response);
                 });
         
         return deferredObject.promise;       
@@ -64,7 +65,7 @@ app.service("userAuth",['$q','$http','localStorageService','$filter',function($q
         $http({
                 url    : 'http://ecomdemo.cloudapp.net:8888/api/user/UpdateUser',
                 method : 'POST',
-                params   : {    "UserId": userprofile.description.UserId,
+                data   : {    "UserId": userprofile.description.UserId,
                                 "FirstName": userdetails.firstname,
                                 "LastName": userdetails.lastname,
                                 "MiddleName": userdetails.middlename,
@@ -221,9 +222,9 @@ app.service("userAuth",['$q','$http','localStorageService','$filter',function($q
         edituserDetails : edituserDetails, //function to edit user details
         destroyUser : destroyUser,// function to destroy userdetails stored in loacal storage
         isLoggedIn : isLoggedIn,//function to check whether the user is logged in or not
-        sendRequest : sendRequest,
-        newuser : newuser,
-        viewjobrequests : viewjobrequests
+        sendRequest : sendRequest,//function to send job request to the operator/admin
+        newuser : newuser,//function to register new user
+        viewjobrequests : viewjobrequests //Function to view all the job requests
         
         
     };

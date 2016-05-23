@@ -62,6 +62,15 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
         }
       }
     })
+    .state('app.editprofile',{
+        url: '/editprofile',
+        cache:false,
+        views: {
+        'sidemenuContent' :{
+          templateUrl: "templates/editprofile.html"
+        }
+      }
+    })
     .state('app.requests',{
         url: '/requests',
         cache:false,

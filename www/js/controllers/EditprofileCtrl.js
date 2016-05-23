@@ -1,4 +1,4 @@
-app.controller('EditprofileCtrl',['$scope','userAuth','$state','localStorageService',function($scope,userAuth,$state,localStorageService){
+app.controller('EditprofileCtrl',['$scope','userAuth','$state','localStorageService','$filter',function($scope,userAuth,$state,localStorageService,$filter){
     $scope.profile = {};
     $scope.edituser = {};
     $scope.userId =  localStorageService.get('userID');     
@@ -12,7 +12,7 @@ app.controller('EditprofileCtrl',['$scope','userAuth','$state','localStorageServ
              $scope.edituser.email = $scope.profile.description.EmailId;
              $scope.edituser.mobile = $scope.profile.description.Contact;
              $scope.edituser.gender = $scope.profile.description.Gender;
-             $scope.edituser.dob = $scope.profile.description.DateOfBirth;
+             $scope.edituser.dob = $filter('date')($scope.profile.description.DateOfBirth, 'dd/MM/yyyy');
              console.log(response);
              console.log('Added consumer details to the ProfileCtrl in profile') 
         }

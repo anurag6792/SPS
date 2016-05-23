@@ -4,6 +4,20 @@
       <h1 class="title">Request</h1>
 </ion-header-bar>
 <ion-content class="has-header">
-     
+     <div class="card">
+      <div class="item item-divider">
+        {{jobrequestDetails.JobName}}
+      </div>
+      <div class="item item-text-wrap">
+        {{jobrequestDetails.JobDetails}}
+        <p>Registered At :<span am-time-ago="jobrequestDetails.CreatedDate"></span></p>
+        <p>Expected Date At :<span am-time-ago="jobrequestDetails.CustomerExpectedDate"></span></p>
+        <p>Status : {{ jobrequestDetails.JobStatus == 0 ? 'pending' : 'completed' }}</p>   
+      </div>
+      <div class="item item-text-wrap">
+        <img ng-repeat="image in jobrequestDetails.JobImage" ng-src="image">
+      </div>     
+      </div>
+          
 </ion-content>    
 </ion-view>    

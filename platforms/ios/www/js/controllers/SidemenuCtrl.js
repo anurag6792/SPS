@@ -7,9 +7,22 @@ app.controller('SidemenuCtrl',[
     function($scope ,$state ,localStorageService ,userAuth ,$ionicPopup ){
         
     $scope.userdetails = {};
-    $scope.userdetails = localStorageService.get('userprofile');
-    console.log('Added Consumer details to the SidemenuCtrl in userdetails');
-    
+    $scope.userId =  localStorageService.get('userID');     
+    var getuserdetails = userAuth.userDetails($scope.userId);    
+    getuserdetails.then(function(response){
+        if (response.success == "true") {
+            $scope.userdetails = response;
+            console.log('Added Consumer details to the SidemenuCtrl in userdetails');
+        }
+        else{
+            userAuth.destroyUser();
+            $state.go('login');
+        }
+    });
+//        
+//    $scope.userdetails = localStorageService.get('userprofile');
+//    console.log('Added Consumer details to the SidemenuCtrl in userdetails');
+//    
     // Logout Function
     $scope.logout= function(){
       $scope.showConfirm(); // Showing confirmation for logout  

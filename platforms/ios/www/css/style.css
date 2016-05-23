@@ -388,3 +388,10 @@
     font-size: 18px;
     color: #00c398;
 }
+/* View Request*/
+.viewrequests .card .item-divider{
+    background-color: #00c398;
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+}
