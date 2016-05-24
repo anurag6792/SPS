@@ -63,23 +63,24 @@ app.service("userAuth",['$q','$http','localStorageService','$filter',function($q
         console.log("In service login function");
         var deferredObject = $q.defer();
         $http({
-                url    : 'http://ecomdemo.cloudapp.net:8888/api/user/UpdateUser',
+                url    : 'http://ecomdemo.cloudapp.net:8888/api/User/UpdateUser',
                 method : 'POST',
-                data   : {    "UserId": userprofile.description.UserId,
-                                "FirstName": userdetails.firstname,
-                                "LastName": userdetails.lastname,
-                                "MiddleName": userdetails.middlename,
-                                "Gender": userdetails.gender,
+                data   : {    
                                 "Contact": userdetails.mobile,
-                                "UserName":userdetails.mobile,
+                                "DateOfBirth":userdetails.dob,
                                 "EmailId": userdetails.email,
-                                "DateOfBirth": userdetails.dob,
+                                "FirstName": userdetails.firstname,
+                                "MiddleName": userdetails.middlename,
+                                "LastName": userdetails.lastname,
+                                "Gender": userdetails.gender,
+                                "UserId": userprofile.description.UserId,
+                                "UserName":userdetails.mobile,
                                 "Password":userdetails.newpassword,
-                                "RoleId": userprofile.description.RoleId,
-                                "IsVerified":userprofile.description.IsVerified,
-                                "RecordStatus":userprofile.description.RecordStatus,
-                                "ModifiedBy": userprofile.description.ModifiedBy,
-                                "IsFirstTimeLogin": userprofile.description.ModifiedBy
+                                "RoleId": 3,
+                                "IsVerified":'true',
+                                "RecordStatus":0,
+                                "ModifiedBy": 3,
+                                "IsFirstTimeLogin": "No"
                          },
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                 transformRequest: function(obj) {
@@ -90,6 +91,7 @@ app.service("userAuth",['$q','$http','localStorageService','$filter',function($q
                 }})
                .success(function(response){
                     console.log("Edit User details API successfully called");
+                    console.log(response);
                     deferredObject.resolve(response);
                 })
                .error(function(error){

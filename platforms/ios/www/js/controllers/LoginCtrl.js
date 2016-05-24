@@ -10,10 +10,10 @@ app.controller("LoginCtrl",["$scope","userAuth",'$state','$ionicPopup','$ionicLo
     $scope.hide = function(){
                      $ionicLoading.hide();
                   };
-//    if(localStorageService.get('logged')){
-//        $state.go('app.dashboard');
-//    }
-//    else {
+    if(localStorageService.get('logged') && (localStorageService.get('userID') != null)){
+        $state.go('app.dashboard');
+    }
+    else {
     $scope.login = function(user){
     var result = userAuth.login(user.username,user.password);//passing username and password to the login fnc in service
     $scope.show();    
@@ -54,5 +54,5 @@ app.controller("LoginCtrl",["$scope","userAuth",'$state','$ionicPopup','$ionicLo
                  };   
     
     }
-//    }
+    }
     }]);

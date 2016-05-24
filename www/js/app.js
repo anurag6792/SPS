@@ -1,5 +1,5 @@
 
-    var app = angular.module('sps', ['ionic','ngMessages','LocalStorageModule','ngCordova','angularMoment']);
+var app = angular.module('sps', ['ionic','ngMessages','LocalStorageModule','ngCordova','angularMoment']);
 
 app.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -20,6 +20,39 @@ app.run(function($ionicPlatform) {
     window.addEventListener('native.keyboardshow', function(){
     document.body.classList.add('keyboard-open');
   });  
+  });
+});
+app.run(function($ionicPlatform) {
+  $ionicPlatform.ready(function() {
+    var push = new Ionic.Push({
+      "debug": true
+    });
+ 
+    push.register(function(token) {
+      console.log("My Device token:",token.token);
+      alert("My Device token:"+token.token);
+      push.saveToken(token);  // persist the token in the Ionic Platform
+    });
+  });
+});
+app.run(function($ionicPlatform, $ionicPopup) {
+  $ionicPlatform.ready(function() {
+
+    // Check for network connection
+    if(window.Connection) {
+      if(navigator.connection.type == Connection.NONE) {
+        $ionicPopup.confirm({
+          title: 'No Internet Connection',
+          content: 'Sorry, no Internet connectivity detected. Please reconnect and try again.'
+        })
+        .then(function(result) {
+          if(!result) {
+            ionic.Platform.exitApp();
+          }
+        });
+      }
+    }
+
   });
 });
 app.config(function (localStorageServiceProvider) {

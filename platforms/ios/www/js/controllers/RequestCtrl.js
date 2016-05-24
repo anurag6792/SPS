@@ -1,8 +1,9 @@
 app.controller('RequestCtrl',['$scope','userAuth','localStorageService','$filter','$ionicLoading',function($scope,userAuth,localStorageService,$filter,$ionicLoading){
     
-    
-    $scope.clearSearch = function() {
     $scope.searchrequest = '';
+    $scope.clearsearch = function(event) {
+        console.log('clicked');
+        event.searchrequest = '';
     };
 
 //    $scope.userID = {};

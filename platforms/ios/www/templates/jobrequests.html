@@ -10,9 +10,9 @@
           <label class="item-input-wrapper">
             <i class="icon ion-ios-search placeholder-icon"></i>
               
-            <input type="search" placeholder="Search Requests.." ng-model="searchrequest" >
-            <button ng-if="searchrequest.length" type="submit" class="button button-icon ion-android-close input-button" 
-                    ng-submit="clearSearch();"></button>
+            <input type="text" placeholder="Search Requests.." ng-model="searchrequest" />
+            <a ng-if="searchrequest.length" type="button" class="button button-icon ion-android-close input-button clear" 
+                    ng-click="clearsearch();"></a>
             
           </label>
         </div>

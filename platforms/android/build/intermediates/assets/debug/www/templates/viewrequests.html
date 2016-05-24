@@ -9,10 +9,11 @@
         {{jobrequestDetails.JobName}}
       </div>
       <div class="item item-text-wrap">
-        {{jobrequestDetails.JobDetails}}
-        <p>Registered At :<span am-time-ago="jobrequestDetails.CreatedDate"></span></p>
-        <p>Expected Date At :<span am-time-ago="jobrequestDetails.CustomerExpectedDate"></span></p>
-        <p>Status : {{ jobrequestDetails.JobStatus == 0 ? 'pending' : 'completed' }}</p>   
+        
+        <p><label class="request-label">Registered At</label>:<span am-time-ago="jobrequestDetails.CreatedDate"></span></p>
+        <p><label class="request-label">Expected Date At</label>:<span am-time-ago="jobrequestDetails.CustomerExpectedDate"></span></p>
+        <p><label class="request-label">Status</label>:<span>{{ jobrequestDetails.JobStatus == 0 ? 'pending' : 'completed' }}</span> </p>
+        <p>{{jobrequestDetails.JobDetails}}  </p>
       </div>
       <div class="item item-text-wrap">
         <img ng-repeat="image in jobrequestDetails.JobImage" ng-src="image">

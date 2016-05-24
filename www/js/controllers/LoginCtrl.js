@@ -10,7 +10,7 @@ app.controller("LoginCtrl",["$scope","userAuth",'$state','$ionicPopup','$ionicLo
     $scope.hide = function(){
                      $ionicLoading.hide();
                   };
-    if(localStorageService.get('logged')){
+    if(localStorageService.get('logged') && (localStorageService.get('userID') != null)){
         $state.go('app.dashboard');
     }
     else {
