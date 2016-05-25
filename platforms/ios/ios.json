@@ -51,6 +51,10 @@
                         {
                             "xml": "<feature name=\"NetworkStatus\"><param name=\"ios-package\" value=\"CDVConnection\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Geolocation\"><param name=\"ios-package\" value=\"CDVLocation\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -60,7 +64,7 @@
                     "NSLocationWhenInUseUsageDescription": [
                         {
                             "xml": "<string />",
-                            "count": 1
+                            "count": 2
                         }
                     ]
                 }
@@ -93,6 +97,9 @@
             "PACKAGE_NAME": "com.ionicframework.sps208170"
         },
         "cordova-plugin-network-information": {
+            "PACKAGE_NAME": "com.ionicframework.sps208170"
+        },
+        "cordova-plugin-geolocation": {
             "PACKAGE_NAME": "com.ionicframework.sps208170"
         }
     },
@@ -368,11 +375,44 @@
             "clobbers": [
                 "Connection"
             ]
+        },
+        {
+            "file": "plugins/cordova-plugin-geolocation/www/Coordinates.js",
+            "id": "cordova-plugin-geolocation.Coordinates",
+            "pluginId": "cordova-plugin-geolocation",
+            "clobbers": [
+                "Coordinates"
+            ]
+        },
+        {
+            "file": "plugins/cordova-plugin-geolocation/www/PositionError.js",
+            "id": "cordova-plugin-geolocation.PositionError",
+            "pluginId": "cordova-plugin-geolocation",
+            "clobbers": [
+                "PositionError"
+            ]
+        },
+        {
+            "file": "plugins/cordova-plugin-geolocation/www/Position.js",
+            "id": "cordova-plugin-geolocation.Position",
+            "pluginId": "cordova-plugin-geolocation",
+            "clobbers": [
+                "Position"
+            ]
+        },
+        {
+            "file": "plugins/cordova-plugin-geolocation/www/geolocation.js",
+            "id": "cordova-plugin-geolocation.geolocation",
+            "pluginId": "cordova-plugin-geolocation",
+            "clobbers": [
+                "navigator.geolocation"
+            ]
         }
     ],
     "plugin_metadata": {
         "cordova-plugin-camera": "2.1.1",
         "cordova-plugin-file": "4.1.1",
-        "cordova-plugin-network-information": "1.2.1"
+        "cordova-plugin-network-information": "1.2.1",
+        "cordova-plugin-geolocation": "2.1.0"
     }
 }

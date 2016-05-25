@@ -33,6 +33,9 @@
         },
         "cordova-plugin-network-information": {
             "PACKAGE_NAME": "com.ionicframework.sps208170"
+        },
+        "cordova-plugin-geolocation": {
+            "PACKAGE_NAME": "com.ionicframework.sps208170"
         }
     },
     "dependent_plugins": {}

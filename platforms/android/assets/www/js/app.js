@@ -1,5 +1,5 @@
 
-    var app = angular.module('sps', ['ionic','ngMessages','LocalStorageModule','ngCordova','angularMoment']);
+var app = angular.module('sps', ['ionic','ngMessages','LocalStorageModule','ngCordova','angularMoment']);
 
 app.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {

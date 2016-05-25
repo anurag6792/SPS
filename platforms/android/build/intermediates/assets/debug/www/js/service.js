@@ -197,9 +197,34 @@ app.service("userAuth",['$q','$http','localStorageService','$filter',function($q
                   return str.join("&");
                 }})
                .success(function(response){
-                    console.log("View Job requests API successfully called");
-                    console.log(response); 
-                    localStorageService.set('jobrequests',response);
+                    console.log("View All Job requests API successfully called");
+                    deferredObject.resolve(response);
+                })
+               .error(function(error){
+                             deferredObject.reject(response);
+                });
+        
+        return deferredObject.promise;       
+        
+    };
+    
+    //Function to view single job requests using jobid
+    function viewsinglejobrequest(userID) {
+        console.log("In service viewjobrequests function");
+        var deferredObject = $q.defer();
+        $http({
+                url    : 'http://ecomdemo.cloudapp.net:8888/api/Job/ShowJobDetails',
+                method : 'POST',
+                params   : {"id": userID},
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                transformRequest: function(obj) {
+                  var str = [];
+                  for(var p in obj)
+                  str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+                  return str.join("&");
+                }})
+               .success(function(response){
+                    console.log("View single Job requests API successfully called");
                     deferredObject.resolve(response);
                 })
                .error(function(error){
@@ -215,7 +240,7 @@ app.service("userAuth",['$q','$http','localStorageService','$filter',function($q
         localStorageService.set('userID',null);
         localStorageService.set('logged',false);
         localStorageService.set('requestDetails',null);
-        localStorageService.set('jobrequests',null);
+        
     }
     
     return {
@@ -226,8 +251,8 @@ app.service("userAuth",['$q','$http','localStorageService','$filter',function($q
         isLoggedIn : isLoggedIn,//function to check whether the user is logged in or not
         sendRequest : sendRequest,//function to send job request to the operator/admin
         newuser : newuser,//function to register new user
-        viewjobrequests : viewjobrequests //Function to view all the job requests
-        
+        viewjobrequests : viewjobrequests, //Function to view all the job requests
+        viewsinglejobrequest : viewsinglejobrequest  //Function to view single the job requests
         
     };
     

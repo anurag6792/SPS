@@ -8,7 +8,33 @@ app.controller('DashboardCtrl',[
     '$ionicPopup',
     '$state',
     '$ionicLoading',
-    function( $scope, userAuth, localStorageService, $cordovaCamera, $cordovaFile,$filter,$ionicPopup,$state,$ionicLoading){
+    '$cordovaGeolocation',
+    '$ionicPlatform',
+    '$http',
+    '$ionicModal',
+    function( $scope, userAuth, localStorageService, $cordovaCamera, $cordovaFile,$filter,$ionicPopup,$state,$ionicLoading,$cordovaGeolocation,$ionicPlatform,$http,$ionicModal){
+    $scope.request= {};    
+    $ionicModal.fromTemplateUrl('templates/addressmodal.html', {
+          scope: $scope,
+          animation: 'slide-in-up'
+        }).then(function(modal) {
+          $scope.modal = modal;
+        });
+
+      $scope.openMyModal = function(arr,rrr)
+      {
+         $scope.request.address1 = arr[arr.length-4];
+         $scope.request.address2 = arr[arr.length-3];
+         $scope.request.city = arr[arr.length-3];
+         $scope.request.state = rrr[rrr.length - 2];
+         $scope.request.postal = rrr[rrr.length - 1];
+         $scope.request.country = arr[arr.length-1];  
+         $scope.modal.show();
+      };
+
+      $scope.closeModal = function() {
+        $scope.modal.hide();
+      }; 
     $scope.date = new Date();
     $scope.user = {};    
     $scope.userId =  localStorageService.get('userID'); 
@@ -35,6 +61,79 @@ app.controller('DashboardCtrl',[
             $state.go('login');
         }
     });
+        
+    $scope.addAddress = function(){
+        
+        
+    };
+    $scope.GPSerror = function() {
+                   var alertPopup = $ionicPopup.alert({
+                     title: 'Error',
+                     template: 'Could not get your Location </br> Please enable your GPS',
+                     okText:'OK',
+                     okType:'button button-block login-button',
+                     onTap: function(){
+                       return true;
+                     }   
+                   });
+
+                   alertPopup.then(function(res) {
+                     if(res){
+                         $state.go('app.dashboard'); 
+                     }  
+                     console.log('enable GPS error message was prompted')
+                   });
+                 };    
+        
+    $ionicPlatform.ready(function() {
+        
+        $scope.usecurrentLocation = function (){
+ 
+        $ionicLoading.show({
+            template: '<ion-spinner icon="bubbles"></ion-spinner><br/>Acquiring location!'
+        });
+         
+        var posOptions = {
+            enableHighAccuracy: true,
+            timeout: 20000,
+            maximumAge: 0
+        };
+ 
+        $cordovaGeolocation.getCurrentPosition(posOptions).then(function (position) {
+            var lat  = position.coords.latitude;
+            var long = position.coords.longitude;
+            console.log(lat); 
+            console.log(long); 
+            $ionicLoading.hide();           
+            
+            
+            $http({
+                      method: 'GET',
+                      url: 'http://maps.googleapis.com/maps/api/geocode/json?latlng='+lat+','+long+'&sensor=true'
+                    }).then(function successCallback(response) {
+                            console.log(response);
+                            var address=response.data.results[0].formatted_address;
+                            var addressarray = address.split(',');
+                            var statearray = addressarray[addressarray.length-2].split(' ');
+                            $scope.openMyModal(addressarray,statearray);
+                           
+                            
+                        // this callback will be called asynchronously
+                        // when the response is available
+                      }, function errorCallback(response) {
+                        // called asynchronously if an error occurs
+                        // or server returns response with an error status.
+                        $scope.GPSerror();
+                        
+                      });           
+            
+            }, function(err) {
+            $ionicLoading.hide();
+            console.log(err);
+            });
+            }
+    });                            
+    
           
     //$scope.user = localStorageService.get('userprofile');//adding consumer details in user in DashboardCtrl
     //console.log('Added consumer details to the DashboardCtrl in user') ;

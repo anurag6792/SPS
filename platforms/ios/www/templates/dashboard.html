@@ -51,7 +51,18 @@
                     <img ng-src="{{image}}" height="100px" />    
                 </div>
               </div>
-          
+              <div class="row">
+                <div id="map" data-tap-disabled="true"></div>  
+              </div>    
+         <div class="row">
+            <div class="col col-50">
+            <button class="button button-block button-mysmall" ng-click="addAddress();">Add Address</button>
+            
+            </div>       
+            <div class="col col-50">
+                <button class="button button-block button-mysmall" ng-click="usecurrentLocation();">Use Current Location</button> 
+            </div>       
+         </div> 
          <div class="row">
             <div class="col col-50">
             <button class="button button-block button-mybuttoncolor" ng-click="takePicture()">Add image</button>
@@ -68,4 +79,5 @@
 
     </div>
 </ion-content>
+
 </ion-view>    

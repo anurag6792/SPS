@@ -34,6 +34,7 @@
 		9C7AB75324D94FD6890BDB60 /* CDVReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D3DF290372424CB6DA3357 /* CDVReachability.m */; };
 		35971458E7EB49F3B39B8D9C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF4A5042DB7C4AC99A9B1AF5 /* SystemConfiguration.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		A88412E34844469C9C1E3967 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26682FAD377740D5A4A324D9 /* CoreTelephony.framework */; };
+		BB3683E4DD984CE5A1845D92 /* CDVLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = CDF2DCB933784F779058A38B /* CDVLocation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +108,8 @@
 		E64192EC70BF4F89AA73C27E /* CDVReachability.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVReachability.h"; path = "cordova-plugin-network-information/CDVReachability.h"; sourceTree = "<group>"; fileEncoding = 4; };
 		EF4A5042DB7C4AC99A9B1AF5 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "SystemConfiguration.framework"; path = "System/Library/Frameworks/SystemConfiguration.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
 		26682FAD377740D5A4A324D9 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "CoreTelephony.framework"; path = "System/Library/Frameworks/CoreTelephony.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
+		CDF2DCB933784F779058A38B /* CDVLocation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVLocation.m"; path = "cordova-plugin-geolocation/CDVLocation.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		6C0455457E704F3490E55CD7 /* CDVLocation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVLocation.h"; path = "cordova-plugin-geolocation/CDVLocation.h"; sourceTree = "<group>"; fileEncoding = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -248,6 +251,8 @@
 				B5D3DF290372424CB6DA3357 /* CDVReachability.m */,
 				941D9808C06B48CE90DB4661 /* CDVConnection.h */,
 				E64192EC70BF4F89AA73C27E /* CDVReachability.h */,
+				CDF2DCB933784F779058A38B /* CDVLocation.m */,
+				6C0455457E704F3490E55CD7 /* CDVLocation.h */,
 			);
 			name = Plugins;
 			path = "SPS/Plugins";
@@ -376,6 +381,7 @@
 				C95CC582417F49B1A001DB89 /* CDVAssetLibraryFilesystem.m in Sources */,
 				E0946BAF7F9341319C68D7A9 /* CDVConnection.m in Sources */,
 				9C7AB75324D94FD6890BDB60 /* CDVReachability.m in Sources */,
+				BB3683E4DD984CE5A1845D92 /* CDVLocation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

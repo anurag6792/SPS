@@ -13,6 +13,16 @@
     background-color: #00C398;
     color: #ffffff;
 }
+.common-header{
+    background-color:#00C398;
+    color: #ffffff;
+}
+.common-header h1{
+    color: #ffffff;
+}
+.common-header .button-icon{
+    color: #ffffff;
+}
 /*SIDEMENU*/
 .sidemenu{
     background-color: #34373C;
@@ -191,16 +201,6 @@
     color: #ffffff;
 }
 /* Dashboard*/
-.common-header{
-    background-color:#00C398;
-    color: #ffffff;
-}
-.common-header h1{
-    color: #ffffff;
-}
-.common-header .button-icon{
-    color: #ffffff;
-}
 .dashboard{
     background-image: url("../img/dashbg.png");
     background-position: center;
@@ -255,6 +255,15 @@
 .request .input-control{
     border: 1px;
     border-color: #ddd;
+}
+.button-mysmall{
+    padding: 2px 4px 1px;
+    min-width: 28px;
+    min-height: 30px;
+    font-size: 12px;
+    line-height: 26px;
+    background-color: rgba(0, 159, 195, 0.54);
+    color: #fff;
 }
 /* Estimate List*/
 /* Provider Details*/
