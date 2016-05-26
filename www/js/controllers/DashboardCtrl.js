@@ -13,15 +13,23 @@ app.controller('DashboardCtrl',[
     '$http',
     '$ionicModal',
     function( $scope, userAuth, localStorageService, $cordovaCamera, $cordovaFile,$filter,$ionicPopup,$state,$ionicLoading,$cordovaGeolocation,$ionicPlatform,$http,$ionicModal){
-    $scope.request= {};    
+    
+        
+        
+    $scope.request= {}; // request model to send job request  
+    $scope.address = []; // address array to save the addresses of the user    
+    
+        
+        
+    // Get current user Modal    
     $ionicModal.fromTemplateUrl('templates/addressmodal.html', {
           scope: $scope,
           animation: 'slide-in-up'
         }).then(function(modal) {
-          $scope.modal = modal;
+          $scope.modal1 = modal;
         });
 
-      $scope.openMyModal = function(arr,rrr)
+      $scope.opengetlocationModal = function(arr,rrr)
       {
          $scope.request.address1 = arr[arr.length-4];
          $scope.request.address2 = arr[arr.length-3];
@@ -29,24 +37,69 @@ app.controller('DashboardCtrl',[
          $scope.request.state = rrr[rrr.length - 2];
          $scope.request.postal = rrr[rrr.length - 1];
          $scope.request.country = arr[arr.length-1];  
-         $scope.modal.show();
+         $scope.modal1.show();
       };
 
       $scope.closeModal = function() {
-        $scope.modal.hide();
-      }; 
-    $scope.date = new Date();
-    $scope.user = {};    
-    $scope.userId =  localStorageService.get('userID'); 
+        $scope.modal1.hide();
+      };
+     
+        
+     // Add address Modal    
+     $ionicModal.fromTemplateUrl('templates/addaddressmodal.html', {
+          scope: $scope,
+          animation: 'slide-in-up'
+        }).then(function(modal) {
+          $scope.modal2 = modal;
+        });
+
+      $scope.openaddaddressModal = function()
+      {
+         $scope.modal2.show();
+      };
+
+      $scope.closeaddaddressModal = function() {
+        $scope.modal2.hide();
+      };
+    
+        
+    // Show address Modal    
+    $ionicModal.fromTemplateUrl('templates/showaddressmodal.html', {
+          scope: $scope,
+          animation: 'slide-in-up'
+        }).then(function(modal) {
+          $scope.modal3 = modal;
+        });
+
+      $scope.openshowaddressModal = function()
+      {
+         $scope.modal3.show();
+      };
+
+      $scope.closeshowaddressModal = function() {
+        $scope.modal3.hide();
+      };     
+    
+        
+        
+    $scope.date = new Date();// date to set the min date for estimate date in job request
+    
+    $scope.user = {};// creating a user object to show the details of the user in the dashboard page    
+    $scope.userId =  localStorageService.get('userID'); // storing the user Id to get the user details
+    
+    // Function to Show the loader    
     $scope.show = function() {
                     $ionicLoading.show({
                       template: '<ion-spinner icon="lines"></ion-spinner>'
                     });
                   };
   
+    // Function to Hide the loader    
     $scope.hide = function(){
                      $ionicLoading.hide();
-                  };     
+                  }; 
+        
+    // Function to get user details and storing it in user   
     var getuserdetails = userAuth.userDetails($scope.userId);
     $scope.show();    
     getuserdetails.then(function(response){
@@ -61,11 +114,9 @@ app.controller('DashboardCtrl',[
             $state.go('login');
         }
     });
+    
         
-    $scope.addAddress = function(){
-        
-        
-    };
+    //Function to show error when the GPS is not responding    
     $scope.GPSerror = function() {
                    var alertPopup = $ionicPopup.alert({
                      title: 'Error',
@@ -85,6 +136,8 @@ app.controller('DashboardCtrl',[
                    });
                  };    
         
+        
+    //Function to get the current location
     $ionicPlatform.ready(function() {
         
         $scope.usecurrentLocation = function (){
@@ -115,7 +168,7 @@ app.controller('DashboardCtrl',[
                             var address=response.data.results[0].formatted_address;
                             var addressarray = address.split(',');
                             var statearray = addressarray[addressarray.length-2].split(' ');
-                            $scope.openMyModal(addressarray,statearray);
+                            $scope.opengetlocationModal(addressarray,statearray);
                            
                             
                         // this callback will be called asynchronously
@@ -134,9 +187,57 @@ app.controller('DashboardCtrl',[
             }
     });                            
     
-          
-    //$scope.user = localStorageService.get('userprofile');//adding consumer details in user in DashboardCtrl
-    //console.log('Added consumer details to the DashboardCtrl in user') ;
+        
+    // Function add address of the user when he does not have the address or he wants to add a new address    
+    $scope.addingAddress =  function(request){
+                     var addingaddress = userAuth.saveaddress( request , $scope.userId);
+                     addingaddress.then(function(response){
+                          if (response.success == "true") {
+                              console.log(' Address Added Successfully');
+                              console.log(response);
+                              $scope.closeaddaddressModal();
+                          }
+                          else{
+                              console.log(response);
+                              $scope.closeaddaddressModal();
+                              console.log(' Address was not Added Successfully');
+                          }
+                      });
+                    
+                    
+                    
+                };    
+    
+        
+    //Function to add the address
+    $scope.addAddress = function(){
+         $scope.show();    
+        var showaddress = userAuth.showaddress( $scope.userId);
+        showaddress.then(function(response){
+            console.log(response);
+        if (response.success == "true") {
+            $scope.hide();
+            console.log('user address successfully shown') ;
+            
+            if(response.description.length){
+                $scope.address = response.description;
+                $scope.openshowaddressModal();
+            }
+            else{
+                $scope.openaddaddressModal();
+                
+            }
+        }
+        else{
+            $scope.hide();
+            console.log('user address was not  successfully shown due to error') ;
+            $scope.openaddaddressModal();
+            }
+    });
+        
+    };    
+    
+        
     $scope.requestdetails = {};    
     $scope.images = []; //array where images taken by the consumer will be stored
     $scope.sendRequest = function(request){ // function will be called when consumer sends the details of the request

@@ -1,35 +1,35 @@
 <ion-modal-view >
   <ion-header-bar align-title="center" class="common-header">
     <h1 class="title">ADDRESS</h1>
-     <button class="button button-icon icon ion-close" ng-click="modal1.hide()"></button>    
+     <button class="button button-icon icon ion-close" ng-click="modal2.hide()"></button>    
   </ion-header-bar>
   <ion-content class="padding main-content">
     <div class="list">
       <label class="item item-input">
         <span class="input-label">Address Line1</span>
-        <input ng-model="request.address1" type="text">
+        <input ng-model="request.addaddress1" type="text">
       </label>
       <label class="item item-input">
         <span class="input-label">Address Line2</span>
-        <input ng-model="request.address2" type="text">
+        <input ng-model="request.addaddress2" type="text">
       </label>
       <label class="item item-input">
         <span class="input-label">City</span>
-        <input ng-model="request.city" type="text">
+        <input ng-model="request.addcity" type="text">
       </label>
       <label class="item item-input">
         <span class="input-label">State</span>
-        <input ng-model="request.state" type="text">
+        <input ng-model="request.addstate" type="text">
       </label>
       <label class="item item-input">
         <span class="input-label">Postal Code</span>
-        <input ng-model="request.postal" type="text">
+        <input ng-model="request.addpostal" type="text">
       </label>
       <label class="item item-input">
         <span class="input-label">Country</span>
-        <input ng-model="request.country" type="text">
+        <input ng-model="request.addcountry" type="text">
       </label>
-      <button class="button button-block button-mybuttoncolor" ng-click="createContact(newUser)">Add Address</button>
+      <button class="button button-block button-mybuttoncolor" type="submit" ng-click="addingAddress(request);">Add Address</button>
     </div>
   </ion-content>
 </ion-modal-view>
