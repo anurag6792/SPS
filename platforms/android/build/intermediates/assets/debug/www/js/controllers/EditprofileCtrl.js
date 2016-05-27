@@ -13,7 +13,6 @@ app.controller('EditprofileCtrl',['$scope','userAuth','$state','localStorageServ
              $scope.edituser.mobile = $scope.profile.description.Contact;
              $scope.edituser.gender = $scope.profile.description.Gender;
              $scope.edituser.dob = $filter('date')($scope.profile.description.DateOfBirth, 'yyyy-MM-dd');
-             console.log(response);
              console.log('Added consumer details to the ProfileCtrl in profile') 
         }
         else{

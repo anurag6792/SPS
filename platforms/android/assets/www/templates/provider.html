@@ -1,10 +1,11 @@
+<ion-view view-title="Provider" ng-controller="ProviderCtrl">
 <ion-header-bar align-title="center" class="common-header">
       <div class="buttons">
         <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
       </div>      
       <h1 class="title">Provider Name</h1>
 </ion-header-bar>
-<ion-content class="has-header content-scroll providerDetails" ng-controller="ProviderCtrl">
+<ion-content class="has-header providerDetails main-content" >
     <div class="row">
         <img src="../img/malecostume-512.png" alt="" class="providerpic">
         <h1>Provider Name</h1>
@@ -31,6 +32,7 @@
             <i class="icon-left ion-filing"></i>
             40 Completed
         </div>
+<!--
         <div class="col col-100 ratings">
             <p>Ratings</p>
             <i class="ion-star"></i>
@@ -39,5 +41,17 @@
             <i class="ion-star"></i>
             <i class="ion-star"></i>
         </div>
+-->
+        
+    </div>
+    <div class="row">
+        <div class="col col-100 feedback">
+            <div class="list">
+                <a class="item" ng-click="viewfeedbacks(9)">
+                    View Feedbacks
+                </a>
+            </div>    
+        </div>
     </div>
 </ion-content>
+</ion-view>

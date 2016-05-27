@@ -108,7 +108,7 @@ app.service("userAuth",['$q','$http','localStorageService','$filter',function($q
     }
     
     // Function to send job request to the operator/admin
-    function sendRequest(subject,postedby,status,details,date,image,recstatus,by){
+    function sendRequest(subject,postedby,status,details,date,image,recstatus,by,AddressId){
         var deferredObject = $q.defer();
         $http({
                 url    : 'http://ecomdemo.cloudapp.net:8888/api/Job/SaveJobRequest',
@@ -119,6 +119,7 @@ app.service("userAuth",['$q','$http','localStorageService','$filter',function($q
                             "JobDetails": details,
                             "CustomerExpectedDate": date,
                             "ImageUrl": image,
+                            "AddressId": AddressId,
                             "RecordStatus": recstatus},
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                 transformRequest: function(obj) {
@@ -271,12 +272,12 @@ app.service("userAuth",['$q','$http','localStorageService','$filter',function($q
                 url    : 'http://ecomdemo.cloudapp.net:8888/api/User/SaveUserAddress',
                 method : 'POST',
                 data   : {  "UserId": id,
-                            "AddressLine1": request.addaddress1,
-                            "AddressLine2": request.addaddress2,
-                            "City": request.addcity,
-                            "State": request.addstate,
-                            "Zip": request.addpostal,
-                            "Country": request.addcountry,
+                            "AddressLine1": request.address1,
+                            "AddressLine2": request.address2,
+                            "City": request.city,
+                            "State": request.state,
+                            "Zip": request.postal,
+                            "Country": request.country,
                             "Latitude": '28.4637313',
                             "Longitude": "77.0693417",
                             "RecordStatus":0
@@ -290,6 +291,7 @@ app.service("userAuth",['$q','$http','localStorageService','$filter',function($q
                 }})
                .success(function(response){
                     console.log("save user address API successfully called");
+                    localStorageService.set('addressId',response.description.AddressId);
                     deferredObject.resolve(response);
                 })
                .error(function(error){
@@ -332,6 +334,7 @@ app.service("userAuth",['$q','$http','localStorageService','$filter',function($q
         localStorageService.set('userID',null);
         localStorageService.set('logged',false);
         localStorageService.set('requestDetails',null);
+        localStorageService.set('addressId',null);
         
     }
     

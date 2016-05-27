@@ -18,8 +18,9 @@ app.controller('DashboardCtrl',[
         
     $scope.request= {}; // request model to send job request  
     $scope.address = []; // address array to save the addresses of the user    
+    $scope.request.AddressId = localStorageService.get('addressId'); // setting address id 
     
-        
+    $scope.showaddedaddress = false; // showing the address that is chosen, setting it to false
         
     // Get current user Modal    
     $ionicModal.fromTemplateUrl('templates/addressmodal.html', {
@@ -77,6 +78,8 @@ app.controller('DashboardCtrl',[
       };
 
       $scope.closeshowaddressModal = function() {
+        $scope.request.AddressId = localStorageService.get('addressId');
+         $scope.addressCheck = false;     
         $scope.modal3.hide();
       };     
     
@@ -106,6 +109,7 @@ app.controller('DashboardCtrl',[
         if (response.success == "true") {
             $scope.hide();
             $scope.user = response;
+            $scope.lastlogin = $filter('date')($scope.user.description.LastLoginDate, 'yyyy-MM-ddTHH:mm:ss.sssZ');
             console.log('Added consumer details to the DashboardCtrl in user') ;
         }
         else{
@@ -115,6 +119,7 @@ app.controller('DashboardCtrl',[
         }
     });
     
+        
         
     //Function to show error when the GPS is not responding    
     $scope.GPSerror = function() {
@@ -195,7 +200,9 @@ app.controller('DashboardCtrl',[
                           if (response.success == "true") {
                               console.log(' Address Added Successfully');
                               console.log(response);
+                              $scope.addselectedaddress(response.description.AddressId);
                               $scope.closeaddaddressModal();
+                              
                           }
                           else{
                               console.log(response);
@@ -206,7 +213,28 @@ app.controller('DashboardCtrl',[
                     
                     
                     
-                };    
+                }; 
+    
+     // Function add address of the user when he chooses to add his current location    
+    $scope.addingcurrentAddress =  function(request){
+                     var addingcurrentaddress = userAuth.saveaddress( request , $scope.userId);
+                     addingcurrentaddress.then(function(response){
+                          if (response.success == "true") {
+                              console.log('Current Address Added Successfully');
+                              console.log(response);
+                              $scope.addselectedaddress(response.description.AddressId);
+                              $scope.closeModal();
+                          }
+                          else{
+                              console.log(response);
+                              $scope.closeModal();
+                              console.log('Current Address was not Added Successfully');
+                          }
+                      });
+                    
+                    
+                    
+                };      
     
         
     //Function to add the address
@@ -237,6 +265,41 @@ app.controller('DashboardCtrl',[
         
     };    
     
+    //Function to check if any of the addresses is chosen, if yes hiding the add new address button    
+    $scope.checkradio = function(){
+        $scope.addressCheck = true;
+        console.log($scope.addressCheck);
+    };
+        
+    
+    //Function to add the selected address to the dashboard page    
+    $scope.addselectedaddress = function(value){
+        $scope.showaddedaddress = true;
+        console.log(value);
+         var getaddress = userAuth.showaddress( $scope.userId);
+         getaddress.then(function(response){
+            if (response.success == "true") {
+                
+                console.log(response);
+                for(var x=0; x < response.description.length; x++ ){
+                    
+                    if( value == response.description[x].AddressId ){
+                        
+                        $scope.request.AddressId = value;
+                        $scope.request.address1 = response.description[x].AddressLine1;
+                        $scope.request.address2 = response.description[x].AddressLine2;
+                        $scope.request.city = response.description[x].City;
+                        $scope.request.state = response.description[x].State;
+                        $scope.request.postal = response.description[x].Zip;
+                        $scope.request.country = response.description[x].Country;
+                        
+                    }
+                    
+                }
+            }       
+         });
+        
+    }; 
         
     $scope.requestdetails = {};    
     $scope.images = []; //array where images taken by the consumer will be stored
@@ -246,7 +309,7 @@ app.controller('DashboardCtrl',[
         console.log(request);
         
         // sending request from the DashboardCtrl
-        var sendrequest = userAuth.sendRequest(request.subject,$scope.user.description.UserId,0,request.detail,$scope.expectedDate,$scope.images,0,$scope.user.description.UserId);//passing request parameters along with some user details
+        var sendrequest = userAuth.sendRequest(request.subject,$scope.user.description.UserId,0,request.detail,$scope.expectedDate,$scope.images,0,$scope.user.description.UserId,request.AddressId);//passing request parameters along with some user details
         
         sendrequest.then(function (response) {
             if (response.success == "true") {

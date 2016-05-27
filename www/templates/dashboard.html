@@ -44,7 +44,36 @@
           </label>
           <label  class="request-errors" ng-show="sendRequestform.requestTime.$error.required && sendRequestform.requestTime.$touched">
                     <span>Please Enter the Time</span>
-          </label>        
+          </label>
+          <div class="row" ng-show="showaddedaddress">
+              <div class="col">
+                <label class="item item-input item-stacked-label">
+                <span class="input-label">Address Line 1</span>
+                <input type="text" class="input-control" name="requestSubject" placeholder="Enter the subject" ng-model="request.address1" required>
+              </label>        
+              <label class="item item-input item-stacked-label">
+                <span class="input-label">Address Line 2</span>
+                <input type="text" class="input-control" name="requestSubject" placeholder="Enter the subject" ng-model="request.address2" required>
+              </label>        
+              <label class="item item-input item-stacked-label">
+                <span class="input-label">City</span>
+                <input type="text" class="input-control" name="requestSubject" placeholder="Enter the subject" ng-model="request.city" required>
+              </label>        
+              <label class="item item-input item-stacked-label">
+                <span class="input-label">State</span>
+                <input type="text" class="input-control" name="requestSubject" placeholder="Enter the subject" ng-model="request.state" required>
+              </label>        
+              <label class="item item-input item-stacked-label">
+                <span class="input-label">Postal Code</span>
+                <input type="text" class="input-control" name="requestSubject" placeholder="Enter the subject" ng-model="request.postal" required>
+              </label>        
+              <label class="item item-input item-stacked-label">
+                <span class="input-label">Country</span>
+                <input type="text" class="input-control" name="requestSubject" placeholder="Enter the subject" ng-model="request.country" required>
+              </label>      
+            </div>
+          </div>      
+                 
           
               <div class="row">
                 <div class="col" ng-repeat="image in images" >
@@ -78,6 +107,7 @@
        
 
     </div>
+     
 </ion-content>
 
 </ion-view>    

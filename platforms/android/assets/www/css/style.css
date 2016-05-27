@@ -6,6 +6,10 @@
   fill: #08f274;
 /*  background-color: aquamarine;    */
 }
+
+.main-content{
+    background-color: #f7f7f7;
+}
 .content-scroll{
     overflow: auto;
 }
@@ -253,7 +257,8 @@
     color: #00c398;
 }
 .request .input-control{
-    border: 1px;
+    border: 1px solid;
+    padding: 6px 4px;
     border-color: #ddd;
 }
 .button-mysmall{
@@ -343,6 +348,43 @@
     color: #f0df0f;
     font-size: 40px;
 }
+.providerDetails .feedback{
+    margin-top: 20px;
+}
+.providerDetails .feedback .list .item{
+    background-color: #00c398;
+    text-align: center;
+    color: #ffffff;
+    font-size: 25px;
+}
+/*Feedbacks*/
+.viewfeedbak{
+    background-color: #f7f7f7;
+}
+.viewfeedbak .noborder{
+    border: 0;
+}
+.viewfeedbak .card .header{
+    background-color: #00c398;
+    color: #ffffff;
+    text-align: center;
+}
+.viewfeedbak .card .body p{
+    font-size: 15px;
+    margin: 10px;
+}
+.viewfeedbak .card .ratings{
+    text-align: center;
+}
+.viewfeedbak .card .ratings p{
+    text-align: center;
+    font-size: 14px;
+}
+.viewfeedbak .card .ratings .ion-ios-star{
+    text-align: center;
+    color: #f0df0f;
+    font-size: 40px;
+}
 /*User Profile*/
 .profile{
         background-color: #FFFFFF;
@@ -391,6 +433,32 @@
     min-height: 32px;
     
 }
+/* Edit Profile*/
+.editprofile .item-stacked-label{
+    padding-left: 2px;
+}
+.editprofile .input-label {
+    color: #00c398;
+    font-size: 16px;
+    padding-left: 6px;
+    padding-bottom: 5px;
+}
+.editprofile .item-stacked-label input{
+    padding-left: 6px;
+    border: 1px solid #ddd;
+}
+.editprofile .item-stacked-label select{
+    width: 100%;
+    display: block;
+    padding-top: 2px;
+    height: 34px;
+    color: #111;
+    vertical-align: middle;
+    font-size: 14px;
+    line-height: 16px;
+    border-radius: 2px;
+    padding: 4px 8px 3px 0;
+}
 /* Requests*/
 .requests h4{
     text-align: center;
@@ -417,4 +485,15 @@
 }
 .viewrequests .card .item-text-wrap span{
     padding: 0 10px;
+}
+/*Show address modal*/
+.showaddress h3{
+    text-align: center;
+    color: #00c389;
+    font-size: 20px;
+}
+.showaddress p{
+    text-align: justify;
+    font-size: 16px;
+    margin: 10px;
 }

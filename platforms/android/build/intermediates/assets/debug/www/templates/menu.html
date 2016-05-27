@@ -1,12 +1,12 @@
 <ion-side-menus enable-menu-with-back-views="true">
-    
   <ion-pane ion-side-menu-content>
       <ion-nav-view name="sidemenuContent" animation="slide-left-right" edge-drag-threshold="true" ></ion-nav-view>
   </ion-pane>    
     
   <!-- Left menu -->
   <ion-side-menu side="left" class="sidemenu" ng-controller="SidemenuCtrl">
-      <ion-scroll  direction="y">
+    <ion-content>
+        <ion-scroll  direction="y">
           <div class="list">
             <a class="item sidemenu-profile">
               <img src="img/malecostume-512.png">
@@ -35,12 +35,6 @@
                 Profile
 
             </a>
-              
-            <a menu-close class="item item-icon-left">
-                <i class="icon ion-clipboard"></i>
-                Feedbacks
-
-            </a>
             <a menu-close class="item item-icon-left">
                 <i class="icon ion-gear-a"></i>
                 Settings
@@ -50,7 +44,8 @@
                 Logout
             </a>  
         </div>
-      </ion-scroll>
+      </ion-scroll>  
+    </ion-content>  
   </ion-side-menu>
   
 </ion-side-menus>

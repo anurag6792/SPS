@@ -1,0 +1,25 @@
+<ion-modal-view >
+  <ion-header-bar align-title="center" class="common-header">
+    <h1 class="title">Your address</h1>
+     <button class="button button-icon icon ion-close" ng-click="closeshowaddressModal();"></button>    
+  </ion-header-bar>
+  <ion-content class="padding main-content showaddress">
+    
+    <h3>Please Select Your address</h3>
+    <p>For Test Purpose: AddressId{{request.AddressId}}</p>  
+    <ion-list>
+      <ion-item ng-repeat="(key,address) in address">
+          <ion-radio ng-model="request.AddressId" name="addressId" ng-click="checkradio();" ng-value="address.AddressId">Address {{key+1}}</ion-radio>
+          <p>Address Line 1 : {{address.AddressLine1}}</p>
+          <p>Address Line 2 : {{address.AddressLine2}}</p>
+          <p>City           : {{address.City}}</p>
+          <p>Country        : {{address.Country}}</p>
+          <p>State          : {{address.State}}</p>
+          <p>Postal Code    : {{address.Zip}}</p>
+      </ion-item>    
+    </ion-list>
+    <button ng-if='!addressCheck' class="button button-block button-mybuttoncolor" ng-click="modal3.hide();openaddaddressModal();" >Add New Address</button>
+    <button ng-if='addressCheck' class="button button-block button-mybuttoncolor" ng-click="addselectedaddress(request.AddressId);modal3.hide();" >Add Address</button>
+      
+  </ion-content>
+</ion-modal-view>

@@ -1,4 +1,11 @@
-app.controller("LoginCtrl",["$scope","userAuth",'$state','$ionicPopup','$ionicLoading','localStorageService' ,function($scope,userAuth,$state,$ionicPopup,$ionicLoading,localStorageService){
+app.controller("LoginCtrl",
+               ["$scope",
+                "userAuth",
+                '$state',
+                '$ionicPopup',
+                '$ionicLoading',
+                'localStorageService' ,
+                function($scope,userAuth,$state,$ionicPopup,$ionicLoading,localStorageService){
 //    $scope.show = false;
 //    $scope.userinfo = '';
     $scope.show = function() {
@@ -19,7 +26,7 @@ app.controller("LoginCtrl",["$scope","userAuth",'$state','$ionicPopup','$ionicLo
     $scope.show();    
     result.then(function (response) {
           
-            if (response.success == "true") {
+            if (response.success == "true" && response.description.RoleId == '3') {
                 $scope.hide();
                 console.log('In LoginCtrl : successful login');
                 $state.go('app.dashboard'); // redirecting to the dashboard page
