@@ -29,6 +29,32 @@ app.service("userAuth",['$q','$http','localStorageService','$filter',function($q
         return deferredObject.promise;       
         
     };
+     // Function to send Device Token
+    function sendToken(userId , token) {
+        console.log("In service login function");
+        var deferredObject = $q.defer();
+        $http({
+                url    : 'http://ecomdemo.cloudapp.net:8888/api/user/SaveDeviceDetails',
+                method : 'POST',
+                data   : {'UserId' : userId , 'DeviceId':token},
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                transformRequest: function(obj) {
+                  var str = [];
+                  for(var p in obj)
+                  str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+                  return str.join("&");
+                }})
+               .success(function(response){
+                    console.log("DeviceId API successfully called");
+                    deferredObject.resolve(response);
+                    })
+               .error(function(error){
+                             deferredObject.reject(response);
+                });
+        
+        return deferredObject.promise;       
+        
+    };
     
     //Function to get the user details
     function userDetails(userid) {
@@ -335,11 +361,12 @@ app.service("userAuth",['$q','$http','localStorageService','$filter',function($q
         localStorageService.set('logged',false);
         localStorageService.set('requestDetails',null);
         localStorageService.set('addressId',null);
-        
+        localStorageService.set('DeviceToken',null);
     }
     
     return {
         login: login,//login function where the login API is called
+        sendToken : sendToken, // function to send device token
         userDetails : userDetails, //function to get user details
         edituserDetails : edituserDetails, //function to edit user details
         destroyUser : destroyUser,// function to destroy userdetails stored in loacal storage

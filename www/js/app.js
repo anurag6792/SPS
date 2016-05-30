@@ -22,10 +22,19 @@ app.run(function($ionicPlatform) {
   });  
   });
 });
-app.run(function($ionicPlatform) {
+app.run(function($ionicPlatform,localStorageService) {
   $ionicPlatform.ready(function() {
     var push = new Ionic.Push({
-      "debug": true
+      "debug": true,
+      "onNotification": function(notification) {
+                        var payload = notification.payload;
+                        console.log(notification, payload);
+                      },    
+      "onRegister": function(data) {
+                    console.log(data.token);
+                    alert(data.token);
+                    localStorageService.set('DeviceToken',data.token);
+                    }    
     });
  
     push.register(function(token) {
