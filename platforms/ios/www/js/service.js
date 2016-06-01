@@ -304,8 +304,8 @@ app.service("userAuth",['$q','$http','localStorageService','$filter',function($q
                             "State": request.state,
                             "Zip": request.postal,
                             "Country": request.country,
-                            "Latitude": '28.4637313',
-                            "Longitude": "77.0693417",
+                            "Latitude": request.lat,
+                            "Longitude": request.long,
                             "RecordStatus":0
                          },
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'},
