@@ -184,6 +184,7 @@ app.service("userAuth",['$q','$http','localStorageService','$filter',function($q
                             "Gender": registerUser.gender,
                             "DateOfBirth": newuserDOB,
                             "Contact": registerUser.mobile,
+                            "Password": registerUser.password,
                             "RoleId": "3",
                             "IsVerified": "No",
                             "IsFirstTimeLogin": "Yes",

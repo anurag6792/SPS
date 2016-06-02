@@ -32,36 +32,16 @@ app.run(function($ionicPlatform,localStorageService) {
                       },    
       "onRegister": function(data) {
                     console.log(data.token);
-                    alert(data.token);
+//                    alert(data.token);
                     localStorageService.set('DeviceToken',data.token);
                     }    
     });
  
     push.register(function(token) {
       console.log("My Device token:",token.token);
-      alert("My Device token:"+token.token);
+//      alert("My Device token:"+token.token);
       push.saveToken(token);  // persist the token in the Ionic Platform
     });
-  });
-});
-app.run(function($ionicPlatform, $ionicPopup) {
-  $ionicPlatform.ready(function() {
-
-    // Check for network connection
-    if(window.Connection) {
-      if(navigator.connection.type == Connection.NONE) {
-        $ionicPopup.confirm({
-          title: 'No Internet Connection',
-          content: 'Sorry, no Internet connectivity detected. Please reconnect and try again.'
-        })
-        .then(function(result) {
-          if(!result) {
-            ionic.Platform.exitApp();
-          }
-        });
-      }
-    }
-
   });
 });
 app.config(function (localStorageServiceProvider) {
@@ -140,6 +120,14 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
         }
       }
     })
+    .state('app.viewestimates',{
+        url: '/viewestimates',
+        views: {
+        'sidemenuContent' :{
+          templateUrl: "templates/viewestimates.html"
+        }
+      }
+    })
     .state('app.provider',{
         url: '/provider',
         views: {
@@ -166,6 +154,8 @@ app.run(['$rootScope', 'userAuth', '$state',
       });
     }]
   );
+
+
 
 // Directive to confirm password for the new user
 app.directive('validPasswordC', function() {

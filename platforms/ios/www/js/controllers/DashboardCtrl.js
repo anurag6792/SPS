@@ -13,15 +13,15 @@ app.controller('DashboardCtrl',[
     '$http',
     '$ionicModal',
     function( $scope, userAuth, localStorageService, $cordovaCamera, $cordovaFile,$filter,$ionicPopup,$state,$ionicLoading,$cordovaGeolocation,$ionicPlatform,$http,$ionicModal){
-    
-        
+   
     $scope.request= {}; // request model to send job request  
     $scope.address = []; // address array to save the addresses of the user    
     $scope.request.AddressId = localStorageService.get('addressId'); // setting address id 
-    $scope.request.lat ='' ; 
-    $scope.request.long ='';
+    $scope.request.lat ='' ; //latitue of the user  
+    $scope.request.long =''; //longitude of the user
     $scope.showaddedaddress = false; // showing the address that is chosen, setting it to false
    
+    
     // Get current user Modal    
     $ionicModal.fromTemplateUrl('templates/addressmodal.html', {
           scope: $scope,
@@ -29,39 +29,35 @@ app.controller('DashboardCtrl',[
         }).then(function(modal) {
           $scope.modal1 = modal;
         });
-
-      $scope.opengetlocationModal = function(arr,rrr)
-      {
-         $scope.request.address1 = arr[arr.length-4];
-         $scope.request.address2 = arr[arr.length-3];
-         $scope.request.city = arr[arr.length-3];
-         $scope.request.state = rrr[rrr.length - 2];
-         $scope.request.postal = rrr[rrr.length - 1];
-         $scope.request.country = arr[arr.length-1];  
-         $scope.modal1.show();
-      };
-
-      $scope.closeModal = function() {
-        $scope.modal1.hide();
-      };
+    $scope.opengetlocationModal = function(arr,rrr)
+    {
+       $scope.request.address1 = arr[arr.length-4];
+       $scope.request.address2 = arr[arr.length-3];
+       $scope.request.city = arr[arr.length-3];
+       $scope.request.state = rrr[rrr.length - 2];
+       $scope.request.postal = rrr[rrr.length - 1];
+       $scope.request.country = arr[arr.length-1];  
+       $scope.modal1.show();
+    }
+    $scope.closeModal = function() {
+      $scope.modal1.hide();
+    };
      
         
-     // Add address Modal    
-     $ionicModal.fromTemplateUrl('templates/addaddressmodal.html', {
-          scope: $scope,
-          animation: 'slide-in-up'
-        }).then(function(modal) {
-          $scope.modal2 = modal;
-        });
-
-      $scope.openaddaddressModal = function()
-      {
-         $scope.modal2.show();
-      };
-
-      $scope.closeaddaddressModal = function() {
-        $scope.modal2.hide();
-      };
+    // Add address Modal    
+    $ionicModal.fromTemplateUrl('templates/addaddressmodal.html', {
+         scope: $scope,
+         animation: 'slide-in-up'
+       }).then(function(modal) {
+         $scope.modal2 = modal;
+       });
+     $scope.openaddaddressModal = function()
+     {
+        $scope.modal2.show();
+     };
+     $scope.closeaddaddressModal = function() {
+       $scope.modal2.hide();
+     };
     
         
     // Show address Modal    
@@ -72,45 +68,33 @@ app.controller('DashboardCtrl',[
           $scope.modal3 = modal;
         });
 
-      $scope.openshowaddressModal = function()
-      {
-         $scope.modal3.show();
-      };
-
-      $scope.closeshowaddressModal = function() {
-        $scope.request.AddressId = localStorageService.get('addressId');
-         $scope.addressCheck = false;     
-        $scope.modal3.hide();
-      };     
+    $scope.openshowaddressModal = function()
+    {
+       $scope.modal3.show();
+    };
+    $scope.closeshowaddressModal = function() {
+      $scope.request.AddressId = localStorageService.get('addressId');
+       $scope.addressCheck = false;     
+      $scope.modal3.hide();
+    };     
     
-     // Map Modal    
+    // Map Modal    
     $ionicModal.fromTemplateUrl('templates/mapmodal.html', {
           scope: $scope,
           animation: 'slide-in-up'
         }).then(function(modal) {
           $scope.modal4 = modal;
-          
-          //$scope.canvas = angular.element(document.getElementById("map"));
-              
         });
 
-      $scope.openmapModal = function()
-      {   
-           
-         
-          $scope.modal4.show();
-         
-      };
-
-      $scope.closemapModal = function() {
-        $scope.map = null;  
+    $scope.openmapModal = function(){   
+        $scope.modal4.show();
+    };
+    $scope.closemapModal = function() {
+        $scope.map = null;// setting the map element to null after the user closes the modal  
         $scope.modal4.hide();
-      };     
+    };     
     
-        
-        
     $scope.date = new Date();// date to set the min date for estimate date in job request
-    
     $scope.user = {};// creating a user object to show the details of the user in the dashboard page    
     $scope.userId =  localStorageService.get('userID'); // storing the user Id to get the user details
     
@@ -120,7 +104,6 @@ app.controller('DashboardCtrl',[
                       template: '<ion-spinner icon="lines"></ion-spinner>'
                     });
                   };
-  
     // Function to Hide the loader    
     $scope.hide = function(){
                      $ionicLoading.hide();
@@ -133,7 +116,6 @@ app.controller('DashboardCtrl',[
         if (response.success == "true") {
             $scope.hide();
             $scope.user = response;
-            $scope.lastlogin = $filter('date')($scope.user.description.LastLoginDate, 'yyyy-MM-ddTHH:mm:ss.sssZ');
             console.log('Added consumer details to the DashboardCtrl in user') ;
         }
         else{
@@ -143,8 +125,6 @@ app.controller('DashboardCtrl',[
         }
     });
     
-        
-        
     //Function to show error when the GPS is not responding    
     $scope.GPSerror = function() {
                    var alertPopup = $ionicPopup.alert({
@@ -229,85 +209,81 @@ app.controller('DashboardCtrl',[
                   
             
             }, function(err) {
+            
             $ionicLoading.hide();
+            $scope.GPSerror();
             console.log(err);
             });
             }
     });
-        
+    
+    //Function to get address based on the longitude and lattitude    
     $scope.sendAddress = function(){
         $scope.closemapModal();
         console.log('hey');
         $http({
-                      method: 'GET',
-                      url: 'http://maps.googleapis.com/maps/api/geocode/json?latlng='+$scope.request.lat+','+$scope.request.long+'&sensor=true'
-                    }).then(function successCallback(response) {
-                            console.log(response);
-                            var address=response.data.results[0].formatted_address;
-                            var addressarray = address.split(',');
-                            var statearray = addressarray[addressarray.length-2].split(' ');
-                            $scope.opengetlocationModal(addressarray,statearray);
-                           
-                            
-                        // this callback will be called asynchronously
-                        // when the response is available
-                      }, function errorCallback(response) {
-                        // called asynchronously if an error occurs
-                        // or server returns response with an error status.
-                        $scope.GPSerror();
-                        
-                      });    
+               method: 'GET',
+               url: 'http://maps.googleapis.com/maps/api/geocode/json?latlng='+$scope.request.lat+','+$scope.request.long+'&sensor=true'
+             }).then(function successCallback(response) {
+                     console.log(response);
+                     var address=response.data.results[0].formatted_address;
+                     var addressarray = address.split(',');
+                     var statearray = addressarray[addressarray.length-2].split(' ');
+                     $scope.opengetlocationModal(addressarray,statearray);
+             }, function errorCallback(response) {
+                 $scope.GPSerror();
+             });    
     };   
     
         
     // Function add address of the user when he does not have the address or he wants to add a new address    
     $scope.addingAddress =  function(request){
                     
-                    //Function to send the latitude and longitude with the add address
-                     $ionicPlatform.ready(function() {
-                          var posOptions = {
-                                enableHighAccuracy: true,
-                                timeout: 20000,
-                                maximumAge: 0
-                            };    
-                          $cordovaGeolocation.getCurrentPosition(posOptions).then(function (position) {
-                            var lat  = position.coords.latitude;
-                            var long = position.coords.longitude;
-                            console.log(lat); 
-                            console.log(long); 
-//                            $ionicLoading.hide();
-                            $scope.request.lat = lat;
-                            $scope.request.long = long;
-                            }, function(err) {
-//                            $ionicLoading.hide();
-                            console.log(err);
-                            });
-                              
-                         
-                     });
+            //Function to send the latitude and longitude with the add address
+             $ionicPlatform.ready(function() {
+                  var posOptions = {
+                        enableHighAccuracy: true,
+                        timeout: 20000,
+                        maximumAge: 0
+                    };    
+                  $cordovaGeolocation.getCurrentPosition(posOptions).then(function (position) {
+                    var lat  = position.coords.latitude;
+                    var long = position.coords.longitude;
+                    console.log(lat); 
+                    console.log(long); 
+//                    $ionicLoading.hide();
+                    $scope.request.lat = lat;
+                    $scope.request.long = long;
+                    }, function(err) {
+//                    $ionicLoading.hide();
+                    console.log(err);
+                    });
+                      
+                 
+             });
         
         
-                     var addingaddress = userAuth.saveaddress( request , $scope.userId);
-                     addingaddress.then(function(response){
-                          if (response.success == "true") {
-                              console.log(' Address Added Successfully');
-                              console.log(response);
-                              $scope.addselectedaddress(response.description.AddressId);
-                              $scope.closeaddaddressModal();
-                              
-                          }
-                          else{
-                              console.log(response);
-                              $scope.closeaddaddressModal();
-                              console.log(' Address was not Added Successfully');
-                          }
-                      });
+             var addingaddress = userAuth.saveaddress( request , $scope.userId);
+             addingaddress.then(function(response){
+                  if (response.success == "true") {
+                      console.log(' Address Added Successfully');
+                      console.log(response);
+                      $scope.addselectedaddress(response.description.AddressId);
+                      $scope.closeaddaddressModal();
+                      
+                  }
+                  else{
+                      console.log(response);
+                      $scope.closeaddaddressModal();
+                      console.log(' Address was not Added Successfully');
+                  }
+              });
                     
                     
                     
-                }; 
+    }; 
     
-     // Function add address of the user when he chooses to add his current location    
+    // Function add address of the user when he chooses to add his current location    
     $scope.addingcurrentAddress =  function(request){
                      var addingcurrentaddress = userAuth.saveaddress( request , $scope.userId);
                      addingcurrentaddress.then(function(response){
@@ -323,15 +299,12 @@ app.controller('DashboardCtrl',[
                               console.log('Current Address was not Added Successfully');
                           }
                       });
-                    
-                    
-                    
-                };      
+    };      
     
         
     //Function to add the address
     $scope.addAddress = function(){
-         $scope.show();    
+        $scope.show();    
         var showaddress = userAuth.showaddress( $scope.userId);
         showaddress.then(function(response){
             console.log(response);
@@ -354,7 +327,6 @@ app.controller('DashboardCtrl',[
             $scope.openaddaddressModal();
             }
     });
-        
     };    
     
     //Function to check if any of the addresses is chosen, if yes hiding the add new address button    
