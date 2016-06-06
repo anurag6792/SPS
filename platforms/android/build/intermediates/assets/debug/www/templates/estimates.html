@@ -5,28 +5,18 @@
     </ion-header-bar>
     <ion-content class="has-header main-content">
             <ion-scroll>
-            <ion-list>
-                <ion-item class="item " ui-sref='app.viewestimates' >
+            <ion-list ng-show='showEstimates'>
+                <ion-item ng-repeat='estimates in jobestimates' class="item " ui-sref='app.viewestimates({ jobID: estimates.JobId , customerID :estimates.CustomerId})' >
                   <h2>Service Response 1</h2>
                   <p>Nine Inch Nails</p>
-                  <span class="badge badge-balanced">0</span>    
-                </ion-item>
-                <ion-item class="item " ui-sref='app.viewestimates'>
-                  <h2>Service Response 2</h2>
-                  <p>Nine Inch Nails</p>
-                  <span class="badge badge-balanced">5</span>    
-                </ion-item>
-                <ion-item class="item " ui-sref='app.viewestimates'>
-                  <h2>Service Response 3</h2>
-                  <p>Nine Inch Nails</p>
-                  <span class="badge badge-balanced">2</span>    
-                </ion-item>
-                <ion-item class="item " ui-sref='app.viewestimates'>
-                  <h2>Service Response 4</h2>
-                  <p>Nine Inch Nails</p>
-                  <span class="badge badge-balanced">11</span>    
+                  <span class="badge badge-balanced">{{estimates.EstimatesCount}}</span>    
                 </ion-item>
             </ion-list>
+            <div class="row" ng-hide='showEstimates'>
+                <div class="col">
+                    <p> You have no new job responses.</p>
+                </div> 
+            </div>      
             </ion-scroll>    
         
     </ion-content>

@@ -1,5 +1,6 @@
 app.controller('ViewestimatesCtrl',['$scope','$stateParams','localStorageService','userAuth','$ionicLoading',function($scope,$stateParams,localStorageService,userAuth,$ionicLoading){
     $scope.custid = $stateParams.customerID;
+    $scope.jname = $stateParams.jobname;
     $scope.jobid = $stateParams.jobID;
     $scope.jobestimateDetails = [];
     $scope.show = function() {

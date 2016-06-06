@@ -28,13 +28,13 @@ app.controller('RequestCtrl',['$scope','userAuth','localStorageService','$filter
     viewjobrequests.then(function (response) {
             if (response.success == "true") {
                 $scope.hide();
-                $scope.showRequest = response.success ;
+                $scope.showRequest = JSON.parse(response.success);
                 $scope.jobrequests = response.description;
                 console.log('In RequestCtrl : view requests successful');
                 
                 }
              else if(response.success == "false") {
-                $scope.showRequest = response.success ; 
+                $scope.showRequest = JSON.parse(response.success); 
                 $scope.hide(); 
                 console.log('In RequestCtrl : view requests unsuccessful'); 
                 }

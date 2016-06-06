@@ -86,7 +86,7 @@ app.service("userAuth",['$q','$http','localStorageService','$filter',function($q
     
     //Function to edit user details
     function edituserDetails(userdetails,userprofile) {
-        console.log("In service login function");
+        console.log("In service edit user function");
         var deferredObject = $q.defer();
         $http({
                 url    : 'http://ecomdemo.cloudapp.net:8888/api/User/UpdateUser',
@@ -130,11 +130,14 @@ app.service("userAuth",['$q','$http','localStorageService','$filter',function($q
     
     // Function to check whether user is logged in or not
     function isLoggedIn(){
+        console.log("In service login-check function");
         return localStorageService.get('logged');
     }
     
     // Function to send job request to the operator/admin
     function sendRequest(subject,postedby,status,details,date,image,recstatus,by,AddressId){
+        
+        console.log("In service send job request function");
         var deferredObject = $q.defer();
         $http({
                 url    : 'http://ecomdemo.cloudapp.net:8888/api/Job/SaveJobRequest',
@@ -170,7 +173,7 @@ app.service("userAuth",['$q','$http','localStorageService','$filter',function($q
     
     //Function to register new user
     function newuser(registerUser) {
-        console.log("In service newuser function");
+        console.log("In service register newuser function");
         var newuserDOB = $filter('date')(registerUser.date, 'yyyy/MM/dd'); // converting DOB of new user in this format(yyyy/MM/dd)
         var deferredObject = $q.defer();
         $http({
@@ -238,7 +241,7 @@ app.service("userAuth",['$q','$http','localStorageService','$filter',function($q
     
     //Function to view single job requests using jobid
     function viewsinglejobrequest(userID) {
-        console.log("In service viewjobrequests function");
+        console.log("In service view single jobrequests function");
         var deferredObject = $q.defer();
         $http({
                 url    : 'http://ecomdemo.cloudapp.net:8888/api/Job/ShowJobDetails',
@@ -264,7 +267,7 @@ app.service("userAuth",['$q','$http','localStorageService','$filter',function($q
     };
     //Function to view all the job estimates
     function viewjobestimates(userID) {
-        console.log("In service viewjobrequests function");
+        console.log("In service view all the job estimates function");
         var deferredObject = $q.defer();
         $http({
                 url    : 'http://ecomdemo.cloudapp.net:8888/api/Job/showEstimatesSummaryForCustomer',
@@ -291,7 +294,7 @@ app.service("userAuth",['$q','$http','localStorageService','$filter',function($q
     };
     //Function to view single job estimate using userId & jobid
     function viewsinglejobestimate(userID,jobID) {
-        console.log("In service viewjobrequests function");
+        console.log("In service view single job estimate function");
         var deferredObject = $q.defer();
         $http({
                 url    : 'http://ecomdemo.cloudapp.net:8888/api/Job/showJobEstimatesForCustomer',
@@ -307,6 +310,66 @@ app.service("userAuth",['$q','$http','localStorageService','$filter',function($q
                .success(function(response){
                     console.log(response);
                     console.log("View single Job estimate API successfully called");
+                    deferredObject.resolve(response);
+                })
+               .error(function(error){
+                             deferredObject.reject(response);
+                });
+        
+        return deferredObject.promise;       
+        
+    };
+    
+    //Function to view single job estimate Detail using jobresid
+    function viewsinglejobestimatedetail(jobresID) {
+        console.log("In service view single job estimate function");
+        var deferredObject = $q.defer();
+        $http({
+                url    : 'http://ecomdemo.cloudapp.net:8888/api/Job/showEstimateDetailsForCustomer',
+                method : 'POST',
+                params   : {"jresid": jobresID},
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                transformRequest: function(obj) {
+                  var str = [];
+                  for(var p in obj)
+                  str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+                  return str.join("&");
+                }})
+               .success(function(response){
+                    console.log(response);
+                    console.log("View single Job estimate Details API successfully called");
+                    deferredObject.resolve(response);
+                })
+               .error(function(error){
+                             deferredObject.reject(response);
+                });
+        
+        return deferredObject.promise;       
+        
+    };
+    
+    //Function to view single job estimate Detail using jobresid
+    function acceptestimate(jobresID,jobid) {
+        console.log("In service view single job estimate function");
+        var deferredObject = $q.defer();
+        $http({
+                url    : 'http://ecomdemo.cloudapp.net:8888/api/Job/acceptJobEstimateByCustomer',
+                method : 'POST',
+                data   : {
+                            "JobResponseId":jobresID,
+                            "JobId": jobid,
+                            "JobAccepted": true
+                           },
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                transformRequest: function(obj) {
+                  var str = [];
+                  for(var p in obj)
+                  str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+                  return str.join("&");
+                }})
+               .success(function(response){
+                    console.log(response);
+                    console.log("View single Job estimate Details API successfully called");
                     deferredObject.resolve(response);
                 })
                .error(function(error){
@@ -412,6 +475,7 @@ app.service("userAuth",['$q','$http','localStorageService','$filter',function($q
     }
     // Logout function to destroy user credentials 
     function destroyUser(){
+        console.log("In service logout function");
         localStorageService.set('userID',null);
         localStorageService.set('logged',false);
         localStorageService.set('requestDetails',null);
@@ -419,22 +483,25 @@ app.service("userAuth",['$q','$http','localStorageService','$filter',function($q
         localStorageService.set('DeviceToken',null);
     }
     
+   
     return {
         login: login,//login function where the login API is called
-        sendToken : sendToken, // function to send device token
-        userDetails : userDetails, //function to get user details
-        edituserDetails : edituserDetails, //function to edit user details
-        destroyUser : destroyUser,// function to destroy userdetails stored in loacal storage
+        sendToken : sendToken,//function to send device token
+        userDetails : userDetails,//function to get user details
+        edituserDetails : edituserDetails,//function to edit user details
+        destroyUser : destroyUser,//function to destroy userdetails stored in loacal storage
         isLoggedIn : isLoggedIn,//function to check whether the user is logged in or not
         sendRequest : sendRequest,//function to send job request to the operator/admin
         newuser : newuser,//function to register new user
-        viewjobrequests : viewjobrequests, //Function to view all the job requests
-        viewsinglejobrequest : viewsinglejobrequest,  //Function to view single the job requests
-        viewjobestimates:viewjobestimates, //Functon to view all job estimates sent by the provider
-        viewsinglejobestimate : viewsinglejobestimate,// Function to view single job estimate
+        viewjobrequests : viewjobrequests,//Function to view all the job requests
+        viewsinglejobrequest : viewsinglejobrequest,//Function to view single the job requests
+        viewjobestimates:viewjobestimates,//Functon to view all job estimates sent by the provider
+        viewsinglejobestimate : viewsinglejobestimate,//Function to view single job estimate
+        viewsinglejobestimatedetail : viewsinglejobestimatedetail, // Function to view single job estimate details
+        acceptestimate : acceptestimate, //Function to accept estimate by the provider
         showaddress :showaddress,//Function to show the user address
-        saveaddress : saveaddress, //function to save address while sending job request
-        feedbacks : feedbacks //Function to view provider feedbacks
+        saveaddress : saveaddress,//function to save address while sending job request
+        feedbacks : feedbacks//Function to view provider feedbacks
     };
     
 }]);

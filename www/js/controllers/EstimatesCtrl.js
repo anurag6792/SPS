@@ -20,13 +20,13 @@ app.controller('EstimatesCtrl',['$scope','userAuth','localStorageService','$filt
     viewjobestimates.then(function (response) {
             if (response.success == "true") {
                 $scope.hide();
-                $scope.showEstimates = response.success ;
+                $scope.showEstimates = JSON.parse(response.success);
                 $scope.jobestimates = response.description;
                 console.log('In EstimatesCtrl : view estimates successful');
                 
                 }
              else if(response.success == "false") {
-                $scope.showRequest = response.success ; 
+                $scope.showEstimates = JSON.parse(response.success);
                 $scope.hide(); 
                 console.log('In EstimatesCtrl : view estimates unsuccessful'); 
                 }

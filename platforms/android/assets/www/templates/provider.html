@@ -13,12 +13,12 @@
         <div class="col">
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
         </div>
-        <div class="col col-80 col-offset-10 text-center">
-            <button class="button providerAcceptButton">
+        <div class="col col-80 col-offset-10 text-center" >
+            <button class="button providerAcceptButton" ng-click="confirmestimate();">
                 <i class="icon-left ion-checkmark"></i>
                 Accept
             </button>
-            <button class="button providerRejectButton">
+            <button class="button providerRejectButton" ng-click="goBack();">
                 <i class="icon-left ion-close-round "></i>
                 Reject
             </button>
@@ -47,7 +47,7 @@
     <div class="row">
         <div class="col col-100 feedback">
             <div class="list">
-                <a class="item" ng-click="viewfeedbacks(9)">
+                <a class="item" ng-click="viewfeedbacks();">
                     View Feedbacks
                 </a>
             </div>    

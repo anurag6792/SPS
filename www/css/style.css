@@ -6,7 +6,17 @@
   fill: #08f274;
 /*  background-color: aquamarine;    */
 }
+/*popup header*/
+.popup-head {
 
+    background-color: #00c389;
+    
+}
+.popup-title {
+
+    color: #fff;
+
+}
 .main-content{
     background-color: #f7f7f7;
 }
@@ -514,4 +524,51 @@
  text-align: center;
  width: 80px;     
  white-space: nowrap;
+}
+/*Viewestimates*/
+.viewestimates .radio-icon{  visibility: visible !important;}
+
+
+.viewestimates .radio-icon:before{
+  content:"" !important;
+  border:2px solid black !important;
+  width: 24px !important;
+  height: 24px !important;
+  border-radius: 50% !important;
+  overflow:hidden !important;
+}
+
+
+.viewestimates .radio-icon:after{
+  content:"" !important;
+  position: absolute !important;
+  right: 20px !important;
+  top: 22px !important;
+  background:black !important;
+  width: 12px !important;
+  height: 12px !important;
+  border-radius: 50% !important;
+  overflow:hidden !important;
+
+
+  transition: -webkit-transform .28s cubic-bezier(0.420, 0.000, 0.000, 1.650);
+  transition: transform .28s cubic-bezier(0.420, 0.000, 0.000, 1.650);
+  -webkit-transform: scale(0);
+  transform: scale(0);
+}
+
+/*.item-radio input:checked ~ .item-content {
+background: #F7F7F7;
+}*/
+
+.viewestimates .item-radio input:checked + .radio-content .radio-icon:after{
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+
+.viewestimates .radio-positive .radio-icon:after{
+  background:#00C398 !important;
+}
+.viewestimates .radio-positive .radio-icon:before{
+  border-color: #00C398 !important;
 }
