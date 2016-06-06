@@ -7,7 +7,7 @@ app.controller('RequestCtrl',['$scope','userAuth','localStorageService','$filter
     };
 
 //    $scope.userID = {};
-     $scope.show = function() {
+    $scope.show = function() {
                     $ionicLoading.show({
                       template: '<ion-spinner icon="lines"></ion-spinner>'
                     });

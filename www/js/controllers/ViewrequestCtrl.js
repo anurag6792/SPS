@@ -1,7 +1,7 @@
 app.controller('ViewrequestCtrl',['$scope','$stateParams','localStorageService','userAuth','$ionicLoading',function($scope,$stateParams,localStorageService,userAuth,$ionicLoading){
     
-    $scope.requestID = {};
-    $scope.requestID = localStorageService.get('jobrequests');//adding consumer job requests in requestID in ViewrequestCtrl
+//    $scope.requestID = {};
+//    $scope.requestID = localStorageService.get('jobrequests');//adding consumer job requests in requestID in ViewrequestCtrl
     $scope.jobid = $stateParams.jobID;
     $scope.jobrequestDetails = {};
     $scope.addressDetails = {};

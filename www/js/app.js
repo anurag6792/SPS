@@ -121,7 +121,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
       }
     })
     .state('app.viewestimates',{
-        url: '/viewestimates',
+        url: '/viewestimates/:jobID/:customerID',
         views: {
         'sidemenuContent' :{
           templateUrl: "templates/viewestimates.html"
