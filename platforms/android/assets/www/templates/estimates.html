@@ -5,8 +5,14 @@
     </ion-header-bar>
     <ion-content class="has-header main-content">
             <ion-scroll>
+            <div class="bar bar-header item-input-inset">
+                <label class="item-input-wrapper">
+                <i class="icon ion-ios-search placeholder-icon"></i>
+                <input type="text" placeholder="Search Requests.." ng-model="searchestimate" />
+                </label>
+            </div>    
             <ion-list ng-show='showEstimates'>
-                <ion-item ng-repeat='estimates in jobestimates' class="item " ui-sref='app.viewestimates({jobname:estimates.JobName, jobID: estimates.JobId , customerID :estimates.CustomerId})' >
+                <ion-item ng-repeat='estimates in jobestimates | filter:{JobName:searchrequest}' class="item " ui-sref='app.viewestimates({jobname:estimates.JobName, jobID: estimates.JobId , customerID :estimates.CustomerId})' >
                   <h2>{{estimates.JobName}}</h2>
 <!--                  <p>Nine Inch Nails</p>-->
                   <span class="badge badge-balanced">{{estimates.EstimatesCount}}</span>    

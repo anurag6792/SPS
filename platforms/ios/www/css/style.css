@@ -9,7 +9,7 @@
 /*popup header*/
 .popup-head {
 
-    background-color: #00c389;
+    background-color: #45DCBB;
     
 }
 .popup-title {
@@ -24,11 +24,11 @@
     overflow: auto;
 }
 .button-mybuttoncolor{
-    background-color: #00C398;
+    background-color: #45DCBB;
     color: #ffffff;
 }
 .common-header{
-    background-color:#00C398;
+    background: #45DCBB; /* fallback for old browsers */
     color: #ffffff;
 }
 .common-header h1{
@@ -66,10 +66,14 @@
     color: #ffffff;
 }
 .sidemenu-profile{
-    padding-bottom: 30px;
-    padding-top: 35px;
+    padding-bottom: 8px;
+    padding-top: 10px;
     text-align: center;
-    background-color: #272C30!important;
+    background: #ffffff; /* Old browsers */
+    background: -moz-linear-gradient(-45deg,  #ffffff 34%, #45dcbb 37%, #45dcbb 50%, #45dcbb 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(-45deg,  #ffffff 34%,#45dcbb 37%,#45dcbb 50%,#45dcbb 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(135deg,  #ffffff 34%,#45dcbb 37%,#45dcbb 50%,#45dcbb 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#45dcbb',GradientType=1 );
     border: 0;
 }
 .sidemenu-profile img{
@@ -98,13 +102,13 @@
   border-radius: 40px;  
 }
 .login-username .icon , .login-password .icon{
-   color: #00C398;
+   color: #45DCBB;
    font-size: 24px;    
 }
 
 .login-button{
     border-radius:40px;
-    background-color: #00C398;
+    background-color: #45DCBB;
     color: #ffffff;
 }
 .login-register{
@@ -120,7 +124,7 @@
     font-size: 18px;
 }
 .login-register a{
-    color: #00C398;
+    color: #45DCBB;
     font-size: 18px;
 }
 .login-errors{
@@ -211,7 +215,7 @@
 }
 .signup-background .signup-button{
     border-radius: 40px;
-    background-color: #00C398;
+    background-color: #45DCBB;
     color: #ffffff;
 }
 /* Dashboard*/
@@ -255,7 +259,7 @@
     width: 100%;
     text-align: center;
     font-size: 18px;
-    color: #00C398;
+    color: #45DCBB;
     padding-top: 5px;
     padding-bottom: 5px;
 }
@@ -264,7 +268,7 @@
     padding-left: 0;
 }
 .request  .input-label{
-    color: #00c398;
+    color: #45DCBB;
 }
 .request .input-control{
     border: 1px solid;
@@ -292,7 +296,7 @@
 }
 .providerDetails .row{
     flex-wrap: wrap;
-    background-color: #00C398;
+    background-color: #45DCBB;
 }
 .providerDetails h1{
     color: #ffffff;
@@ -310,7 +314,7 @@
 }
 .providerAcceptButton{
     background-color: #FFFFFF;
-    color: #00C398;
+    color: #45DCBB;
     padding-top:5px;    
     padding-bottom:5px;    
     padding-right:20px;    
@@ -322,7 +326,7 @@
     margin-right: 5px;
 }
 .providerRejectButton{
-    background-color: #00C398;
+    background-color: #45DCBB;
     color: #fff;
     border:2px solid #fff;    
     padding-top:5px;    
@@ -362,7 +366,7 @@
     margin-top: 20px;
 }
 .providerDetails .feedback .list .item{
-    background-color: #00c398;
+    background-color: #45DCBB;
     text-align: center;
     color: #ffffff;
     font-size: 25px;
@@ -375,7 +379,7 @@
     border: 0;
 }
 .viewfeedbak .card .header{
-    background-color: #00c398;
+    background-color: #45DCBB;
     color: #ffffff;
     text-align: center;
 }
@@ -397,58 +401,62 @@
 }
 /*User Profile*/
 .profile{
-        background-color: #FFFFFF;
+    height: 180px;
+    background-image: url("../img/dashbg.png");
+    background-position: center;
+    background-origin: border-box;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 0;
+    margin:0;
+}
+.profile .col .list {
+    margin-top: 130px;
 }
 .profile .col .list .item{
     border:0;
+    background-color: transparent;
 }
-.profile-header{
-    height: 190px;
+.profile .col .list .item img{
+    top: 0px;
+    left: 10px;
+    max-width: 100px;
+    max-height: 100px;
 }
-.profile-header img{
-    width: 70px;
-    height: 70px;
-    display: block;
-    position: relative;
-    margin: 0 auto;
-    margin-top: 30px;
-}
-.profile-header p{
-    font-size: 15px;
-    display: block;
-    text-align: center;
+.profile .col .list .item h2{
     color: #ffffff;
-    margin-bottom: 5px;
+    font-size: 25px;
+    margin-left: 15px;
 }
-.profile-header h3{
-    font-size: 20px;
-    display: block;
-    text-align: center;
-    color: #ffffff;
-    margin-top: 5px;
-    margin-bottom: 5px;
+.profile .col .list .item p{
+        color: #222;
+    margin-left: 11px;
+    margin-top: 15px;
+
 }
-.profileDetails .list .item-divider{
-    background-color: #00c398;
-    color: #ffffff;
-}
-.profileDetails .list a.item-detail{
-    color: #00c398;
-}
+
 .profile .button-profileditbutton{
-    background-color: #00c398;
+    background-color: #45DCBB;
     color: #ffffff;
     font-size: 15px;
     line-height: 30px;
     min-height: 32px;
     
 }
+.profileDetails{
+    margin-top: 75px;
+}
+.profileDetails .item{
+    font-size: 13px;
+}.profileDetails .item-note{
+    font-size: 16px;
+}
 /* Edit Profile*/
 .editprofile .item-stacked-label{
     padding-left: 2px;
 }
 .editprofile .input-label {
-    color: #00c398;
+    color: #45DCBB;
     font-size: 16px;
     padding-left: 6px;
     padding-bottom: 5px;
@@ -473,11 +481,11 @@
 .requests h4{
     text-align: center;
     font-size: 18px;
-    color: #00c398;
+    color: #45DCBB;
 }
 /* View Request*/
 .viewrequests .card .item-divider{
-    background-color: #00c398;
+    background-color: #45DCBB;
     color: #fff;
     font-size: 20px;
     text-align: center;
@@ -499,7 +507,7 @@
 /*Show address modal*/
 .showaddress h3{
     text-align: center;
-    color: #00c389;
+    color: #45DCBB;
     font-size: 20px;
 }
 .showaddress p{
@@ -567,8 +575,8 @@ background: #F7F7F7;
 }
 
 .viewestimates .radio-positive .radio-icon:after{
-  background:#00C398 !important;
+  background:#45DCBB !important;
 }
 .viewestimates .radio-positive .radio-icon:before{
-  border-color: #00C398 !important;
+  border-color: #45DCBB !important;
 }
