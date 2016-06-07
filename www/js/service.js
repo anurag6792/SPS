@@ -483,7 +483,6 @@ app.service("userAuth",['$q','$http','localStorageService','$filter',function($q
         localStorageService.set('DeviceToken',null);
     }
     
-   
     return {
         login: login,//login function where the login API is called
         sendToken : sendToken,//function to send device token

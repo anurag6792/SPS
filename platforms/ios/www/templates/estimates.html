@@ -6,9 +6,9 @@
     <ion-content class="has-header main-content">
             <ion-scroll>
             <ion-list ng-show='showEstimates'>
-                <ion-item ng-repeat='estimates in jobestimates' class="item " ui-sref='app.viewestimates({ jobID: estimates.JobId , customerID :estimates.CustomerId})' >
-                  <h2>Service Response 1</h2>
-                  <p>Nine Inch Nails</p>
+                <ion-item ng-repeat='estimates in jobestimates' class="item " ui-sref='app.viewestimates({jobname:estimates.JobName, jobID: estimates.JobId , customerID :estimates.CustomerId})' >
+                  <h2>{{estimates.JobName}}</h2>
+<!--                  <p>Nine Inch Nails</p>-->
                   <span class="badge badge-balanced">{{estimates.EstimatesCount}}</span>    
                 </ion-item>
             </ion-list>

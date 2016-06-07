@@ -6,7 +6,17 @@
   fill: #08f274;
 /*  background-color: aquamarine;    */
 }
+/*popup header*/
+.popup-head {
 
+    background-color: #00c389;
+    
+}
+.popup-title {
+
+    color: #fff;
+
+}
 .main-content{
     background-color: #f7f7f7;
 }
