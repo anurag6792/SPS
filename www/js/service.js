@@ -149,7 +149,9 @@ app.service("userAuth",['$q','$http','localStorageService','$filter',function($q
                             "CustomerExpectedDate": date,
                             "ImageUrl": image,
                             "AddressId": AddressId,
-                            "RecordStatus": recstatus},
+                            "RecordStatus": recstatus,
+                            "JobStatus": 1
+                         },
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                 transformRequest: function(obj) {
                   var str = [];
@@ -482,7 +484,7 @@ app.service("userAuth",['$q','$http','localStorageService','$filter',function($q
         localStorageService.set('addressId',null);
         localStorageService.set('DeviceToken',null);
     }
-    
+   
     return {
         login: login,//login function where the login API is called
         sendToken : sendToken,//function to send device token
