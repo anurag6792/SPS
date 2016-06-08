@@ -139,6 +139,15 @@
     width: 100%;
     text-align: center;
 }
+.forgot-password{
+    width: 100%;
+    color: #ffffff;
+    text-align: center;
+    font-size: 15px;
+}
+.forgot-input{
+    border:1px solid #ddd!important;
+}
 /*SIGNUP*/
 .signup-background{
     background-image: url("../img/bg.png");
@@ -285,6 +294,7 @@
     color: #fff;
 }
 /* Estimate List*/
+
 /* Provider Details*/
 .providerDetails .providerpic{
     
@@ -294,83 +304,52 @@
     margin: 0 auto;
     margin-top: 40px;
 }
-.providerDetails .row{
+.providerDetails .providerheader{
     flex-wrap: wrap;
     background-color: #45DCBB;
 }
-.providerDetails h1{
+.providerDetails .providerheader h1{
     color: #ffffff;
     width: 100%;
     text-align: center;
     display: block;
     font-size: 20px;
 }
-.providerDetails p{
+.providerDetails .providerheader p{
     color: #ffffff;
     width: 100%;
     text-align: center;
     display: block;
     font-size: 15px;
 }
-.providerAcceptButton{
-    background-color: #FFFFFF;
-    color: #45DCBB;
-    padding-top:5px;    
-    padding-bottom:5px;    
-    padding-right:20px;    
-    padding-left:20px;
-    border-radius: 25px;
-    width: 110px;
-    line-height: 20px;
-/*    margin-left: 10px;*/
-    margin-right: 5px;
-}
-.providerRejectButton{
-    background-color: #45DCBB;
-    color: #fff;
-    border:2px solid #fff;    
-    padding-top:5px;    
-    padding-bottom:5px;    
-    padding-right:20px;    
-    padding-left:20px;  
-    border-radius: 25px;
-    width: 110px;
-    line-height: 20px;
-    margin-left: 5px;
-/*    margin-right: 10px;*/
-}
-.providerDetails  .services, .providerDetails .completed{
-    background-color: #049071;
-    color: #fff;
-    font-size: 15px;
-    padding: 10px 10px;
+.providerDetails .providerheader a{
+    color: #ffffff;
+    width: 100%;
     text-align: center;
+    display: block;
+    font-size: 18px;
+    text-decoration: underline;
+}
+.providerDetails .provideramount{
+        height: 150px;
+}
+.providerDetails .provideramount h1{
+    color: #45DCBB;
+    width: 100%;
+    text-align: center;
+    display: block;
+    font-size: 27px;
+    margin-top: 30px;
+}
+.providerDetails .provideramount p{
+    color: #000;
+    width: 100%;
+    text-align: center;
+    display: block;
+    font-size: 30px;
     margin-top: 15px;
 }
-.providerDetails  .services{
-    border-right: 1px solid #fff;
-}
-.providerDetails  .completed{
-    border-left: 1px solid #fff;
-}
-.providerDetails  .ratings p{
-    font-size: 20px;
-    margin-bottom: 5px;
-}
-.providerDetails  .ratings{
-    text-align: center;
-    color: #f0df0f;
-    font-size: 40px;
-}
-.providerDetails .feedback{
-    margin-top: 20px;
-}
-.providerDetails .feedback .list .item{
-    background-color: #45DCBB;
-    text-align: center;
-    color: #ffffff;
-    font-size: 25px;
-}
+
 /*Feedbacks*/
 .viewfeedbak{
     background-color: #f7f7f7;
@@ -534,6 +513,19 @@
  white-space: nowrap;
 }
 /*Viewestimates*/
+.viewestimates .item{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.viewestimates .item-divider{
+    text-align: center;
+    font-size: 23px;
+    color: #45DCBB;
+    background-color: #EAEAEA;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
 .viewestimates .radio-icon{  visibility: visible !important;}
 
 

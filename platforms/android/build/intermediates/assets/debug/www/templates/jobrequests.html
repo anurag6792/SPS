@@ -5,18 +5,14 @@
 </ion-header-bar>
     <ion-content class="has-header main-content">
         <h4>Your Request</h4>
-        <form>
+        
         <div class="bar bar-header item-input-inset">
           <label class="item-input-wrapper">
             <i class="icon ion-ios-search placeholder-icon"></i>
-              
             <input type="text" placeholder="Search Requests.." ng-model="searchrequest" />
-            <a ng-if="searchrequest.length" type="button" class="button button-icon ion-android-close input-button clear" 
-                    ng-click="clearsearch();"></a>
-            
           </label>
         </div>
-        </form>        
+                
         <ion-list ng-show='showRequest'>
           <ion-item  ng-repeat="requests in jobrequests | orderBy:'-CreatedDate' | filter:{JobName:searchrequest}" class=" item-icon-right" ui-sref='app.viewrequest({ jobID: requests.JobId})' >
             <h2>{{requests.JobName}}</h2>

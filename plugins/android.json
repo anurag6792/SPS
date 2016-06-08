@@ -25,9 +25,6 @@
         "ionic-plugin-keyboard": {
             "PACKAGE_NAME": "com.ionicframework.sps208170"
         },
-        "cordova-plugin-camera": {
-            "PACKAGE_NAME": "com.ionicframework.sps208170"
-        },
         "cordova-plugin-file": {
             "PACKAGE_NAME": "com.ionicframework.sps208170"
         },
@@ -35,6 +32,9 @@
             "PACKAGE_NAME": "com.ionicframework.sps208170"
         },
         "cordova-plugin-geolocation": {
+            "PACKAGE_NAME": "com.ionicframework.sps208170"
+        },
+        "cordova-plugin-camera": {
             "PACKAGE_NAME": "com.ionicframework.sps208170"
         }
     },

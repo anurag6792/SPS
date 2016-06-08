@@ -12,7 +12,7 @@
                 </label>
             </div>    
             <ion-list ng-show='showEstimates'>
-                <ion-item ng-repeat='estimates in jobestimates | filter:{JobName:searchrequest}' class="item " ui-sref='app.viewestimates({jobname:estimates.JobName, jobID: estimates.JobId , customerID :estimates.CustomerId})' >
+                <ion-item ng-repeat='estimates in jobestimates | filter:{JobName:searchestimate}' class="item " ui-sref='app.viewestimates({jobname:estimates.JobName, jobID: estimates.JobId , customerID :estimates.CustomerId})' >
                   <h2>{{estimates.JobName}}</h2>
 <!--                  <p>Nine Inch Nails</p>-->
                   <span class="badge badge-balanced">{{estimates.EstimatesCount}}</span>    

@@ -73,32 +73,7 @@
                                 <span ng-message="required">You did not enter your email</span>
                       </label>    
                             
-                      <label class="item item-input item-stacked-label">
-                        <span class="input-label">Old Password</span>
-                        <input type="password" name="oldpassword" ng-model="edituser.oldpassword" ng-pattern={{profile.description.Password}} required>
-                      </label>
-                      <label ng-messages="edituserform.oldpassword.$dirty && edituserform.oldpassword.$error" style="color:#F70000" role="alert">
-                                <span ng-message="required">You did not enter your old password</span>
-                                <span ng-message="pattern">Did not match your old password</span>
-                      </label>     
-                      <label class="item item-input item-stacked-label">
-                        <span class="input-label">New Password</span>
-                        <input type="password" name="newpassword" ng-model="edituser.newpassword"  ng-minlength="8" ng-maxlength="20" ng-pattern="/(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z])/" required>
-                      </label>
-                      <label ng-messages="edituserform.newpassword.$dirty && edituserform.newpassword.$error" style="color:#F70000" role="alert">
-                                <span ng-message="required">You did not enter your password</span>
-                                <span ng-message="minlength">Your field is too short</span>
-                                <span ng-message="maxlength">Your field is too long</span>
-                                <span ng-message="pattern">Must contain one lower case uppercase letter, and one non-alpha character (a number or a symbol.)</span>
-                      </label>     
-                      <label class="item item-input item-stacked-label">
-                        <span class="input-label">Confrim Password</span>
-                        <input type="password" name="confirmpassword" ng-model="edituser.confirmpassword" valid-password-c='edituser.newpassword' required>
-                      </label>
-                      <label ng-messages="edituserform.confirmpassword.$dirty && edituserform.confirmpassword.$error" style="color:#F70000" role="alert">
-                                <span ng-message="required">confirm your password</span>
-                                <span ng-message="noMatch">Password does not match</span>
-                      </label>         
+                              
 
                     </div>
                     <button class="button button-block button-mybuttoncolor" ng-click='edituserform.$valid &&  saveuser(edituser);'>Save </button>     

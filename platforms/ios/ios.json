@@ -37,14 +37,6 @@
                             "count": 1
                         },
                         {
-                            "xml": "<feature name=\"Camera\"><param name=\"ios-package\" value=\"CDVCamera\" /></feature>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<preference name=\"CameraUsesGeolocation\" value=\"false\" />",
-                            "count": 1
-                        },
-                        {
                             "xml": "<feature name=\"File\"><param name=\"ios-package\" value=\"CDVFile\" /><param name=\"onload\" value=\"true\" /></feature>",
                             "count": 1
                         },
@@ -54,6 +46,14 @@
                         },
                         {
                             "xml": "<feature name=\"Geolocation\"><param name=\"ios-package\" value=\"CDVLocation\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Camera\"><param name=\"ios-package\" value=\"CDVCamera\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<preference name=\"CameraUsesGeolocation\" value=\"false\" />",
                             "count": 1
                         }
                     ]
@@ -90,9 +90,6 @@
         "ionic-plugin-keyboard": {
             "PACKAGE_NAME": "com.ionicframework.sps208170"
         },
-        "cordova-plugin-camera": {
-            "PACKAGE_NAME": "com.ionicframework.sps208170"
-        },
         "cordova-plugin-file": {
             "PACKAGE_NAME": "com.ionicframework.sps208170"
         },
@@ -100,6 +97,9 @@
             "PACKAGE_NAME": "com.ionicframework.sps208170"
         },
         "cordova-plugin-geolocation": {
+            "PACKAGE_NAME": "com.ionicframework.sps208170"
+        },
+        "cordova-plugin-camera": {
             "PACKAGE_NAME": "com.ionicframework.sps208170"
         }
     },
@@ -153,38 +153,6 @@
                 "cordova.plugins.Keyboard"
             ],
             "runs": true
-        },
-        {
-            "file": "plugins/cordova-plugin-camera/www/CameraConstants.js",
-            "id": "cordova-plugin-camera.Camera",
-            "pluginId": "cordova-plugin-camera",
-            "clobbers": [
-                "Camera"
-            ]
-        },
-        {
-            "file": "plugins/cordova-plugin-camera/www/CameraPopoverOptions.js",
-            "id": "cordova-plugin-camera.CameraPopoverOptions",
-            "pluginId": "cordova-plugin-camera",
-            "clobbers": [
-                "CameraPopoverOptions"
-            ]
-        },
-        {
-            "file": "plugins/cordova-plugin-camera/www/Camera.js",
-            "id": "cordova-plugin-camera.camera",
-            "pluginId": "cordova-plugin-camera",
-            "clobbers": [
-                "navigator.camera"
-            ]
-        },
-        {
-            "file": "plugins/cordova-plugin-camera/www/ios/CameraPopoverHandle.js",
-            "id": "cordova-plugin-camera.CameraPopoverHandle",
-            "pluginId": "cordova-plugin-camera",
-            "clobbers": [
-                "CameraPopoverHandle"
-            ]
         },
         {
             "file": "plugins/cordova-plugin-file/www/DirectoryEntry.js",
@@ -407,12 +375,44 @@
             "clobbers": [
                 "navigator.geolocation"
             ]
+        },
+        {
+            "file": "plugins/cordova-plugin-camera/www/CameraConstants.js",
+            "id": "cordova-plugin-camera.Camera",
+            "pluginId": "cordova-plugin-camera",
+            "clobbers": [
+                "Camera"
+            ]
+        },
+        {
+            "file": "plugins/cordova-plugin-camera/www/CameraPopoverOptions.js",
+            "id": "cordova-plugin-camera.CameraPopoverOptions",
+            "pluginId": "cordova-plugin-camera",
+            "clobbers": [
+                "CameraPopoverOptions"
+            ]
+        },
+        {
+            "file": "plugins/cordova-plugin-camera/www/Camera.js",
+            "id": "cordova-plugin-camera.camera",
+            "pluginId": "cordova-plugin-camera",
+            "clobbers": [
+                "navigator.camera"
+            ]
+        },
+        {
+            "file": "plugins/cordova-plugin-camera/www/ios/CameraPopoverHandle.js",
+            "id": "cordova-plugin-camera.CameraPopoverHandle",
+            "pluginId": "cordova-plugin-camera",
+            "clobbers": [
+                "CameraPopoverHandle"
+            ]
         }
     ],
     "plugin_metadata": {
-        "cordova-plugin-camera": "2.1.1",
         "cordova-plugin-file": "4.1.1",
         "cordova-plugin-network-information": "1.2.1",
-        "cordova-plugin-geolocation": "2.1.0"
+        "cordova-plugin-geolocation": "2.1.0",
+        "cordova-plugin-camera": "2.1.1"
     }
 }

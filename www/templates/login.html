@@ -18,9 +18,11 @@
                   </label>
                   <label class="login-errors" ng-show="loginform.password.$error.required && loginform.password.$touched">
                     <span >enter your password</span>
-                  </label>    
+                  </label>
+                    
                 </div>
                 <button class="button button-block login-button" ng-click="submitted=true" type="submit" >Login</button>
+                <p class="hide-on-keyboard-open forgot-password" ng-click="forgotpassword();">Forgot Password</p>
                 <label class="login-errors" ng-show="loginform.$invalid && submitted ">
                     <span >invalid username and password</span>
                 </label>

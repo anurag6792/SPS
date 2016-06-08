@@ -147,7 +147,7 @@ app.service("userAuth",['$q','$http','localStorageService','$filter',function($q
                             "JobStatus": status,
                             "JobDetails": details,
                             "CustomerExpectedDate": date,
-                            "ImageUrl": image,
+                            "ImageList": image,
                             "AddressId": AddressId,
                             "RecordStatus": recstatus,
                             "JobStatus": 1
@@ -172,6 +172,38 @@ app.service("userAuth",['$q','$http','localStorageService','$filter',function($q
         
         
     }
+     //Function to change user password
+     function changeuserpassword(userid,password) {
+        console.log("In service user change password function");
+        var deferredObject = $q.defer();
+        $http({
+                url    : 'http://ecomdemo.cloudapp.net:8888/api/User/ChangePassword',
+                method : 'POST',
+                data   : {
+                                "UserId": userid,
+                                "OldPassword": password.oldpassword,
+                                "NewPassword": password.newpassword
+                            },
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                transformRequest: function(obj) {
+                  var str = [];
+                  for(var p in obj)
+                  str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+                  return str.join("&");
+                }})
+               .success(function(response){
+                    console.log("user change password API successfully called");
+                    deferredObject.resolve(response);
+                })
+               .error(function(error){
+                    console.log("user change password API was unsuccessful");
+                    deferredObject.reject(response);
+                });
+        
+        return deferredObject.promise;       
+        
+    };
+    
     
     //Function to register new user
     function newuser(registerUser) {
@@ -490,6 +522,7 @@ app.service("userAuth",['$q','$http','localStorageService','$filter',function($q
         sendToken : sendToken,//function to send device token
         userDetails : userDetails,//function to get user details
         edituserDetails : edituserDetails,//function to edit user details
+        changeuserpassword : changeuserpassword, //function to change user password
         destroyUser : destroyUser,//function to destroy userdetails stored in loacal storage
         isLoggedIn : isLoggedIn,//function to check whether the user is logged in or not
         sendRequest : sendRequest,//function to send job request to the operator/admin

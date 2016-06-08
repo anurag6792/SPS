@@ -44,6 +44,25 @@ app.run(function($ionicPlatform,localStorageService) {
     });
   });
 });
+app.run(function($ionicPlatform, $ionicPopup) {
+        $ionicPlatform.ready(function() {
+            if(window.Connection) {
+                if(navigator.connection.type == Connection.NONE) {
+                    $ionicPopup.alert({
+                        title: "Internet Disconnected",
+                        content: "Please check your internet connection.",
+                        okText: 'OK', // String (default: 'OK'). The text of the OK button.
+                        okType: 'button button-block login-button' // String (default: 'button-positive'). The type of the OK button.
+                    })
+                    .then(function(result) {
+                        if(result) {
+                            ionic.Platform.exitApp();
+                        }
+                    });
+                }
+            }
+        });
+    });
 app.config(function (localStorageServiceProvider) {
   localStorageServiceProvider
     .setPrefix('SPS');
@@ -59,6 +78,11 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
         url: '/signup',
         cache:false,
         templateUrl:'templates/signup.html'
+    })
+    .state('test',{
+        url: '/test',
+        cache:false,
+        templateUrl:'templates/test.html'
     })
     .state('app',{
         cache: false,
@@ -114,6 +138,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
     })
     .state('app.estimates',{
         url: '/estimates',
+         cache:false,
         views: {
         'sidemenuContent' :{
           templateUrl: "templates/estimates.html"
@@ -122,6 +147,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
     })
     .state('app.viewestimates',{
         url: '/viewestimates/:jobname/:jobID/:customerID',
+         cache:false,
         views: {
         'sidemenuContent' :{
           templateUrl: "templates/viewestimates.html"

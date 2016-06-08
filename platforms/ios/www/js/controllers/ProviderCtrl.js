@@ -122,6 +122,7 @@ app.controller('ProviderCtrl',['$scope','userAuth','$ionicModal','$stateParams',
            $scope.acceptestimate();     
            console.log('You are sure');
          } else {
+           $scope.goBack();     
            console.log('You are not sure');
          }
        });
@@ -168,7 +169,7 @@ app.controller('ProviderCtrl',['$scope','userAuth','$ionicModal','$stateParams',
            });
 
            alertPopup.then(function(res) {
-               $state.go('app.estimates');
+               $state.go('app.estimates', {}, { reload: true });
              console.log('Estimate has been sent successfully');
            });
          };

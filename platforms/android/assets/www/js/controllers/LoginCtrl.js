@@ -5,7 +5,8 @@ app.controller("LoginCtrl",
                 '$ionicPopup',
                 '$ionicLoading',
                 'localStorageService' ,
-                function($scope,userAuth,$state,$ionicPopup,$ionicLoading,localStorageService){
+                '$timeout',
+                function($scope,userAuth,$state,$ionicPopup,$ionicLoading,localStorageService,$timeout){
 //    $scope.show = false;
 //    $scope.userinfo = '';
     $scope.show = function() {
@@ -73,8 +74,44 @@ app.controller("LoginCtrl",
                    alertPopup.then(function(res) {
                      console.log('Login failed');
                    });
-                 };   
+                 };
+     
+    
     
     }
     }
+                    
+    $scope.forgotpassword = function() {
+      $scope.forgot = {};
+       var forgotPopup = $ionicPopup.show({
+        template: '<p>Please enter Your email address</p><input class="forgot-input" type="email" ng-model="forgot.password" ><p>{{forgot.password}}</p>',
+        title: 'Forgot Password',
+//        subTitle: 'Please enter Your email address',
+        scope: $scope,
+        buttons: [
+          { text: 'Cancel',
+            onTap:function(e){
+                return false;
+            }
+          },
+          {
+            text: '<b>Save</b>',
+            type: 'button login-button',
+            onTap: function(e) {
+                return true;
+              // add your action
+            }
+          }
+        ]
+        });
+        forgotPopup.then(function(res) {
+            console.log('Tapped!', res);
+          });
+
+          $timeout(function() {
+             forgotPopup.close(); //close the popup after 3 seconds for some reason
+          }, 10000);
+        };
+                    
+                            
     }]);

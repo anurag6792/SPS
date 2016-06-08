@@ -13,7 +13,7 @@ app.controller('DashboardCtrl',[
     '$http',
     '$ionicModal',
     function( $scope, userAuth, localStorageService, $cordovaCamera, $cordovaFile,$filter,$ionicPopup,$state,$ionicLoading,$cordovaGeolocation,$ionicPlatform,$http,$ionicModal){
-   
+    
     $scope.request= {}; // request model to send job request  
     $scope.address = []; // address array to save the addresses of the user    
     $scope.request.AddressId = localStorageService.get('addressId'); // setting address id 
@@ -363,10 +363,32 @@ app.controller('DashboardCtrl',[
             }       
          });
         
-    }; 
+    };
+     
+    $scope.images = [];    
+    $scope.takePicture = function() {
+        var options = { 
+            quality : 75, 
+            destinationType : Camera.DestinationType.DATA_URL, 
+            sourceType : Camera.PictureSourceType.CAMERA, 
+            allowEdit : true,
+            encodingType: Camera.EncodingType.JPEG,
+            targetWidth: 300,
+            targetHeight: 300,
+            popoverOptions: CameraPopoverOptions,
+            saveToPhotoAlbum: false
+        };
+ 
+        $cordovaCamera.getPicture(options).then(function(imageData) {
+            $scope.imgURI = "data:image/jpeg;base64," + imageData;
+            $scope.images.push($scope.imgURI);
+        }, function(err) {
+            // An error occured. Show a message to the user
+        });
+    }    
         
     $scope.requestdetails = {};    
-    $scope.images = []; //array where images taken by the consumer will be stored
+    //array where images taken by the consumer will be stored
     $scope.sendRequest = function(request){ // function will be called when consumer sends the details of the request
         
         $scope.expectedDate = $filter('date')(request.Date, 'yyyy/MM/dd'); // converting expected date from consumer to this                                                                                        format(yyyy/MM/dd)
@@ -391,28 +413,7 @@ app.controller('DashboardCtrl',[
          
         });
     };
-    
-    //function to take picture from the consumers mobile
-    $scope.takePicture = function() {
-        var options = { 
-            quality : 75, 
-            destinationType : Camera.DestinationType.DATA_URL, 
-            sourceType : Camera.PictureSourceType.CAMERA, 
-            allowEdit : true,
-            encodingType: Camera.EncodingType.JPEG,
-            targetWidth: 300,
-            targetHeight: 300,
-            popoverOptions: CameraPopoverOptions,
-            saveToPhotoAlbum: false
-        };
- 
-        $cordovaCamera.getPicture(options).then(function(imageData) {
-            $scope.imgURI = "data:image/jpeg;base64," + imageData;
-            $scope.images.push($scope.imgURI);
-        }, function(err) {
-            // An error occured. Show a message to the user
-        });
-    }
+   
     
     //Alert when Request sent successfully
     $scope.successRequest = function() {

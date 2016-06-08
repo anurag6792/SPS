@@ -10,7 +10,8 @@
                 <ion-item class="item item-divider">
                     {{jname}}
                 </ion-item>
-                <ion-item ng-repeat="providers in jobestimateDetails" class="item item-icon-right" ui-sref='app.provider({JobResponseId : providers.JobResponseId})'>
+                <ion-item ng-repeat="providers in jobestimateDetails" class="item item-icon-right" 
+                          ui-sref='app.provider({JobResponseId : providers.JobResponseId})'>
                     <h2>{{providers.User.FirstName}} {{providers.User.LastName}}</h2>
                     <i class="icon ion-chevron-right"></i>
                 </ion-item>

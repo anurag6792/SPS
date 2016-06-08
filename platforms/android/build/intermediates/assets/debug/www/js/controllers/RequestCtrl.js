@@ -1,12 +1,5 @@
 app.controller('RequestCtrl',['$scope','userAuth','localStorageService','$filter','$ionicLoading',function($scope,userAuth,localStorageService,$filter,$ionicLoading){
     
-    $scope.searchrequest = '';
-    $scope.clearsearch = function(event) {
-        console.log('clicked');
-        event.searchrequest = '';
-    };
-
-//    $scope.userID = {};
     $scope.show = function() {
                     $ionicLoading.show({
                       template: '<ion-spinner icon="lines"></ion-spinner>'
