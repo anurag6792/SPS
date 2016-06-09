@@ -414,6 +414,33 @@ app.service("userAuth",['$q','$http','localStorageService','$filter',function($q
         
     };
     
+    //Function to view all the Approved job requests
+    function viewapprovedjobrequests(userID) {
+        console.log("In service viewjobrequests function");
+        var deferredObject = $q.defer();
+        $http({
+                url    : 'http://ecomdemo.cloudapp.net:8888//api/Job/showApprovedJobsForCustomer',
+                method : 'POST',
+                params   : {"custid": userID},
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                transformRequest: function(obj) {
+                  var str = [];
+                  for(var p in obj)
+                  str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+                  return str.join("&");
+                }})
+               .success(function(response){
+                    console.log("View All Job requests API successfully called");
+                    deferredObject.resolve(response);
+                })
+               .error(function(error){
+                             deferredObject.reject(response);
+                });
+        
+        return deferredObject.promise;       
+        
+    };
+    
     
     //Function to add the address of the user while sending the job rquest
     function showaddress(userID){
@@ -532,6 +559,7 @@ app.service("userAuth",['$q','$http','localStorageService','$filter',function($q
         viewjobestimates:viewjobestimates,//Functon to view all job estimates sent by the provider
         viewsinglejobestimate : viewsinglejobestimate,//Function to view single job estimate
         viewsinglejobestimatedetail : viewsinglejobestimatedetail, // Function to view single job estimate details
+        viewapprovedjobrequests : viewapprovedjobrequests,//Function to view all the approved job requests
         acceptestimate : acceptestimate, //Function to accept estimate by the provider
         showaddress :showaddress,//Function to show the user address
         saveaddress : saveaddress,//function to save address while sending job request

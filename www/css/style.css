@@ -572,4 +572,31 @@ background: #F7F7F7;
     padding-top: 5px;
     padding-bottom: 5px;
 }
+/*Approved Requests*/
+.approvedrequests h4{
+    text-align: center;
+    font-size: 18px;
+    color: #45DCBB;
+}
+/* View Approved Request*/
+.viewapprovedrequests .card .item-divider{
+    background-color: #45DCBB;
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+}
+.viewapprovedrequests .card .item-text-wrap .request-label{
+    width: 50%;
+    display: inline-block;
+    margin: 0;
+    font-size: 15px;
+    font-weight: 700;
+}
+.viewapprovedrequests .card .item-text-wrap p{
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.viewapprovedrequests .card .item-text-wrap span{
+    padding: 0 10px;
+}
 
