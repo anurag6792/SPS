@@ -364,7 +364,9 @@ app.controller('DashboardCtrl',[
          });
         
     };
-     
+   
+     document.addEventListener("deviceready", function () {
+    
     $scope.images = [];    
     $scope.takePicture = function() {
         var options = { 
@@ -381,12 +383,12 @@ app.controller('DashboardCtrl',[
  
         $cordovaCamera.getPicture(options).then(function(imageData) {
             $scope.imgURI = "data:image/jpeg;base64," + imageData;
-            $scope.images.push($scope.imgURI);
+            $scope.images.push(imageData);
         }, function(err) {
             // An error occured. Show a message to the user
         });
-    }    
-        
+    };
+     });
     $scope.requestdetails = {};    
     //array where images taken by the consumer will be stored
     $scope.sendRequest = function(request){ // function will be called when consumer sends the details of the request
@@ -400,6 +402,7 @@ app.controller('DashboardCtrl',[
         sendrequest.then(function (response) {
             if (response.success == "true") {
                 console.log('In DashboardCtrl : request sending successful');
+//                 alert(response.description);
                  $scope.successRequest();// alerting when the request has been sent successfully
                 $scope.requestdetails = localStorageService.get('requestDetails');//adding request details in requestdetails inDashboardCtrl
                 console.log('Added request details to the DashboardCtrl in requestdetails') ;

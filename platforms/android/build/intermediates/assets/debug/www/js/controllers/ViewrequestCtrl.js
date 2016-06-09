@@ -20,6 +20,7 @@ app.controller('ViewrequestCtrl',['$scope','$stateParams','localStorageService',
     viewjobrequest.then(function (response) {
             if (response.success == "true") {
                 $scope.hide();
+                console.log(response);
                 $scope.jobrequestDetails = response.description;
                 $scope.addressDetails =  response.description.UserAddress;
                 

@@ -293,6 +293,53 @@
     background-color: rgba(0, 159, 195, 0.54);
     color: #fff;
 }
+.showaddress .radio-icon{  visibility: visible !important;}
+
+
+.showaddress .radio-icon:before{
+  content:"" !important;
+  border:2px solid #45DCBB !important;
+  width: 24px !important;
+  height: 24px !important;
+  border-radius: 50% !important;
+  overflow:hidden !important;
+}
+
+
+.showaddress .radio-icon:after{
+  content:"" !important;
+  position: absolute !important;
+  right: 20px !important;
+  top: 22px !important;
+  background:#45DCBB !important;
+  width: 12px !important;
+  height: 12px !important;
+  border-radius: 50% !important;
+  overflow:hidden !important;
+
+
+  transition: -webkit-transform .28s cubic-bezier(0.420, 0.000, 0.000, 1.650);
+  transition: transform .28s cubic-bezier(0.420, 0.000, 0.000, 1.650);
+  -webkit-transform: scale(0);
+  transform: scale(0);
+}
+
+/*.item-radio input:checked ~ .item-content {
+background: #F7F7F7;
+}*/
+
+.showaddress .item-radio input:checked + .radio-content .radio-icon:after{
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+
+.showaddress .radio-positive .radio-icon:after{
+  background:#45DCBB !important;
+}
+.showaddress .radio-positive .radio-icon:before{
+  border-color: #45DCBB !important;
+}
+
 /* Estimate List*/
 
 /* Provider Details*/
@@ -526,49 +573,3 @@
     padding-bottom: 5px;
 }
 
-.viewestimates .radio-icon{  visibility: visible !important;}
-
-
-.viewestimates .radio-icon:before{
-  content:"" !important;
-  border:2px solid black !important;
-  width: 24px !important;
-  height: 24px !important;
-  border-radius: 50% !important;
-  overflow:hidden !important;
-}
-
-
-.viewestimates .radio-icon:after{
-  content:"" !important;
-  position: absolute !important;
-  right: 20px !important;
-  top: 22px !important;
-  background:black !important;
-  width: 12px !important;
-  height: 12px !important;
-  border-radius: 50% !important;
-  overflow:hidden !important;
-
-
-  transition: -webkit-transform .28s cubic-bezier(0.420, 0.000, 0.000, 1.650);
-  transition: transform .28s cubic-bezier(0.420, 0.000, 0.000, 1.650);
-  -webkit-transform: scale(0);
-  transform: scale(0);
-}
-
-/*.item-radio input:checked ~ .item-content {
-background: #F7F7F7;
-}*/
-
-.viewestimates .item-radio input:checked + .radio-content .radio-icon:after{
-  -webkit-transform: scale(1);
-  transform: scale(1);
-}
-
-.viewestimates .radio-positive .radio-icon:after{
-  background:#45DCBB !important;
-}
-.viewestimates .radio-positive .radio-icon:before{
-  border-color: #45DCBB !important;
-}

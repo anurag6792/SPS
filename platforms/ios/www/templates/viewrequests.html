@@ -18,8 +18,8 @@
         
         <p>{{jobrequestDetails.JobDetails}}  </p>
       </div>
-      <div class="item item-text-wrap">
-        <img ng-repeat="image in jobrequestDetails.JobImage" ng-src="image">
+      <div ng-if='jobrequestDetails.JobImage' class="item item-text-wrap">
+        <img ng-repeat="image in jobrequestDetails.JobImage" ng-src="data:image/jpeg;base64,{{image.ImageData}}" style="width:48%;margin: 1%;">
       </div>     
       </div>
           

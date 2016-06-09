@@ -144,7 +144,7 @@ app.service("userAuth",['$q','$http','localStorageService','$filter',function($q
                 method : 'POST',
                 data   : {  "JobName": subject,
                             "PostedBy": postedby,
-                            "JobStatus": status,
+//                            "JobStatus": status,
                             "JobDetails": details,
                             "CustomerExpectedDate": date,
                             "ImageList": image,
