@@ -6,7 +6,8 @@ app.controller('ProfileCtrl',[
     '$ionicModal',
     '$ionicPopup',
     '$ionicLoading',
-    function($scope,userAuth,localStorageService,$state,$ionicModal,$ionicPopup,$ionicLoading){
+    '$cordovaImagePicker',
+    function($scope,userAuth,localStorageService,$state,$ionicModal,$ionicPopup,$ionicLoading,$cordovaImagePicker){
      $scope.password = {};//for storing password objects after changing password
     // Function to Show the loader    
     $scope.show = function() {
@@ -110,6 +111,55 @@ app.controller('ProfileCtrl',[
                      } 
                      console.log('alert closed after unsuccessful password change');
                    });
-                 };      
+                 };
+        
+        $scope.newimage = '';
+        $scope.changeuserimage = function(){
+            var options = {
+               maximumImagesCount: 1,
+               width: 800,
+               height: 800,
+               quality: 80
+              };
+
+              $cordovaImagePicker.getPictures(options)
+                .then(function (results) {
+                  alert(results)
+                  $scope.newimage  = encodeImageUri(results[1]) ;
+                  function encodeImageUri(imageUri)
+                    {
+                         var c=document.createElement('canvas');
+                         var ctx=c.getContext("2d");
+                         var img=new Image();
+                         img.onload = function(){
+                           c.width=this.width;
+                           c.height=this.height;
+                           ctx.drawImage(img, 0,0);
+                         };
+                         img.src=imageUri;
+                         var dataURL = c.toDataURL("image/jpeg");
+                         return dataURL;
+                    }
+                  
+                  alert($scope.newimage);
+                  var editimage = userAuth.edituserimage($scope.newimage);    
+                  editimage.then(function(response){
+                        if (response.success == "true") {
+                            $state.go('app.profile', {}, { reload: true });
+                            console.log('changed image successfully'); 
+                        }
+                        else{
+                            alert('image change unsuccessful');
+                            console.log('image change was not successfully');
+
+                        }
+                    });
+                  
+                  
+                }, function(error) {
+                  // error getting photos
+                });
+        };
+        
         
 }]);

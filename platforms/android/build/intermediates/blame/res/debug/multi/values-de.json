@@ -1,0 +1,197 @@
+[
+    {
+        "outputFile": "D:\\anurag workshop\\SPS\\platforms\\android\\build\\intermediates\\res\\merged\\debug\\values-de\\values-de.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 45,
+                    "endOffset": 96
+                },
+                "from": {
+                    "file": "D:\\anurag workshop\\SPS\\platforms\\android\\res\\values-de\\multiimagechooser_strings_de.xml",
+                    "position": {
+                        "startLine": 10,
+                        "startColumn": 4,
+                        "startOffset": 787,
+                        "endColumn": 45,
+                        "endOffset": 828
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 101,
+                    "endColumn": 35,
+                    "endOffset": 132
+                },
+                "from": {
+                    "file": "D:\\anurag workshop\\SPS\\platforms\\android\\res\\values-de\\multiimagechooser_strings_de.xml",
+                    "position": {
+                        "startLine": 11,
+                        "startColumn": 4,
+                        "startOffset": 834,
+                        "endColumn": 35,
+                        "endOffset": 865
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 137,
+                    "endColumn": 99,
+                    "endOffset": 232
+                },
+                "from": {
+                    "file": "D:\\anurag workshop\\SPS\\platforms\\android\\res\\values-de\\multiimagechooser_strings_de.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 221,
+                        "endColumn": 99,
+                        "endOffset": 316
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 5,
+                    "startColumn": 4,
+                    "startOffset": 237,
+                    "endColumn": 100,
+                    "endOffset": 333
+                },
+                "from": {
+                    "file": "D:\\anurag workshop\\SPS\\platforms\\android\\res\\values-de\\multiimagechooser_strings_de.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 119,
+                        "endColumn": 100,
+                        "endOffset": 215
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 6,
+                    "startColumn": 4,
+                    "startOffset": 338,
+                    "endColumn": 86,
+                    "endOffset": 420
+                },
+                "from": {
+                    "file": "D:\\anurag workshop\\SPS\\platforms\\android\\res\\values-de\\multiimagechooser_strings_de.xml",
+                    "position": {
+                        "startLine": 8,
+                        "startColumn": 4,
+                        "startOffset": 581,
+                        "endColumn": 86,
+                        "endOffset": 663
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 7,
+                    "startColumn": 4,
+                    "startOffset": 425,
+                    "endColumn": 116,
+                    "endOffset": 537
+                },
+                "from": {
+                    "file": "D:\\anurag workshop\\SPS\\platforms\\android\\res\\values-de\\multiimagechooser_strings_de.xml",
+                    "position": {
+                        "startLine": 9,
+                        "startColumn": 4,
+                        "startOffset": 669,
+                        "endColumn": 116,
+                        "endOffset": 781
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 8,
+                    "startColumn": 4,
+                    "startOffset": 542,
+                    "endColumn": 60,
+                    "endOffset": 598
+                },
+                "from": {
+                    "file": "D:\\anurag workshop\\SPS\\platforms\\android\\res\\values-de\\multiimagechooser_strings_de.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 57,
+                        "endColumn": 60,
+                        "endOffset": 113
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 9,
+                    "startColumn": 4,
+                    "startOffset": 603,
+                    "endColumn": 75,
+                    "endOffset": 674
+                },
+                "from": {
+                    "file": "D:\\anurag workshop\\SPS\\platforms\\android\\res\\values-de\\multiimagechooser_strings_de.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 407,
+                        "endColumn": 75,
+                        "endOffset": 478
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 10,
+                    "startColumn": 4,
+                    "startOffset": 679,
+                    "endColumn": 95,
+                    "endOffset": 770
+                },
+                "from": {
+                    "file": "D:\\anurag workshop\\SPS\\platforms\\android\\res\\values-de\\multiimagechooser_strings_de.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 484,
+                        "endColumn": 95,
+                        "endOffset": 575
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 11,
+                    "startColumn": 4,
+                    "startOffset": 775,
+                    "endColumn": 83,
+                    "endOffset": 854
+                },
+                "from": {
+                    "file": "D:\\anurag workshop\\SPS\\platforms\\android\\res\\values-de\\multiimagechooser_strings_de.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 322,
+                        "endColumn": 83,
+                        "endOffset": 401
+                    }
+                }
+            }
+        ]
+    }
+]

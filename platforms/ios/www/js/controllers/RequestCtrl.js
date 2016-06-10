@@ -15,9 +15,10 @@ app.controller('RequestCtrl',['$scope','userAuth','localStorageService','$filter
     
     $scope.userID = localStorageService.get('userID');//adding consumer userID in userID in RequestCtrl
     console.log('Added consumer userID  to the RequestCtrl in userID ') ;
-    $scope.show();
+    
     $scope.jobrequests = [];
     var viewjobrequests = userAuth.viewjobrequests($scope.userID);
+    $scope.show();
     viewjobrequests.then(function (response) {
             if (response.success == "true") {
                 $scope.hide();

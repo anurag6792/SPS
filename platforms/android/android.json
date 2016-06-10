@@ -43,6 +43,10 @@
                         {
                             "xml": "<feature name=\"Camera\"><param name=\"android-package\" value=\"org.apache.cordova.camera.CameraLauncher\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"ImagePicker\"><param name=\"android-package\" value=\"com.synconset.ImagePicker\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -64,6 +68,18 @@
                         },
                         {
                             "xml": "<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\" />",
+                            "count": 1
+                        }
+                    ],
+                    "/manifest/application": [
+                        {
+                            "xml": "<activity android:label=\"@string/multi_app_name\" android:name=\"com.synconset.MultiImageChooserActivity\" android:theme=\"@android:style/Theme.Holo.Light\"></activity>",
+                            "count": 1
+                        }
+                    ],
+                    "/manifest": [
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />",
                             "count": 1
                         }
                     ]
@@ -100,6 +116,9 @@
             "PACKAGE_NAME": "com.ionicframework.sps208170"
         },
         "cordova-plugin-camera": {
+            "PACKAGE_NAME": "com.ionicframework.sps208170"
+        },
+        "cordova-plugin-image-picker": {
             "PACKAGE_NAME": "com.ionicframework.sps208170"
         }
     },
@@ -339,6 +358,13 @@
             "clobbers": [
                 "CameraPopoverHandle"
             ]
+        },
+        {
+            "file": "plugins/cordova-plugin-image-picker/www/imagepicker.js",
+            "id": "cordova-plugin-image-picker.ImagePicker",
+            "clobbers": [
+                "plugins.imagePicker"
+            ]
         }
     ],
     "plugin_metadata": {
@@ -351,6 +377,7 @@
         "cordova-plugin-file": "4.1.1",
         "cordova-plugin-network-information": "1.2.1",
         "cordova-plugin-geolocation": "2.1.0",
-        "cordova-plugin-camera": "2.1.1"
+        "cordova-plugin-camera": "2.1.1",
+        "cordova-plugin-image-picker": "1.1.1"
     }
 }

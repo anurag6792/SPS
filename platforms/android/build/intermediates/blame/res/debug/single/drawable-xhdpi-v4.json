@@ -1,6 +1,26 @@
 [
     {
+        "merged": "D:\\anurag workshop\\SPS\\platforms\\android\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_action_done_dark.png",
+        "source": "D:\\anurag workshop\\SPS\\platforms\\android\\res\\drawable-xhdpi\\ic_action_done_dark.png"
+    },
+    {
+        "merged": "D:\\anurag workshop\\SPS\\platforms\\android\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_action_discard_light.png",
+        "source": "D:\\anurag workshop\\SPS\\platforms\\android\\res\\drawable-xhdpi\\ic_action_discard_light.png"
+    },
+    {
+        "merged": "D:\\anurag workshop\\SPS\\platforms\\android\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_launcher.png",
+        "source": "D:\\anurag workshop\\SPS\\platforms\\android\\res\\drawable-xhdpi\\ic_launcher.png"
+    },
+    {
         "merged": "D:\\anurag workshop\\SPS\\platforms\\android\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\icon.png",
         "source": "D:\\anurag workshop\\SPS\\platforms\\android\\res\\drawable-xhdpi\\icon.png"
+    },
+    {
+        "merged": "D:\\anurag workshop\\SPS\\platforms\\android\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_action_done_light.png",
+        "source": "D:\\anurag workshop\\SPS\\platforms\\android\\res\\drawable-xhdpi\\ic_action_done_light.png"
+    },
+    {
+        "merged": "D:\\anurag workshop\\SPS\\platforms\\android\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_action_discard_dark.png",
+        "source": "D:\\anurag workshop\\SPS\\platforms\\android\\res\\drawable-xhdpi\\ic_action_discard_dark.png"
     }
 ]

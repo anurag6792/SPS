@@ -161,6 +161,24 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
           templateUrl: "templates/provider.html"
         }
       }
+    })
+    .state('app.approvedrequests',{
+        url: '/approvedrequests',
+        cache:false,
+        views: {
+        'sidemenuContent' :{
+          templateUrl: "templates/approvedrequests.html"
+        }
+      }
+    })
+    .state('app.viewapprovedrequests',{
+        url: '/viewapprovedrequests/:JobResponseId',
+        cache:false,
+        views: {
+        'sidemenuContent' :{
+          templateUrl: "templates/viewapprovedrequests.html"
+        }
+      }
     });
     $urlRouterProvider.otherwise('/login');
 }]);

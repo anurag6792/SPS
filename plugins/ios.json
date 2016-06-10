@@ -36,6 +36,9 @@
         },
         "cordova-plugin-camera": {
             "PACKAGE_NAME": "com.ionicframework.sps208170"
+        },
+        "cordova-plugin-image-picker": {
+            "PACKAGE_NAME": "com.ionicframework.sps208170"
         }
     },
     "dependent_plugins": {}

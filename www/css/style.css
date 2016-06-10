@@ -460,6 +460,14 @@ background: #F7F7F7;
     margin-top: 15px;
 
 }
+.profile .col .list .item p.changeimage{
+        color: #222;
+    position: absolute;
+    font-size: 12px;
+    left: 15px;
+    top: 85px;
+
+}
 
 .profile .button-profileditbutton{
     background-color: #45DCBB;
