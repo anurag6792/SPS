@@ -6,7 +6,7 @@
 <ion-content class="has-header main-content">
     <div class="row dashboard">
         <div class="col profileInfo">
-            <img src="img/malecostume-512.png" class="profilePic">
+            <img ng-src={{user.description.UserImage}} class="profilePic">
             <p>Welcome</p>
             <h3>{{user.description.FirstName}} {{user.description.LastName}}</h3>
             <p> Last Login : <span am-time-ago="user.description.LastLoginDate"></span></p>
@@ -16,36 +16,48 @@
     <div class="row request">
         <div class="col">
                 <h3>New Request</h3>
-            <form name="sendRequestform" novalidate=''   >
+            <form name="sendRequestform" novalidate >
             <div class="list">
           <label class="item item-input item-stacked-label">
             <span class="input-label">Subject</span>
-            <input type="text" class="input-control" name="requestSubject" placeholder="Enter the subject" ng-model="request.subject" required>
+            <input type="text" class="input-control" name="requestsubject" placeholder="Enter the subject" ng-model="request.subject" required>
           </label>
-          <label  class="request-errors" ng-show="sendRequestform.requestSubject.$error.required && sendRequestform.requestSubject.$touched">
+          <label  class="request-errors" ng-show="sendRequestform.requestsubject.$error.required && sendRequestform.$submitted">
                     <span>Please Enter the Subject</span>
           </label>           
           <label class="item item-input item-stacked-label">
             <span class="input-label">Details</span>
-            <textarea placeholder="Please Enter the details" name="requestDetails" ng-model="request.detail" class="input-control"></textarea>
+            <textarea placeholder="Please Enter the details" name="requestDetails" ng-model="request.detail" class="input-control" required></textarea>
           </label>
-          <label  class="request-errors" ng-show="sendRequestform.requestDetails.$error.required && sendRequestform.requestDetails.$touched">
+          <label class="request-errors" ng-show="sendRequestform.requestDetails.$error.required && sendRequestform.$submitted">
                     <span>Please Enter the details</span>
           </label>        
           <label class="item item-input item-stacked-label">
-            <span class="input-label" ng-model="request.date">Estimate Date</span>
+            <span class="input-label" ng-model="request.date">Preferred Date</span>
             <input type="date" class="input-control" name="requestDate" ng-model="request.Date" min="{{date | date:'yyyy-MM-dd'}}" required>
           </label>
-          <label  class="request-errors" ng-show="sendRequestform.requestDate.$error.required && sendRequestform.requestDate.$touched">
-                    <span>Please Enter the Date</span>
+          <label  class="request-errors" ng-show="sendRequestform.requestDate.$error.required && sendRequestform.$submitted">
+                    <span>Please enter your preferred Date</span>
           </label>        
           <label class="item item-input item-stacked-label">
-            <span class="input-label" >Estimate Time</span>
-            <input type="time" class="input-control" name="requestTime" ng-model="request.time" >
+            <span class="input-label" >Preferred Time</span>
+            <input type="time" class="input-control" name="requesttime" ng-change='checktime();' ng-model="request.time" ng-min="{{mintime | date:'hh:mm a'}}" required>
           </label>
-          <label  class="request-errors" ng-show="sendRequestform.requestTime.$error.required && sendRequestform.requestTime.$touched">
-                    <span>Please Enter the Time</span>
+<!--
+          <label  class="request-errors" ng-show="sendRequestform.requesttime.$error.required && sendRequestform.$submitted">
+                    <span>Please Enter your preferred Time</span>
           </label>
+-->
+          <label ng-messages="sendRequestform.$submitted && sendRequestform.requesttime.$error" style="color:#F70000" role="alert">
+                    <span ng-message="required">Please Enter your preferred Time</span>
+                    <span ng-message="min">Please give a gap of 2 hours</span>
+<!--                    <span ng-message="maxlength">Your first name is too long</span>-->
+          </label>        
+<!--
+          <label  class="request-errors" ng-show="sendRequestform.requesttime.$error.min && sendRequestform.$submitted">
+                    <span>Please give a gap of 2 hours</span>
+          </label>        
+-->
           <div class="row" ng-show="showaddedaddress">
               <div class="col">
                 <label class="item item-input item-stacked-label">
@@ -85,20 +97,20 @@
                
          <div class="row">
             <div class="col col-50">
-            <button class="button button-block button-mysmall" ng-click="addAddress();">Add Address</button>
+            <button class="button button-block button-mysmall" type="button" ng-click="addAddress();">Add Address</button>
             
             </div>       
             <div class="col col-50">
-                <button class="button button-block button-mysmall" ng-click="usecurrentLocation();">Use Current Location</button> 
+                <button class="button button-block button-mysmall" type="button" ng-click="usecurrentLocation();">Use Current Location</button> 
             </div>       
          </div> 
          <div class="row">
             <div class="col col-50">
-            <button class="button button-block button-mybuttoncolor" ng-click="takePicture()">Add image</button>
+            <button class="button button-block button-mybuttoncolor" type="button" ng-click="takePicture()">Add image</button>
             
             </div>       
             <div class="col col-50">
-                <button class="button button-block button-mybuttoncolor" ng-click='sendRequestform.$valid &&  sendRequest(request);'>Send Request</button> 
+                <button class="button button-block button-mybuttoncolor" type="submit" ng-click='sendRequestform.$valid &&  sendRequest(request);'>Send Request</button> 
             </div>       
          </div>           
         </div>

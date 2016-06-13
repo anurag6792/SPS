@@ -11,7 +11,7 @@
             <div class="col">
                 <div class="list">
                     <a class="item item-thumbnail-left">
-                      <img src="../img/malecostume-512.png">
+                      <img ng-src={{profile.description.UserImage}}>
                       <p class="changeimage" ng-click="changeuserimage();">change image</p>    
                       <h2>{{profile.description.FirstName}} {{profile.description.LastName}}</h2>
                       <p>Last Login : <span am-time-ago="profile.description.LastLoginDate"></span>

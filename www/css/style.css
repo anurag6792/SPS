@@ -17,6 +17,9 @@
     color: #fff;
 
 }
+.popup-body{
+    text-align: center;
+}
 .main-content{
     background-color: #f7f7f7;
 }
@@ -227,6 +230,27 @@
     background-color: #45DCBB;
     color: #ffffff;
 }
+.signup-background .upload-button{
+    border-radius: 40px;
+    background-color: #45DCBB;
+    color: #ffffff;
+    padding: 5px 5px 5px 5px;
+    min-height: 29px;
+    line-height: 20px;
+    font-size: 14px;
+}
+.signup-background .profilepicture{
+    width: 100px;
+    height: 100px;
+    position: relative;
+    margin: 0 auto;
+    border: 2px solid #45DCBB;
+    background-color: #fff; 
+}
+.signup-background .profilepicture img{
+    max-width: 100px;
+    max-height: 100px;
+}
 /* Dashboard*/
 .dashboard{
     background-image: url("../img/dashbg.png");
@@ -248,6 +272,7 @@
     position: relative;
     margin: 0 auto;
     margin-top: 30px;
+    border: 2px solid #45DCBB;
 }
 .profileInfo p{
     font-size: 15px;
@@ -283,6 +308,10 @@
     border: 1px solid;
     padding: 6px 4px;
     border-color: #ddd;
+}
+.request .request-errors{
+    color: #f72121;
+    font-size: 12px;
 }
 .button-mysmall{
     padding: 2px 4px 1px;
@@ -448,6 +477,7 @@ background: #F7F7F7;
     left: 10px;
     max-width: 100px;
     max-height: 100px;
+    border: 1px solid #45DCBB;
 }
 .profile .col .list .item h2{
     color: #ffffff;

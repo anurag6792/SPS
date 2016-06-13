@@ -129,13 +129,13 @@ app.service("userAuth",['$q','$http','localStorageService','$filter',function($q
     };
     
     //function to change user image
-    function edituserimage(image) {
+    function edituserimage(userid,image) {
         console.log("In service edit user function");
         var deferredObject = $q.defer();
         $http({
                 url    : 'http://ecomdemo.cloudapp.net:8888/api/User/UpdateUser',
                 method : 'POST',
-                data   : {   
+                data   : {  "UserId": userid, 
                             'UserImage': image
                          },
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'},
@@ -165,7 +165,7 @@ app.service("userAuth",['$q','$http','localStorageService','$filter',function($q
     }
     
     // Function to send job request to the operator/admin
-    function sendRequest(subject,postedby,status,details,date,image,recstatus,by,AddressId){
+    function sendRequest(subject,postedby,status,details,date,image,recstatus,by,AddressId,time){
         
         console.log("In service send job request function");
         var deferredObject = $q.defer();
@@ -252,6 +252,7 @@ app.service("userAuth",['$q','$http','localStorageService','$filter',function($q
                             "DateOfBirth": newuserDOB,
                             "Contact": registerUser.mobile,
                             "Password": registerUser.password,
+                            "UserImage": registerUser.userimage,
                             "RoleId": "3",
                             "IsVerified": "No",
                             "IsFirstTimeLogin": "Yes",

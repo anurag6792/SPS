@@ -6,7 +6,7 @@
 <ion-content class="has-header main-content">
     <div class="row dashboard">
         <div class="col profileInfo">
-            <img src="img/malecostume-512.png" class="profilePic">
+            <img ng-src={{user.description.UserImage}} class="profilePic">
             <p>Welcome</p>
             <h3>{{user.description.FirstName}} {{user.description.LastName}}</h3>
             <p> Last Login : <span am-time-ago="user.description.LastLoginDate"></span></p>

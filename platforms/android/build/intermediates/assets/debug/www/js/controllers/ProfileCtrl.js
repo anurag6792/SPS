@@ -6,8 +6,8 @@ app.controller('ProfileCtrl',[
     '$ionicModal',
     '$ionicPopup',
     '$ionicLoading',
-    '$cordovaImagePicker',
-    function($scope,userAuth,localStorageService,$state,$ionicModal,$ionicPopup,$ionicLoading,$cordovaImagePicker){
+    '$cordovaCamera',
+    function($scope,userAuth,localStorageService,$state,$ionicModal,$ionicPopup,$ionicLoading,$cordovaCamera){
      $scope.password = {};//for storing password objects after changing password
     // Function to Show the loader    
     $scope.show = function() {
@@ -115,51 +115,63 @@ app.controller('ProfileCtrl',[
         
         $scope.newimage = '';
         $scope.changeuserimage = function(){
-            var options = {
-               maximumImagesCount: 1,
-               width: 800,
-               height: 800,
-               quality: 80
-              };
-
-              $cordovaImagePicker.getPictures(options)
-                .then(function (results) {
-                  alert(results)
-                  $scope.newimage  = encodeImageUri(results[1]) ;
-                  function encodeImageUri(imageUri)
-                    {
-                         var c=document.createElement('canvas');
-                         var ctx=c.getContext("2d");
-                         var img=new Image();
-                         img.onload = function(){
-                           c.width=this.width;
-                           c.height=this.height;
-                           ctx.drawImage(img, 0,0);
-                         };
-                         img.src=imageUri;
-                         var dataURL = c.toDataURL("image/jpeg");
-                         return dataURL;
-                    }
-                  
-                  alert($scope.newimage);
-                  var editimage = userAuth.edituserimage($scope.newimage);    
-                  editimage.then(function(response){
+                console.log('Change image');
+                var options = {
+                    quality: 50,
+                    destinationType: Camera.DestinationType.DATA_URL,
+                    sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+                    allowEdit: true,
+                    encodingType: Camera.EncodingType.JPEG,
+                    targetWidth: 100,
+                    targetHeight: 100,
+                    popoverOptions: CameraPopoverOptions,
+                    saveToPhotoAlbum: false
+                  };
+                
+                  $cordovaCamera.getPicture(options).then(function(imageData) {
+//                    var image = document.getElementById('myImage');
+                    $scope.newimage = "data:image/jpeg;base64," + imageData;
+                    alert($scope.newimage);
+                    var editimage = userAuth.edituserimage($scope.userId,$scope.newimage);  
+                    editimage.then(function(response){
                         if (response.success == "true") {
+                             $scope.imagechangesuccessful();
                             $state.go('app.profile', {}, { reload: true });
                             console.log('changed image successfully'); 
                         }
                         else{
-                            alert('image change unsuccessful');
+                            $scope.imagechangefail();
+                            //alert('image change unsuccessful');
+                            $state.go('app.profile', {}, { reload: true });
                             console.log('image change was not successfully');
 
                         }
-                    });
-                  
-                  
-                }, function(error) {
-                  // error getting photos
-                });
+                    });  
+                  }, function(err) {
+                    // error
+                  });
+
         };
         
+        $scope.imagechangesuccessful = function() {
+           var alertPopup = $ionicPopup.alert({
+             title: 'Profile Picture',
+             template: 'Your profile picture has been successfully changed'
+           });
+
+           alertPopup.then(function(res) {
+             console.log(' profile picture has been successfully changed');
+           });
+         };
+        $scope.imagechangefail = function() {
+           var alertPopup = $ionicPopup.alert({
+             title: 'Profile Picture',
+             template: 'Sorry due to some error , we could not change your profile picture.Please Try again after sometimes.'
+           });
+
+           alertPopup.then(function(res) {
+             console.log(' profile picture has been successfully changed');
+           });
+         };
         
 }]);
