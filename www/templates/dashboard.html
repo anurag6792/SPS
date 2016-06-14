@@ -19,28 +19,28 @@
             <form name="sendRequestform" novalidate >
             <div class="list">
           <label class="item item-input item-stacked-label">
-            <span class="input-label">Subject</span>
+            <span class="input-label">Subject<b class="mandotory_fields">*</b></span>
             <input type="text" class="input-control" name="requestsubject" placeholder="Enter the subject" ng-model="request.subject" required>
           </label>
           <label  class="request-errors" ng-show="sendRequestform.requestsubject.$error.required && sendRequestform.$submitted">
                     <span>Please Enter the Subject</span>
           </label>           
           <label class="item item-input item-stacked-label">
-            <span class="input-label">Details</span>
+            <span class="input-label">Details<b class="mandotory_fields">*</b></span>
             <textarea placeholder="Please Enter the details" name="requestDetails" ng-model="request.detail" class="input-control" required></textarea>
           </label>
           <label class="request-errors" ng-show="sendRequestform.requestDetails.$error.required && sendRequestform.$submitted">
                     <span>Please Enter the details</span>
           </label>        
           <label class="item item-input item-stacked-label">
-            <span class="input-label" ng-model="request.date">Preferred Date</span>
+            <span class="input-label" ng-model="request.date">Preferred Date<b class="mandotory_fields">*</b></span>
             <input type="date" class="input-control" name="requestDate" ng-model="request.Date" min="{{date | date:'yyyy-MM-dd'}}" required>
           </label>
           <label  class="request-errors" ng-show="sendRequestform.requestDate.$error.required && sendRequestform.$submitted">
                     <span>Please enter your preferred Date</span>
           </label>        
           <label class="item item-input item-stacked-label">
-            <span class="input-label" >Preferred Time</span>
+            <span class="input-label" >Preferred Time<b class="mandotory_fields">*</b></span>
             <input type="time" class="input-control" name="requesttime" ng-change='checktime();' ng-model="request.time" ng-min="{{mintime | date:'hh:mm a'}}" required>
           </label>
 <!--

@@ -439,7 +439,7 @@ app.controller('DashboardCtrl',[
     $scope.successRequest = function() {
                    var alertPopup = $ionicPopup.alert({
                      title: 'Request',
-                     template: 'The request has been successfully sent',
+                     template: 'Thanks for placing your request.We will send the estimates shortly.',
                      okText:'OK',
                      okType:'button button-block login-button',
                      onTap: function(){

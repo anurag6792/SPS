@@ -156,7 +156,9 @@ app.controller('ProfileCtrl',[
         $scope.imagechangesuccessful = function() {
            var alertPopup = $ionicPopup.alert({
              title: 'Profile Picture',
-             template: 'Your profile picture has been successfully changed'
+             template: 'Your profile picture has been successfully changed',
+             okText:'OK',
+             okType:'button button-block login-button'   
            });
 
            alertPopup.then(function(res) {
@@ -166,7 +168,9 @@ app.controller('ProfileCtrl',[
         $scope.imagechangefail = function() {
            var alertPopup = $ionicPopup.alert({
              title: 'Profile Picture',
-             template: 'Sorry due to some error , we could not change your profile picture.Please Try again after sometimes.'
+             template: 'Sorry due to some error , we could not change your profile picture.Please Try again after sometimes.',
+             okText:'OK',
+             okType:'button button-block login-button'
            });
 
            alertPopup.then(function(res) {

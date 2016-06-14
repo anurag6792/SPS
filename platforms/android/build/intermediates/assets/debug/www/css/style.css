@@ -17,6 +17,9 @@
     color: #fff;
 
 }
+.popup-body{
+    text-align: center;
+}
 .main-content{
     background-color: #f7f7f7;
 }
@@ -305,6 +308,14 @@
     border: 1px solid;
     padding: 6px 4px;
     border-color: #ddd;
+}
+.request .request-errors{
+    color: #f72121;
+    font-size: 12px;
+}
+.request .mandotory_fields{
+    color: #f72121;
+/*    font-size: 12px;*/
 }
 .button-mysmall{
     padding: 2px 4px 1px;

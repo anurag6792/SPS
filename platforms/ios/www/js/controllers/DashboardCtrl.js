@@ -12,6 +12,7 @@ app.controller('DashboardCtrl',[
     '$ionicPlatform',
     '$http',
     '$ionicModal',
+    
     function( $scope, userAuth, localStorageService, $cordovaCamera, $cordovaFile,$filter,$ionicPopup,$state,$ionicLoading,$cordovaGeolocation,$ionicPlatform,$http,$ionicModal){
     
     $scope.request= {}; // request model to send job request  
@@ -389,6 +390,22 @@ app.controller('DashboardCtrl',[
         });
     };
      });
+    $scope.checktime = function(){
+        var now = new Date();
+        console.log('in  checkdate');
+        console.log($scope.request.Date);
+        console.log(now);
+        
+        if($scope.request.Date.setHours(0,0,0,0) == now.setHours(0,0,0,0))
+        {
+            $scope.mintime = new Date();    
+    
+            console.log('same date');
+        }
+        else{
+            $scope.mintime = '';
+        }
+    };    
     $scope.requestdetails = {};    
     //array where images taken by the consumer will be stored
     $scope.sendRequest = function(request){ // function will be called when consumer sends the details of the request
@@ -397,7 +414,7 @@ app.controller('DashboardCtrl',[
         console.log(request);
         
         // sending request from the DashboardCtrl
-        var sendrequest = userAuth.sendRequest(request.subject,$scope.user.description.UserId,0,request.detail,$scope.expectedDate,$scope.images,0,$scope.user.description.UserId,request.AddressId);//passing request parameters along with some user details
+        var sendrequest = userAuth.sendRequest(request.subject,$scope.user.description.UserId,0,request.detail,$scope.expectedDate,$scope.images,0,$scope.user.description.UserId,request.AddressId,request.time);//passing request parameters along with some user details
         
         sendrequest.then(function (response) {
             if (response.success == "true") {
@@ -422,7 +439,7 @@ app.controller('DashboardCtrl',[
     $scope.successRequest = function() {
                    var alertPopup = $ionicPopup.alert({
                      title: 'Request',
-                     template: 'The request has been successfully sent',
+                     template: 'Thanks for placing your request.We will send the estimates shortly.',
                      okText:'OK',
                      okType:'button button-block login-button',
                      onTap: function(){

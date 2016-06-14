@@ -165,7 +165,7 @@ app.service("userAuth",['$q','$http','localStorageService','$filter',function($q
     }
     
     // Function to send job request to the operator/admin
-    function sendRequest(subject,postedby,status,details,date,image,recstatus,by,AddressId){
+    function sendRequest(subject,postedby,status,details,date,image,recstatus,by,AddressId,time){
         
         console.log("In service send job request function");
         var deferredObject = $q.defer();

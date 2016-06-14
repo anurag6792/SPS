@@ -313,6 +313,10 @@
     color: #f72121;
     font-size: 12px;
 }
+.request .mandotory_fields{
+    color: #f72121;
+/*    font-size: 12px;*/
+}
 .button-mysmall{
     padding: 2px 4px 1px;
     min-width: 28px;
