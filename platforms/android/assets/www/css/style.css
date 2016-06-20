@@ -642,3 +642,65 @@ background: #F7F7F7;
     padding: 0 10px;
 }
 
+/* Request Category*/
+.requestCat{
+    background-image: url("../img/dashbg.png");
+    background-position: center;
+    background-origin: border-box;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 0;
+    margin:0;
+}
+.requestCat .profileInfo{
+    height: 190px;
+    
+}
+.requestCat .profileInfo .profilePic{
+    width: 70px;
+    height: 70px;
+    display: block;
+    position: relative;
+    margin: 0 auto;
+    margin-top: 30px;
+    border: 2px solid #45DCBB;
+}
+.requestCat .profileInfo p{
+    font-size: 15px;
+    display: block;
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 5px;
+}
+.requestCat .profileInfo h3{
+    font-size: 20px;
+    display: block;
+    text-align: center;
+    color: #ffffff;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.open_requests , .closed_requests{
+    display: inline-block;
+    border-radius: 9px;
+    width: 135px;
+    height: 105px;
+    margin: 70px 5px;
+    background-color: rgba(69, 220, 187, 0.44);
+    color: #fff;
+}
+.open_requests p , .closed_requests p{
+    font-size: 16px;
+    text-align: center;
+}
+.open_requests i , .closed_requests i{
+    font-size: 60px;
+    text-align: center;
+}
+.add_request{
+    position: fixed;
+    bottom: 60px;
+    right: 40px;
+    color: #45DCBB;
+    font-size: 60px;
+}

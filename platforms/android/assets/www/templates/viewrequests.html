@@ -11,8 +11,8 @@
       <div class="item item-text-wrap">
         
         <p><label class="request-label">Registered At</label>:<span am-time-ago="jobrequestDetails.CreatedDate"></span></p>
-        <p><label class="request-label">Expected Date </label>:<span am-time-ago="jobrequestDetails.CustomerExpectedDate"></span></p>
-        <p><label class="request-label">Status</label>:<span>{{ jobrequestDetails.JobStatus == 0 ? 'pending' : 'completed' }}</span> </p>
+        <p><label class="request-label">Expected Time </label>:<span am-time-ago="jobrequestDetails.CustomerExpectedDate"></span></p>
+        <p><label class="request-label">Status</label>:<span>{{ jobrequestDetails.JobStatus == 0}}</span> </p>
         <p><label class="request-label">Addess</label>:</p>
         <p>{{addressDetails.AddressLine1}} , {{addressDetails.AddressLine2}} ,{{addressDetails.City}} ,{{addressDetails.State}} ,{{addressDetails.Zip}} ,{{addressDetails.Country}}</p>  
         

@@ -179,6 +179,15 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
           templateUrl: "templates/viewapprovedrequests.html"
         }
       }
+    })
+    .state('app.requestcategory',{
+        url: '/requestcategory',
+        cache:false,
+        views: {
+        'sidemenuContent' :{
+          templateUrl: "templates/requestcategory.html"
+        }
+      }
     });
     $urlRouterProvider.otherwise('/login');
 }]);

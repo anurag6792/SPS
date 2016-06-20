@@ -1,0 +1,31 @@
+<ion-view  view-title="Requests" ng-controller="RequestcategoryCtrl"> 
+<ion-header-bar align-title="center" class="common-header">
+      <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+      <h1 class="title">Requests</h1>
+</ion-header-bar>
+<ion-content class="has-header main-content">
+    <div class="row requestCat">
+        <div class="col profileInfo">
+            <img ng-src={{user.description.UserImage}} class="profilePic">
+            <p>Welcome</p>
+            <h3>{{user.description.FirstName}} {{user.description.LastName}}</h3>
+            <p> Last Login : <span am-time-ago="user.description.LastLoginDate"></span></p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col" style="text-align:center;">
+            <div class="open_requests">
+                <i class="icon ion-email-unread"></i>
+                <p>Open Requests</p>
+            </div>
+            <div class="closed_requests">
+                <i class="icon ion-email"></i>
+                <p>Closed Requests</p>
+            </div>
+        </div>
+    </div>
+    <i class="icon ion-plus-circled add_request" ng-click="addrequest();"></i>
+     
+</ion-content>
+
+</ion-view>    

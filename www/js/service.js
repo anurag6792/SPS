@@ -168,7 +168,8 @@ app.service("userAuth",['$q','$http','localStorageService','$filter',function($q
     function sendRequest(subject,postedby,status,details,date,image,recstatus,by,AddressId,time){
         
         var timeString = time.getHours() + ':' + time.getMinutes() + ':00';
-        var dateObj = new Date(date + ' ' + timeString);
+//        var dateObj = new Date(date + ' ' + timeString);
+        var dateObj = date + ' ' + timeString;
         console.log("In service send job request function");
         var deferredObject = $q.defer();
         $http({
@@ -181,7 +182,7 @@ app.service("userAuth",['$q','$http','localStorageService','$filter',function($q
                             "CustomerExpectedDate": dateObj,
                             "ImageList": image,
                             "AddressId": AddressId,
-                            "RecordStatus": recstatus,
+//                            "RecordStatus": recstatus,
                             "JobStatus": 1
                          },
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'},
@@ -576,7 +577,8 @@ app.service("userAuth",['$q','$http','localStorageService','$filter',function($q
         localStorageService.set('addressId',null);
         localStorageService.set('DeviceToken',null);
     }
-   
+    
+    
     return {
         login: login,//login function where the login API is called
         sendToken : sendToken,//function to send device token
